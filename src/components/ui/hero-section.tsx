@@ -52,7 +52,7 @@ export const HeroSection = () => {
   return (
     <section 
       ref={ref}
-      className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center overflow-hidden pb-24 md:pb-32"
     >
       {/* Parallax Background Image */}
       <motion.div
