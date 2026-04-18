@@ -42,30 +42,30 @@ const WalkerRegister = () => {
     {
       icon: Euro,
       title: "Revenus attractifs",
-      description: "Fixez vos tarifs (min 8-16€ selon service). Gagnez en moyenne 500-1500€/mois."
+      description: "Fixez vos tarifs librement. Gagnez un complément de revenu significatif en étant votre propre patron."
     },
     {
       icon: Clock,
       title: "Total flexibilité",
-      description: "Horaires et zones d'intervention libres. Travaillez quand vous voulez."
+      description: "Horaires et zones d'intervention libres. Travaillez quand vous voulez, selon vos disponibilités."
     },
     {
       icon: Shield,
-      title: "Paiement sécurisé",
-      description: "Escrow + commission 13%. Paiements garantis sous 48h après validation."
+      title: "Paiement Sécurisé",
+      description: "Vos gains sont garantis et libérés dès que le Propriétaire communique son code unique de fin de mission."
     },
     {
       icon: Users,
-      title: "Clientèle fidèle",
-      description: "Construisez votre clientèle de quartier. Avis et notation pour booster votre profil."
+      title: "Clientèle de quartier",
+      description: "Construisez votre réputation locale. Les avis certifiés boostent votre visibilité sur la plateforme."
     }
   ];
 
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Devenir Promeneur Vérifié | DogWalking"
-        description="Rejoignez notre réseau de promeneurs professionnels vérifiés. Fixez vos tarifs, gérez vos horaires et gagnez un revenu attractif en prenant soin des chiens."
+        title="Devenir Accompagnateur Certifié | DogWalking"
+        description="Rejoignez notre réseau d'Accompagnateurs Certifiés. Fixez vos tarifs, gérez vos horaires et gagnez un revenu attractif en prenant soin des animaux."
         canonical="https://dogwalking.fr/walker/register"
       />
       
@@ -93,10 +93,9 @@ const WalkerRegister = () => {
           >
             <Briefcase className="h-10 w-10 text-primary" />
           </motion.div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Devenez promeneur professionnel vérifié</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Devenez Accompagnateur Certifié</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Rejoignez notre réseau de promeneurs professionnels. Fixez vos tarifs, 
-            gérez vos horaires et gagnez un revenu attractif en prenant soin des chiens de votre quartier.
+            Rejoignez l'élite de l'accompagnement animalier. Seuls 35% des candidats sont retenus pour garantir une sécurité et une confiance totale aux Propriétaires.
           </p>
         </motion.div>
       </section>
@@ -132,11 +131,11 @@ const WalkerRegister = () => {
 
             {/* Requirements */}
             <motion.div variants={itemVariants} className="mb-12">
-              <Card className="bg-muted/50 shadow-card">
+              <Card className="bg-muted/50 shadow-card border-primary/20">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <CheckCircle className="h-5 w-5 text-primary" />
-                    Documents requis pour la vérification
+                    Processus de certification strict
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -146,7 +145,7 @@ const WalkerRegister = () => {
                         <CheckCircle className="h-4 w-4 text-primary" />
                       </div>
                       <div>
-                        <p className="font-medium">Pièce d'identité</p>
+                        <p className="font-medium">Identité vérifiée</p>
                         <p className="text-sm text-muted-foreground">CNI ou passeport en cours de validité</p>
                       </div>
                     </div>
@@ -155,8 +154,8 @@ const WalkerRegister = () => {
                         <CheckCircle className="h-4 w-4 text-primary" />
                       </div>
                       <div>
-                        <p className="font-medium">Casier judiciaire</p>
-                        <p className="text-sm text-muted-foreground">Bulletin n°3 ou attestation sur l'honneur</p>
+                        <p className="font-medium">Références Vérifiées</p>
+                         <p className="text-sm text-muted-foreground">Références et expériences contrôlées</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
@@ -164,8 +163,8 @@ const WalkerRegister = () => {
                         <CheckCircle className="h-4 w-4 text-primary" />
                       </div>
                       <div>
-                        <p className="font-medium">Assurance RC</p>
-                        <p className="text-sm text-muted-foreground">Assurance habitation ou RC professionnelle</p>
+                        <p className="font-medium">Sélection manuelle</p>
+                        <p className="text-sm text-muted-foreground">Taux d'acceptation de 35% maximum</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
@@ -173,13 +172,13 @@ const WalkerRegister = () => {
                         <CheckCircle className="h-4 w-4 text-primary" />
                       </div>
                       <div>
-                        <p className="font-medium">Photo de profil</p>
-                        <p className="text-sm text-muted-foreground">Photo réelle et professionnelle</p>
+                        <p className="font-medium">Protocole DogWalking</p>
+                        <p className="text-sm text-muted-foreground">Engagement sur les preuves visuelles obligatoires</p>
                       </div>
                     </div>
                   </div>
                   <p className="text-sm text-muted-foreground mt-4 pt-4 border-t">
-                    ⏱️ Validation manuelle par notre équipe sous 48h ouvrées
+                    ⏱️ Étude manuelle de votre dossier sous 48h ouvrées par nos équipes
                   </p>
                 </CardContent>
               </Card>
@@ -189,9 +188,9 @@ const WalkerRegister = () => {
             <motion.div variants={itemVariants}>
               <Card className="shadow-card">
                 <CardHeader>
-                  <CardTitle>Candidature promeneur vérifié</CardTitle>
+                  <CardTitle>Candidature Accompagnateur Certifié</CardTitle>
                   <CardDescription>
-                    Remplissez ce formulaire pour commencer le processus de vérification. 
+                    Remplissez ce formulaire pour initier votre processus de certification. 
                     Nous vous recontacterons sous 48h.
                   </CardDescription>
                 </CardHeader>
@@ -220,25 +219,25 @@ const WalkerRegister = () => {
                     </div>
 
                     <div>
-                      <Label htmlFor="city">Ville *</Label>
+                      <Label htmlFor="city">Ville d'intervention *</Label>
                       <Input id="city" required placeholder="Paris, Lyon, Marseille..." />
                     </div>
 
                     <div>
-                      <Label htmlFor="experience">Expérience avec les chiens *</Label>
+                      <Label htmlFor="experience">Expérience animalière *</Label>
                       <Textarea 
                         id="experience" 
-                        placeholder="Décrivez votre expérience avec les chiens : avez-vous des animaux ? Avez-vous déjà gardé des chiens ? Formation animalière ?"
+                        placeholder="Décrivez votre expérience : possédez-vous des animaux ? Avez-vous des formations ? Quelle est votre approche de la sécurité ?"
                         rows={4}
                         required
                       />
                     </div>
 
                     <div>
-                      <Label htmlFor="motivation">Pourquoi voulez-vous devenir promeneur ? *</Label>
+                      <Label htmlFor="motivation">Pourquoi DogWalking ? *</Label>
                       <Textarea 
                         id="motivation" 
-                        placeholder="Quelle est votre motivation ? Quel est votre objectif ? Combien d'heures par semaine souhaitez-vous travailler ?"
+                        placeholder="Quelles sont vos motivations pour rejoindre un réseau certifié ? Comment garantissez-vous la satisfaction des Propriétaires ?"
                         rows={4}
                         required
                       />

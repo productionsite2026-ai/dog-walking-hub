@@ -124,7 +124,7 @@ export const WalkProofUpload: React.FC<WalkProofUploadProps> = ({
 
       toast({
         title: "Photo envoyée !",
-        description: "Le propriétaire sera notifié pour validation"
+        description: "Le Propriétaire sera notifié pour validation"
       });
 
       // Reset form

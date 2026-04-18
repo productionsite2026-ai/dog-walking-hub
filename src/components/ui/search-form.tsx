@@ -3,23 +3,24 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { MapPin, Heart, Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export const SearchForm = () => {
   const navigate = useNavigate();
-  const [animalType, setAnimalType] = useState("chien");
+  const [animalTypes, setAnimalTypes] = useState<string[]>(["chien"]);
   const [selectedService, setSelectedService] = useState("");
   const [address, setAddress] = useState("");
 
   const servicesAbsent = [
-    { id: "hebergement_nuit", label: "Hébergement", icon: Heart },
-    { id: "garde_domicile", label: "Garde à domicile", icon: Heart },
+    { id: "hebergement_nuit", label: "Hébergement chez l'Accompagnateur", icon: Heart },
+    { id: "garde_domicile", label: "Garde au domicile du Propriétaire", icon: Heart },
   ];
 
   const servicesTravail = [
-    { id: "visite_domicile", label: "Visites à domicile", icon: Heart },
-    { id: "hebergement_jour", label: "Garderie pour chien", icon: Heart },
+    { id: "visite_domicile", label: "Visites au domicile du Propriétaire", icon: Heart },
+    { id: "hebergement_jour", label: "Garderie chez l'Accompagnateur", icon: Heart },
     { id: "promenade", label: "Promenade de chien", icon: Heart },
   ];
 
@@ -39,24 +40,31 @@ export const SearchForm = () => {
       {/* Type d'animal */}
       <div className="mb-6">
         <Label className="text-base font-medium mb-3 block">Type d'animal</Label>
-        <RadioGroup 
-          value={animalType} 
-          onValueChange={setAnimalType}
-          className="flex gap-6"
-        >
-          <div className="flex items-center gap-2">
-            <RadioGroupItem value="chien" id="chien" className="border-primary text-primary" />
-            <Label htmlFor="chien" className="flex items-center gap-2 cursor-pointer text-base">
-              <span className="text-xl">🐕</span> Chien
-            </Label>
-          </div>
-          <div className="flex items-center gap-2">
-            <RadioGroupItem value="chat" id="chat" className="border-primary text-primary" />
-            <Label htmlFor="chat" className="flex items-center gap-2 cursor-pointer text-base">
-              <span className="text-xl">🐱</span> Chat
-            </Label>
-          </div>
-        </RadioGroup>
+        <div className="flex gap-6">
+          {[
+            { id: "chien", emoji: "🐕", label: "Chien" },
+            { id: "chat", emoji: "🐱", label: "Chat" },
+            { id: "autre", emoji: "🐾", label: "Autre" },
+          ].map((animal) => (
+            <div key={animal.id} className="flex items-center gap-2">
+              <Checkbox
+                id={animal.id}
+                checked={animalTypes.includes(animal.id)}
+                onCheckedChange={(checked) => {
+                  setAnimalTypes(prev =>
+                    checked
+                      ? [...prev, animal.id]
+                      : prev.filter(t => t !== animal.id)
+                  );
+                }}
+                className="border-primary data-[state=checked]:bg-primary"
+              />
+              <Label htmlFor={animal.id} className="flex items-center gap-2 cursor-pointer text-base">
+                <span className="text-xl">{animal.emoji}</span> {animal.label}
+              </Label>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Services quand absent */}
@@ -78,7 +86,7 @@ export const SearchForm = () => {
               onClick={() => setSelectedService(service.id)}
             >
               <RadioGroupItem value={service.id} id={service.id} className="border-primary" />
-              <Heart className="h-5 w-5 text-heart fill-heart-light" />
+              <Heart className="h-5 w-5 text-heart fill-heart" />
               <Label htmlFor={service.id} className="cursor-pointer flex-1 text-base font-medium">
                 {service.label}
               </Label>
@@ -106,7 +114,7 @@ export const SearchForm = () => {
               onClick={() => setSelectedService(service.id)}
             >
               <RadioGroupItem value={service.id} id={service.id} className="border-primary" />
-              <Heart className="h-5 w-5 text-heart fill-heart-light" />
+              <Heart className="h-5 w-5 text-heart fill-heart" />
               <Label htmlFor={service.id} className="cursor-pointer flex-1 text-base font-medium">
                 {service.label}
               </Label>
@@ -136,7 +144,7 @@ export const SearchForm = () => {
         onClick={handleSearch}
       >
         <Search className="h-5 w-5 mr-2" />
-        Rechercher un promeneur
+        Rechercher Le Compagnon
       </Button>
     </div>
   );

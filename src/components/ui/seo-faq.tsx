@@ -48,16 +48,6 @@ export const SEOFAQ = ({
       
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
-              <HelpCircle className="w-4 h-4" />
-              FAQ
-            </div>
-            <h2 className="text-2xl md:text-3xl font-bold mb-2">{title}</h2>
-            {subtitle && (
-              <p className="text-muted-foreground">{subtitle}</p>
-            )}
-          </div>
 
           <Accordion type="single" collapsible className="space-y-3">
             {faqs.map((faq, index) => (
@@ -85,15 +75,15 @@ export const SEOFAQ = ({
 export const tarifsFAQs: FAQItem[] = [
   {
     question: "Comment sont calculés les tarifs des promenades de chien ?",
-    answer: "Les tarifs sont fixés librement par chaque promeneur, avec un minimum garanti par DogWalking (8€ pour une promenade). Le prix final dépend de la durée, du nombre de chiens, et des services additionnels. La commission de 13% couvre l'assurance, le support client et la plateforme sécurisée."
+    answer: "Les tarifs sont fixés librement par chaque promeneur, avec un minimum garanti par DogWalking (8€ pour une promenade). Le prix final dépend de la durée, du nombre de chiens, et des services additionnels. La commission de 13% couvre la protection, le support client et la plateforme sécurisée."
   },
   {
-    question: "Qu'est-ce que le paiement escrow et comment ça fonctionne ?",
-    answer: "Le paiement escrow est un système de sécurité où votre argent est bloqué sur un compte tiers pendant 24 à 48 heures. Le promeneur ne reçoit le paiement qu'après avoir envoyé une preuve photo/vidéo de la prestation. Si aucune preuve n'est fournie, vous êtes automatiquement remboursé."
+    question: "Qu'est-ce que le paiement sécurisé et comment ça fonctionne ?",
+    answer: "Le paiement sécurisé est un système de sécurité où votre argent est bloqué sur un compte tiers pendant 24 à 48 heures. Le promeneur ne reçoit le paiement qu'après avoir envoyé une preuve photo/vidéo de la prestation. Si aucune preuve n'est fournie, vous êtes automatiquement remboursé."
   },
   {
     question: "La commission de 13% est-elle justifiée ?",
-    answer: "La commission de 13% inclut : l'assurance responsabilité civile jusqu'à 2 millions d'euros, la vérification complète des promeneurs (CNI, casier, assurance), le système de paiement sécurisé escrow, le support client disponible, et la plateforme technologique. C'est un package tout compris pour votre tranquillité."
+    answer: "La commission de 13% inclut : l'protection complète, la vérification complète des promeneurs (Identité vérifiée), le système de paiement sécurisé, le support client disponible, et la plateforme technologique. C'est un package tout compris pour votre tranquillité."
   },
   {
     question: "Puis-je laisser un pourboire au promeneur ?",
@@ -101,26 +91,26 @@ export const tarifsFAQs: FAQItem[] = [
   },
   {
     question: "Y a-t-il des frais cachés ou des abonnements obligatoires ?",
-    answer: "Non, il n'y a aucun frais caché ni abonnement obligatoire pour les propriétaires. Vous payez uniquement le service réservé. Les promeneurs peuvent souscrire à un abonnement PRO optionnel (6-12€/mois) pour des avantages supplémentaires, mais ce n'est pas requis."
+    answer: "Non, il n'y a aucun frais caché ni abonnement obligatoire pour les Propriétaires. Vous payez uniquement le service réservé. Les promeneurs peuvent souscrire à un abonnement PRO optionnel (6-12€/mois) pour des avantages supplémentaires, mais ce n'est pas requis."
   },
   {
     question: "Comment sont protégés mes paiements ?",
-    answer: "Vos paiements sont traités via Stripe, leader mondial du paiement en ligne, conforme aux normes PCI-DSS. Vos données bancaires ne sont jamais stockées sur nos serveurs. Le système escrow garantit que le promeneur n'est payé qu'après validation de la prestation."
+    answer: "Vos paiements sont traités via Stripe, leader mondial du paiement en ligne, conforme aux normes PCI-DSS. Vos données bancaires ne sont jamais stockées sur nos serveurs. Le système de paiement sécurisé garantit que le promeneur n'est payé qu'après validation de la prestation."
   }
 ];
 
 export const securiteFAQs: FAQItem[] = [
   {
     question: "Comment les promeneurs sont-ils vérifiés par DogWalking ?",
-    answer: "Chaque promeneur doit fournir une pièce d'identité (CNI ou passeport), une attestation de casier judiciaire vierge ou extrait B3, et une preuve d'assurance responsabilité civile. Notre équipe vérifie manuellement chaque document avant validation. Ce processus prend généralement 24 à 48 heures ouvrées."
+    answer: "Chaque promeneur doit fournir une pièce d'identité (CNI ou passeport), une attestation de vérification approfondie vierge ou extrait B3, et une preuve d'protection professionnelle. Notre équipe vérifie manuellement chaque document avant validation. Ce processus prend généralement 24 à 48 heures ouvrées."
   },
   {
     question: "Que se passe-t-il si mon chien est blessé pendant une promenade ?",
-    answer: "Tous nos promeneurs disposent d'une assurance responsabilité civile couvrant les incidents jusqu'à 2 millions d'euros. En cas de problème, contactez immédiatement notre support. Nous déclenchons la procédure d'assurance et vous assistons dans toutes les démarches. Le paiement reste bloqué jusqu'à résolution."
+    answer: "Tous nos promeneurs disposent d'une protection complète. En cas de problème, contactez immédiatement notre support. Nous déclenchons la procédure de résolution et vous assistons dans toutes les démarches. Le paiement reste bloqué jusqu'à résolution."
   },
   {
     question: "Comment fonctionne le système de preuves obligatoires ?",
-    answer: "À chaque prestation, le promeneur doit envoyer une photo ou vidéo de votre chien accompagnée d'un message décrivant le déroulement. Sans cette preuve, le paiement reste bloqué en escrow et peut être remboursé. Les preuves sont conservées dans votre historique pour référence."
+    answer: "À chaque prestation, le promeneur doit envoyer une photo ou vidéo de votre chien accompagnée d'un message décrivant le déroulement. Sans cette preuve, le paiement reste bloqué en paiement sécurisé et peut être remboursé. Les preuves sont conservées dans votre historique pour référence."
   },
   {
     question: "Que faire si je ne suis pas satisfait d'une prestation ?",
@@ -163,10 +153,10 @@ export const promenadeFAQs: FAQItem[] = [
   }
 ];
 
-export const deveniPromeneurFAQs: FAQItem[] = [
+export const deveniAccompagnateur_CertifiéFAQs: FAQItem[] = [
   {
     question: "Quelles sont les conditions pour devenir promeneur DogWalking ?",
-    answer: "Vous devez être majeur, résider en France, et fournir : une pièce d'identité valide, une attestation de casier judiciaire vierge (ou extrait B3), une preuve d'assurance responsabilité civile, et une photo de profil réelle. Aucun diplôme spécifique n'est requis, mais l'expérience avec les chiens est un plus apprécié."
+    answer: "Vous devez être majeur, résider en France, et fournir : une pièce d'identité valide, une attestation de vérification approfondie vierge (ou extrait B3), une preuve d'protection professionnelle, et une photo de profil réelle. Aucun diplôme spécifique n'est requis, mais l'expérience avec les chiens est un plus apprécié."
   },
   {
     question: "Combien puis-je gagner comme promeneur de chien ?",
@@ -178,7 +168,7 @@ export const deveniPromeneurFAQs: FAQItem[] = [
   },
   {
     question: "Comment fonctionne le système de paiement pour les promeneurs ?",
-    answer: "Après chaque prestation validée (preuve envoyée et période escrow terminée), le montant moins la commission est versé sur votre compte Stripe Connect. Les virements vers votre compte bancaire peuvent être configurés en automatique ou à la demande, généralement sous 2-3 jours ouvrés."
+    answer: "Après chaque prestation validée (preuve envoyée et période paiement sécurisé terminée), le montant moins la commission est versé sur votre compte Stripe Connect. Les virements vers votre compte bancaire peuvent être configurés en automatique ou à la demande, généralement sous 2-3 jours ouvrés."
   },
   {
     question: "Puis-je choisir mes horaires et mes zones d'intervention ?",
@@ -186,6 +176,6 @@ export const deveniPromeneurFAQs: FAQItem[] = [
   },
   {
     question: "Que se passe-t-il si un incident survient pendant une promenade ?",
-    answer: "En cas d'incident, contactez immédiatement notre support et les services d'urgence si nécessaire. Votre assurance RC couvre les dommages causés. Documentez l'incident avec photos et témoignages. DogWalking vous accompagne dans les démarches et la déclaration à l'assurance."
+    answer: "En cas d'incident, contactez immédiatement notre support et les services d'urgence si nécessaire. Votre protection couvre les dommages causés. Documentez l'incident avec photos et témoignages. DogWalking vous accompagne dans les démarches et la résolution du litige."
   }
 ];

@@ -99,7 +99,7 @@ export const SOSButton: React.FC<SOSButtonProps> = ({
 
       toast({
         title: "Alerte SOS envoyée",
-        description: "Le propriétaire a été alerté. Restez en sécurité."
+        description: "Le Propriétaire a été alerté. Restez en sécurité."
       });
 
       setIsOpen(false);
@@ -140,7 +140,7 @@ export const SOSButton: React.FC<SOSButtonProps> = ({
               Urgence SOS
             </DialogTitle>
             <DialogDescription>
-              Sélectionnez le type d'urgence pour alerter le propriétaire et les services concernés.
+              Sélectionnez le type d'urgence pour alerter le Propriétaire et les services concernés.
             </DialogDescription>
           </DialogHeader>
 

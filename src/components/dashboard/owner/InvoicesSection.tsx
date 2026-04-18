@@ -81,11 +81,11 @@ const InvoicesSection = () => {
     const content = `
 FACTURE ${invoice.id}
 ========================
-DogWalking - Services de promenade canine
+DogWalking France - Services d'Accompagnement
 
 Date: ${new Date(invoice.scheduled_date).toLocaleDateString('fr-FR')}
 Service: ${getServiceLabel(invoice.service_type)}
-Chien: ${invoice.dog_name || 'Non spécifié'}
+Animal: ${invoice.dog_name || 'Non spécifié'}
 
 Montant: ${invoice.amount.toFixed(2)} €
 Statut: ${invoice.status === 'paid' ? 'Payée' : 'En attente'}
@@ -183,7 +183,7 @@ www.dogwalking.fr
             <FileText className="h-16 w-16 mx-auto mb-4 text-muted-foreground/30" />
             <p className="text-lg font-medium mb-2">Aucune facture</p>
             <p className="text-muted-foreground">
-              Vos factures apparaîtront ici après vos réservations
+              Vos factures apparaîtront ici après vos réservations d'Accompagnement
             </p>
           </CardContent>
         </Card>

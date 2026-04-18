@@ -134,7 +134,7 @@ const WalkersTab = () => {
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-bold flex items-center gap-2">
           <Heart className="h-6 w-6 text-primary fill-primary/20" />
-          Mes Promeneurs Favoris
+          Mes Accompagnateur Certifiés Favoris
         </h2>
         <Button onClick={() => navigate('/walkers')} className="gap-2">
           <Search className="h-4 w-4" />
@@ -159,7 +159,7 @@ const WalkersTab = () => {
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {favorites.map(fav => {
-            const fullName = `${fav.profile?.first_name || ''} ${fav.profile?.last_name || ''}`.trim() || 'Promeneur';
+            const fullName = `${fav.profile?.first_name || ''} ${fav.profile?.last_name || ''}`.trim() || 'Accompagnateur Certifié';
             
             return (
               <Card key={fav.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 group">

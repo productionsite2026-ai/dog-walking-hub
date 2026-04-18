@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
+import { usePushNotifications } from "@/hooks/usePushNotifications";
 
 interface Notification {
   id: string;
@@ -16,6 +17,7 @@ export const useRealtimeNotifications = () => {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [unreadCount, setUnreadCount] = useState(0);
   const [loading, setLoading] = useState(true);
+  const { sendLocalNotification, permission } = usePushNotifications();
 
   const fetchNotifications = useCallback(async () => {
     const { data: { session } } = await supabase.auth.getSession();
@@ -66,9 +68,18 @@ export const useRealtimeNotifications = () => {
               description: newNotification.message,
             });
 
-            // Play notification sound (optional)
+            // Fire browser push notification
+            if (permission === 'granted') {
+              sendLocalNotification(newNotification.title, {
+                body: newNotification.message,
+                tag: newNotification.type || 'notification',
+                data: { link: newNotification.link, type: newNotification.type },
+              });
+            }
+
+            // Play notification sound
             try {
-              const audio = new Audio('/notification.mp3');
+              const audio = new Audio("data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbsGczHj6NyN/Qu2k8JT2Hw9bQv3xMM0OFwtHOw4FVOUmKxNHMwIBWPEmKxM/JvX1VPEuMyM3FuXlUP1CQy8zDtXVTQFOUzsvBsHJSQViX0svBr3FPQlqa08zBrm5MQWCi18/ArWxKQWWt5NHArGlGP2iy59PBqWRDP3C46tfGplxAPnO87d3Mol5CP3fB8+LMn11BQHrF+OfQnFpAQH7K/ezUmldAQYDP//DYmFY/QYLR//PbllQ+QYTT//XdlFI9QIbV//fflVA8P4XX//nhl009PoXZ//rjlks8PoXZ//vjl0o7PYTa//zkmEk7PYPa//3lmUg6PILb//7nmkc5O4Hb///om0Y5O4Dc///pnEU4OoHc///qnUQ4On/d///snkM3OX7d///tn0I2OX3e///uoEE2OHze///voUA1OH3e///woT81N37e///xoj80N37e///yoz40Nn/e///0pD0zNn/e///1pTwyNoHe///2pjsxNYHe///4pzovNILe///5qDkuNILe///6qTgtM4Pe///7qjcsM4Pf///8qzYrMoPf///+rDUqMYTf///");
               audio.volume = 0.3;
               audio.play().catch(() => {});
             } catch {}

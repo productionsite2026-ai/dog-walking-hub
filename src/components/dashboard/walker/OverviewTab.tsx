@@ -82,7 +82,7 @@ const WalkerOverviewTab = ({ stats, walkerProfile, onNavigate }: OverviewTabProp
           id: b.id,
           startTime: b.scheduled_time?.slice(0, 5) || '09:00',
           endTime: calculateEndTime(b.scheduled_time, b.duration_minutes),
-          dogName: b.dogs?.name || 'Chien',
+          dogName: b.dogs?.name || 'Animal',
           serviceType: b.service_type,
           ownerName: ownerMap.get(b.owner_id)?.first_name || 'Propriétaire',
           ownerPhoto: ownerMap.get(b.owner_id)?.avatar_url,
@@ -130,7 +130,7 @@ const WalkerOverviewTab = ({ stats, walkerProfile, onNavigate }: OverviewTabProp
     >
       {/* En-tête profil avec progression */}
       <WalkerProfileHeader
-        name={profile?.first_name || 'Promeneur'}
+        name={profile?.first_name || 'Accompagnateur'}
         photoUrl={profile?.avatar_url}
         profileCompletion={profileCompletion()}
         isVerified={walkerProfile?.verified}

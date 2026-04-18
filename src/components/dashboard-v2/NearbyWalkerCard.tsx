@@ -48,7 +48,7 @@ const NearbyWalkerCard = ({ name, rating, reviews, distance, price, avatar, badg
     </div>
     <div className="text-right">
       <span className="text-base font-black text-foreground">{price}</span>
-      <p className="text-[9px] text-muted-foreground font-semibold">/balade</p>
+      <p className="text-[9px] text-muted-foreground font-semibold">/mission</p>
     </div>
   </motion.div>
 );

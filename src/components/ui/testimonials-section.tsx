@@ -19,7 +19,7 @@ export const TestimonialsSection = () => {
       name: "Thomas B.",
       city: "Lyon 6e",
       rating: 5,
-      comment: "Enfin une plateforme sérieuse. Le paiement en escrow et la vérification du casier judiciaire, c'est ce qui m'a convaincu.",
+      comment: "Enfin une plateforme sérieuse. Le paiement en paiement sécurisé et la vérification du vérification approfondie, c'est ce qui m'a convaincu.",
       dog: "Luna, Berger Australien",
       verified: true,
       avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Thomas"
@@ -46,7 +46,7 @@ export const TestimonialsSection = () => {
       name: "Julie R.",
       city: "Toulouse",
       rating: 5,
-      comment: "Le badge 'Super Promeneur' m'a aidée à choisir. Sarah est incroyable avec mon anxieux de Beauceron. Merci DogWalking !",
+      comment: "Le badge 'Super Accompagnateur Certifié' m'a aidée à choisir. Sarah est incroyable avec mon anxieux de Beauceron. Merci DogWalking !",
       dog: "Oscar, Beauceron",
       verified: true,
       avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Julie"
@@ -89,7 +89,7 @@ export const TestimonialsSection = () => {
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Ce que disent nos clients</h2>
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Des milliers de propriétaires satisfaits partagent leur expérience. 
+            Des milliers de Propriétaires satisfaits partagent leur expérience. 
             Seuls les clients ayant réservé peuvent laisser un avis.
           </p>
         </div>

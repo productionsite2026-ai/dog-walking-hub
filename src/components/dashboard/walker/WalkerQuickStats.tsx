@@ -27,7 +27,7 @@ const WalkerQuickStats = ({
       />
       <StatCard
         icon={Dog}
-        label="Promenades"
+        label="Missions"
         value={totalWalks}
         sublabel="Total effectuées"
         variant="green"

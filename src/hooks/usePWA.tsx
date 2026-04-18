@@ -121,6 +121,25 @@ export const usePWA = () => {
       return null;
     }
 
+    const shouldDisableInEditorPreview =
+      !import.meta.env.PROD || window.location.hostname.endsWith("lovableproject.com");
+
+    if (shouldDisableInEditorPreview) {
+      try {
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(registrations.map((registration) => registration.unregister()));
+
+        if ("caches" in window) {
+          const cacheKeys = await caches.keys();
+          await Promise.all(cacheKeys.map((key) => caches.delete(key)));
+        }
+      } catch (error) {
+        console.warn("Service worker cleanup skipped:", error);
+      }
+
+      return null;
+    }
+
     try {
       const registration = await navigator.serviceWorker.register("/sw.js", {
         scope: "/"

@@ -11,7 +11,7 @@ interface SEOHeadProps {
 
 export const SEOHead = ({
   title = "DogWalking | Service de promenade et garde de chien en France",
-  description = "Trouvez un promeneur de chien de confiance près de chez vous. Profils vérifiés, paiement sécurisé escrow, preuves photo obligatoires. Réservez en quelques clics.",
+  description = "Trouvez un Accompagnateur Certifié de confiance près de chez vous. Profils vérifiés, paiement sécurisé en attente, preuves visuelles obligatoires. Réservez en quelques clics.",
   canonical = "https://dogwalking.fr",
   image = "https://dogwalking.fr/og-image.jpg",
   type = "website",
@@ -24,7 +24,7 @@ export const SEOHead = ({
     "name": "DogWalking",
     "url": "https://dogwalking.fr",
     "logo": "https://dogwalking.fr/logo.png",
-    "description": "Plateforme n°1 de promenade et garde de chiens en France. Promeneurs 100% vérifiés, paiement escrow sécurisé, preuves photo obligatoires, assurance incluse jusqu'à 2M€.",
+    "description": "Plateforme n°1 de mise en relation entre Propriétaires et Accompagnateurs Certifiés en France. Profils 100% vérifiés, paiement sécurisé en attente, preuves visuelles obligatoires.",
     "foundingDate": "2023",
     "areaServed": {
       "@type": "Country",
@@ -87,9 +87,9 @@ export const SEOHead = ({
       <meta property="twitter:image" content={image} />
       
       {/* Additional Meta Tags */}
-      <meta name="theme-color" content="#22c55e" />
+      <meta name="theme-color" content="#00D084" />
       <meta name="author" content="DogWalking" />
-      <meta name="keywords" content="promenade chien, dog walking, garde chien, pet sitting, promeneur chien, garde animaux, visite domicile animal, France" />
+      <meta name="keywords" content="promenade chien, dog walking, garde chien, pet sitting, Accompagnateur Certifié, garde animaux, visite domicile animal, France, Propriétaire" />
       
       {/* Schema.org JSON-LD */}
       <script type="application/ld+json">{JSON.stringify(schemaOrganization)}</script>

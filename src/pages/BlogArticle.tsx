@@ -256,7 +256,7 @@ const BlogArticle = () => {
                   <p className="text-muted-foreground mb-2">{article.author.role}</p>
                   <p className="text-sm text-muted-foreground">
                     Expert(e) en bien-être canin, {article.author.name} partage ses connaissances 
-                    pour aider les propriétaires à mieux comprendre et prendre soin de leurs compagnons.
+                    pour aider les Propriétaires à mieux comprendre et prendre soin de leurs compagnons.
                   </p>
                 </div>
               </div>

@@ -148,7 +148,7 @@ export const MissionStartButton: React.FC<MissionStartButtonProps> = ({
       toast({
         title: photoType === 'start' ? "Mission démarrée !" : "Mission terminée !",
         description: photoType === 'start' 
-          ? "Le propriétaire a été notifié de la prise en charge" 
+          ? "Le Propriétaire a été notifié de la prise en charge" 
           : "Le paiement sera débloqué sous 48h"
       });
 

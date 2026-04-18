@@ -83,7 +83,7 @@ const NotFound = () => {
                 <Link to="/walker/register">Devenir promeneur</Link>
               </Button>
               <Button variant="link" size="sm" asChild>
-                <Link to="/zones">Toutes les villes</Link>
+                <Link to="/find-walkers">Trouver un promeneur</Link>
               </Button>
             </div>
           </div>

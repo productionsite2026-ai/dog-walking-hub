@@ -52,18 +52,18 @@ const WalkerInvoicesTab = () => {
       .order('scheduled_date', { ascending: false });
 
     if (bookings) {
-      const commission = 0.13; // 13% commission
+      const commissionRate = 0.15; // 15% commission as per CDC
       
       const invoiceData: Invoice[] = bookings.map(b => {
         const gross = Number(b.price || 0);
-        const comm = gross * commission;
+        const comm = gross * commissionRate;
         const net = gross - comm;
         
         return {
           id: `FAC-${b.id.slice(0, 8).toUpperCase()}`,
           date: b.scheduled_date,
-          ownerName: 'Propriétaire', // Would need join
-          dogName: b.dogs?.name || 'Chien',
+          ownerName: 'Propriétaire', 
+          dogName: b.dogs?.name || 'Animal',
           serviceType: b.service_type,
           duration: b.duration_minutes || 60,
           grossAmount: gross,
@@ -141,15 +141,15 @@ const WalkerInvoicesTab = () => {
     const content = `
 FACTURE ${invoice.id}
 ========================
-DogWalking - Services de promenade canine
+DogWalking France - Services d'Accompagnement
 
 Date: ${new Date(invoice.date).toLocaleDateString('fr-FR')}
 Service: ${getServiceLabel(invoice.serviceType)}
-Chien: ${invoice.dogName}
+Animal: ${invoice.dogName}
 Durée: ${invoice.duration} min
 
 Montant brut: ${invoice.grossAmount.toFixed(2)} €
-Commission (13%): -${invoice.commission.toFixed(2)} €
+Commission (15%): -${invoice.commission.toFixed(2)} €
 --------------------------
 Net à percevoir: ${invoice.netAmount.toFixed(2)} €
 
@@ -222,14 +222,14 @@ www.dogwalking.fr
               <Wallet className="h-5 w-5 text-muted-foreground" />
             </div>
             <p className="text-3xl font-bold text-stat-yellow">{summary.totalCommission.toFixed(0)}€</p>
-            <p className="text-xs text-muted-foreground">13% pour DogWalking</p>
+            <p className="text-xs text-muted-foreground">15% pour DogWalking</p>
           </CardContent>
         </Card>
 
         <Card className="shadow-lg">
           <CardContent className="pt-6">
             <div className="flex items-center justify-between mb-2">
-              <p className="text-sm text-muted-foreground">Services</p>
+              <p className="text-sm text-muted-foreground">Missions</p>
               <FileText className="h-5 w-5 text-muted-foreground" />
             </div>
             <p className="text-3xl font-bold">{summary.servicesCount}</p>
@@ -253,7 +253,7 @@ www.dogwalking.fr
             <div className="text-center py-16">
               <FileText className="h-16 w-16 mx-auto mb-4 text-muted-foreground/30" />
               <p className="text-lg font-semibold mb-2">Aucune facture</p>
-              <p className="text-muted-foreground">Vos factures apparaîtront ici après vos missions</p>
+              <p className="text-muted-foreground">Vos factures apparaîtront ici après vos missions d'Accompagnement</p>
             </div>
           ) : (
             <div className="divide-y">
@@ -311,9 +311,9 @@ www.dogwalking.fr
           <div className="text-sm">
             <p className="font-semibold mb-1">Comprendre vos factures</p>
             <ul className="text-muted-foreground space-y-1">
-              <li>• <strong>Montant brut</strong> : Prix payé par le propriétaire</li>
-              <li>• <strong>Commission (13%)</strong> : Frais de service DogWalking</li>
-              <li>• <strong>Net</strong> : Ce que vous percevez réellement</li>
+              <li>• <strong>Montant brut</strong> : Prix payé par le Propriétaire</li>
+              <li>• <strong>Commission (15%)</strong> : Frais de service DogWalking</li>
+              <li>• <strong>Net</strong> : Ce que vous percevez réellement après mission</li>
             </ul>
           </div>
         </CardContent>

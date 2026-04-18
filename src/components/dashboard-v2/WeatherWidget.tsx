@@ -26,7 +26,7 @@ const WeatherWidget = ({ temp, condition, recommendation }: WeatherWidgetProps) 
         <div className="flex items-center gap-2">
           <span className={`font-black text-lg ${w.text}`}>{temp}°C</span>
         </div>
-        <p className="text-[11px] text-muted-foreground font-semibold mt-0.5">{recommendation}</p>
+        <p className="text-[11px] text-muted-foreground font-semibold mt-0.5">{recommendation.replace("balade", "mission").replace("promenade", "mission")}</p>
       </div>
     </motion.div>
   );

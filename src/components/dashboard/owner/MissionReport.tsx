@@ -240,7 +240,7 @@ Généré automatiquement par DogWalking
           <div className="flex items-center justify-between">
             <span className="text-sm text-muted-foreground flex items-center gap-2">
               <User className="h-4 w-4" />
-              Promeneur
+              Accompagnateur Certifié
             </span>
             <span className="font-medium">{walker?.first_name}</span>
           </div>

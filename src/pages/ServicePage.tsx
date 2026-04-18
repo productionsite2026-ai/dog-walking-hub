@@ -3,9 +3,10 @@ import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { getServiceBySlug } from "@/data/servicesData";
-import { ArrowRight, Check, Clock, MapPin, Search, Dog, Cat, Shield, Award, Heart, Users, Star, CheckCircle2, Sparkles, Eye, ThumbsUp, Zap, Phone, MessageCircle } from "lucide-react";
+import { ArrowRight, Check, Clock, MapPin, Search, Dog, Cat, Shield, Award, Heart, Users, Star, CheckCircle2, Sparkles, Eye, ThumbsUp, Zap, Phone, MessageCircle, Lock, CreditCard, Camera, HelpCircle } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { AnimatedIcon } from "@/components/ui/animated-icon";
@@ -155,7 +156,7 @@ const ServicePage = () => {
               <motion.div variants={scaleIn} className="mb-4">
                 <Badge className="bg-primary/15 text-primary border-0 text-sm py-1.5 px-4">
                   <Sparkles className="h-4 w-4 mr-2" />
-                  Service vérifié & assuré
+                  Service vérifié & sécurisé
                 </Badge>
               </motion.div>
 
@@ -193,10 +194,10 @@ const ServicePage = () => {
                   <Clock className="h-4 w-4 mr-2" />{service.duration}
                 </Badge>
                 <Badge className="bg-accent/15 text-accent border-0 text-base py-2 px-4 backdrop-blur-sm">
-                  <Star className="h-4 w-4 mr-2" />Dès {service.minPrice}€
+                  <Star className="h-4 w-4 mr-2" />À partir de {service.minPrice}€
                 </Badge>
                 <Badge className="bg-emerald-500/15 text-emerald-600 border-0 text-base py-2 px-4 backdrop-blur-sm">
-                  <Shield className="h-4 w-4 mr-2" />Assurance 2M€
+                  <Shield className="h-4 w-4 mr-2" />Sécurité & Transparence
                 </Badge>
               </motion.div>
 
@@ -264,509 +265,201 @@ const ServicePage = () => {
                 viewport={{ once: true }}
                 variants={staggerContainer}
               >
-                <div className="space-y-4">
-                  <motion.div
+                {(service.galleryImages || service.images.map(img => img.src)).map((img, i) => (
+                  <motion.div 
+                    key={i} 
+                    className={`rounded-2xl overflow-hidden shadow-lg ${i === 0 ? 'col-span-2 h-64' : 'h-48'}`}
                     variants={scaleIn}
-                    whileHover={{ scale: 1.03, rotate: 1 }}
-                    className="overflow-hidden rounded-2xl shadow-lg"
+                    whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
                   >
-                    <img 
-                      src={service.images[0]?.src} 
-                      alt={service.images[0]?.alt}
-                      className="w-full h-48 md:h-64 object-cover"
-                    />
+                    <img src={img} alt={`${service.title} - Galerie ${i+1}`} className="w-full h-full object-cover" />
                   </motion.div>
-                  {service.images[2] && (
-                    <motion.div
-                      variants={scaleIn}
-                      whileHover={{ scale: 1.03, rotate: -1 }}
-                      className="overflow-hidden rounded-2xl shadow-lg"
-                    >
-                      <img 
-                        src={service.images[2].src} 
-                        alt={service.images[2].alt}
-                        className="w-full h-32 md:h-40 object-cover"
-                      />
-                    </motion.div>
-                  )}
-                </div>
-                <div className="pt-8">
-                  {service.images[1] && (
-                    <motion.div
-                      variants={scaleIn}
-                      whileHover={{ scale: 1.03, rotate: 1 }}
-                      className="overflow-hidden rounded-2xl shadow-lg"
-                    >
-                      <img 
-                        src={service.images[1].src} 
-                        alt={service.images[1].alt}
-                        className="w-full h-56 md:h-72 object-cover"
-                      />
-                    </motion.div>
-                  )}
-                </div>
+                ))}
               </motion.div>
 
-              {/* Contenu texte enrichi */}
+              {/* Texte de présentation enrichi */}
               <motion.div
-                initial={{ opacity: 0, x: 50 }}
+                initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <Badge className="bg-accent/10 text-accent mb-4">
-                  <Eye className="h-3 w-3 mr-1" />
-                  Présentation détaillée
-                </Badge>
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                  Tout savoir sur notre service de {service.title.toLowerCase()}
-                </h2>
-                <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
-                  <p>{service.description.intro}</p>
-                  <p className="text-foreground font-medium">
-                    Avec DogWalking, vous bénéficiez d'un réseau de professionnels passionnés, 
-                    formés aux meilleures pratiques de l'accompagnement animalier. Chaque prestation 
-                    est personnalisée selon les besoins uniques de votre compagnon, garantissant 
-                    ainsi une expérience optimale pour lui comme pour vous.
-                  </p>
+                <Badge className="bg-primary/10 text-primary mb-4">À propos de ce service</Badge>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">Un accompagnement sur-mesure pour votre animal</h2>
+                <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+                  <p>{typeof service.description === 'string' ? service.description : service.description.intro}</p>
+                  <p>{service.subDescription || (typeof service.description !== 'string' ? service.description.forWhom : '')}</p>
                 </div>
                 
-                <AnimatedGrid className="grid-cols-2 gap-4 mt-8" staggerDelay={0.1}>
-                  <AnimatedGridItem>
-                    <div className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border hover:border-primary/30 transition-colors">
-                      <AnimatedIcon icon={CheckCircle2} size="sm" variant="primary" />
-                      <span className="font-medium">100% vérifiés & assurés</span>
+                <div className="grid grid-cols-2 gap-6 mt-10">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+                      <Users className="h-6 w-6" />
                     </div>
-                  </AnimatedGridItem>
-                  <AnimatedGridItem>
-                    <div className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border hover:border-accent/30 transition-colors">
-                      <AnimatedIcon icon={Star} size="sm" variant="accent" />
-                      <span className="font-medium">Avis vérifiés</span>
+                    <div>
+                      <div className="font-bold text-foreground">1500+</div>
+                      <div className="text-sm">Accompagnateurs Certifiés</div>
                     </div>
-                  </AnimatedGridItem>
-                  <AnimatedGridItem>
-                    <div className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border hover:border-primary/30 transition-colors">
-                      <AnimatedIcon icon={ThumbsUp} size="sm" variant="success" />
-                      <span className="font-medium">Satisfaction garantie</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center text-accent">
+                      <Star className="h-6 w-6" />
                     </div>
-                  </AnimatedGridItem>
-                  <AnimatedGridItem>
-                    <div className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border hover:border-accent/30 transition-colors">
-                      <AnimatedIcon icon={Zap} size="sm" variant="warning" />
-                      <span className="font-medium">Réponse rapide</span>
+                    <div>
+                      <div className="font-bold text-foreground">4.9/5</div>
+                      <div className="text-sm">Note moyenne</div>
                     </div>
-                  </AnimatedGridItem>
-                </AnimatedGrid>
+                  </div>
+                </div>
               </motion.div>
             </div>
           </div>
         </section>
 
-        {/* 3️⃣ À QUI S'ADRESSE CE SERVICE - Section enrichie */}
-        <section className="py-20 px-4">
-          <div className="container mx-auto max-w-6xl">
-            <SectionHeader
-              title="À qui s'adresse ce service ?"
-              subtitle="Découvrez si notre service répond à vos besoins et à ceux de votre compagnon"
-              icon={Users}
-              iconVariant="accent"
-              badge="Pour vous"
+        {/* 3️⃣ AVANTAGES & GARANTIES - Style moderne */}
+        <section className="py-24 px-4">
+          <div className="container mx-auto">
+            <SectionHeader 
+              title="Les Garanties DogWalking" 
+              subtitle="Pourquoi nous confier votre animal en toute sérénité"
+              icon={Shield}
+              iconVariant="primary"
             />
             
-            <AnimatedGrid className="md:grid-cols-2 gap-8" staggerDelay={0.15}>
-              <AnimatedGridItem>
-                <AnimatedCard className="p-8" glow>
-                  <AnimatedIcon icon={Users} size="lg" variant="primary" className="mb-6" />
-                  <h3 className="text-2xl font-bold mb-4">Profils idéaux</h3>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{service.description.forWhom}</p>
-                  <ul className="space-y-3">
-                    <li className="flex items-center gap-3">
-                      <Check className="h-5 w-5 text-primary flex-shrink-0" />
-                      <span>Professionnels aux horaires chargés</span>
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Check className="h-5 w-5 text-primary flex-shrink-0" />
-                      <span>Personnes à mobilité réduite</span>
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Check className="h-5 w-5 text-primary flex-shrink-0" />
-                      <span>Propriétaires de chiens énergiques</span>
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Check className="h-5 w-5 text-primary flex-shrink-0" />
-                      <span>Nouveaux propriétaires de chiots</span>
-                    </li>
-                  </ul>
-                </AnimatedCard>
-              </AnimatedGridItem>
-              
-              <AnimatedGridItem>
-                <AnimatedCard className="p-8" glow>
-                  <AnimatedIcon icon={Zap} size="lg" variant="warning" className="mb-6" />
-                  <h3 className="text-2xl font-bold mb-4">Problèmes résolus</h3>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{service.description.problemsSolved}</p>
-                  <ul className="space-y-3">
-                    <li className="flex items-center gap-3">
-                      <Check className="h-5 w-5 text-amber-500 flex-shrink-0" />
-                      <span>Manque d'exercice et surpoids</span>
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Check className="h-5 w-5 text-amber-500 flex-shrink-0" />
-                      <span>Anxiété de séparation</span>
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Check className="h-5 w-5 text-amber-500 flex-shrink-0" />
-                      <span>Comportements destructeurs</span>
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Check className="h-5 w-5 text-amber-500 flex-shrink-0" />
-                      <span>Problèmes de socialisation</span>
-                    </li>
-                  </ul>
-                </AnimatedCard>
-              </AnimatedGridItem>
+            <AnimatedGrid className="grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16" staggerDelay={0.1}>
+              {(service.benefits || []).map((benefit, i) => (
+                <AnimatedGridItem key={i}>
+                  <Card className="h-full border-border/50 shadow-soft hover:shadow-card hover:-translate-y-1 transition-all duration-300">
+                    <CardHeader className="pb-3">
+                      <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
+                        {i === 0 && <Shield className="h-7 w-7 text-primary" />}
+                        {i === 1 && <Eye className="h-7 w-7 text-primary" />}
+                        {i === 2 && <Lock className="h-7 w-7 text-primary" />}
+                        {i === 3 && <ThumbsUp className="h-7 w-7 text-primary" />}
+                      </div>
+                      <CardTitle className="text-xl">{benefit.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-muted-foreground leading-relaxed">{benefit.description}</p>
+                    </CardContent>
+                  </Card>
+                </AnimatedGridItem>
+              ))}
             </AnimatedGrid>
-            
-            {/* Bénéfices */}
-            <motion.div 
-              className="mt-12 p-8 rounded-3xl bg-gradient-to-br from-primary/10 via-accent/5 to-transparent border border-primary/20"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="flex items-start gap-6">
-                <AnimatedIcon icon={Heart} size="xl" variant="primary" float />
-                <div>
-                  <h3 className="text-2xl font-bold mb-4">Les bénéfices pour votre animal</h3>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-4">{service.description.benefits}</p>
-                  <p className="text-foreground font-medium">
-                    Un animal bien stimulé physiquement et mentalement est un compagnon plus équilibré, 
-                    plus heureux et plus facile à vivre au quotidien. Investir dans son bien-être, 
-                    c'est investir dans votre relation avec lui.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
           </div>
         </section>
 
-        {/* 4️⃣ DÉROULEMENT DU SERVICE - Timeline animée */}
-        <section className="py-20 px-4 bg-muted/30">
-          <div className="container mx-auto max-w-6xl">
-            <SectionHeader
-              title={service.howItWorks.title}
-              subtitle={service.howItWorks.intro}
-              icon={Sparkles}
+        {/* 4️⃣ FONCTIONNEMENT - Étapes claires */}
+        <section className="py-24 px-4 bg-muted/30">
+          <div className="container mx-auto max-w-5xl">
+            <SectionHeader 
+              title="Comment ça marche ?" 
+              subtitle="Votre réservation en 4 étapes simples et sécurisées"
+              icon={Zap}
               iconVariant="accent"
-              badge="Comment ça marche"
             />
             
-            {/* Étapes avec timeline animée */}
-            <div className="relative">
-              <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-primary/20" />
+            <div className="relative mt-20">
+              {/* Ligne de connexion (Desktop) */}
+              <div className="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-border -translate-y-1/2 z-0" />
               
-              <div className="space-y-8">
-                {service.howItWorks.steps.map((step, index) => (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+                {[
+                  { title: "Trouvez", desc: "Choisissez votre Accompagnateur Certifié", icon: Search },
+                  { title: "Réservez", desc: "Bloquez les fonds sécurisé", icon: CreditCard },
+                  { title: "Suivez", desc: "Recevez les preuves visuelles", icon: Camera },
+                  { title: "Validez", desc: "Libérez le paiement par code unique", icon: CheckCircle2 }
+                ].map((step, i) => (
                   <motion.div 
-                    key={index}
-                    className={`flex flex-col md:flex-row gap-6 items-center ${
-                      index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                    }`}
-                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    key={i} 
+                    className="flex flex-col items-center text-center"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    transition={{ delay: i * 0.1 }}
                   >
-                    <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                      <AnimatedCard className="p-6 max-w-lg inline-block text-left" delay={index * 0.1}>
-                        <h3 className="text-xl font-bold mb-3">{step.title}</h3>
-                        <p className="text-muted-foreground">{step.description}</p>
-                      </AnimatedCard>
+                    <div className="w-16 h-16 rounded-full bg-background border-4 border-primary flex items-center justify-center text-primary font-bold text-xl shadow-lg mb-6">
+                      {i + 1}
                     </div>
-                    
-                    <motion.div 
-                      className="relative z-10 flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-primary to-accent text-primary-foreground font-bold text-xl shadow-lg"
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ type: "spring", stiffness: 200, delay: index * 0.1 + 0.2 }}
-                      whileHover={{ scale: 1.2, rotate: 10 }}
-                    >
-                      {index + 1}
-                    </motion.div>
-                    
-                    <div className="flex-1 hidden md:block" />
+                    <h3 className="text-xl font-bold mb-2">{step.title}</h3>
+                    <p className="text-muted-foreground text-sm">{step.desc}</p>
                   </motion.div>
                 ))}
               </div>
             </div>
-
-            {/* Sécurité et bien-être - Cards animées */}
-            <AnimatedGrid className="md:grid-cols-2 gap-6 mt-16" staggerDelay={0.15}>
-              <AnimatedGridItem>
-                <AnimatedCard className="p-8" glow>
-                  <AnimatedIcon icon={Shield} size="lg" variant="primary" className="mb-5" />
-                  <h3 className="text-xl font-bold mb-3">Sécurité garantie</h3>
-                  <p className="text-muted-foreground leading-relaxed">{service.howItWorks.safety}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    <Badge variant="outline" className="text-primary border-primary/30">GPS temps réel</Badge>
-                    <Badge variant="outline" className="text-primary border-primary/30">Assurance 2M€</Badge>
-                    <Badge variant="outline" className="text-primary border-primary/30">Support 7j/7</Badge>
-                  </div>
-                </AnimatedCard>
-              </AnimatedGridItem>
-              <AnimatedGridItem>
-                <AnimatedCard className="p-8" glow>
-                  <AnimatedIcon icon={Heart} size="lg" variant="accent" className="mb-5" />
-                  <h3 className="text-xl font-bold mb-3">Bien-être animal</h3>
-                  <p className="text-muted-foreground leading-relaxed">{service.howItWorks.dogWelfare}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    <Badge variant="outline" className="text-accent border-accent/30">Renforcement positif</Badge>
-                    <Badge variant="outline" className="text-accent border-accent/30">Respect du rythme</Badge>
-                    <Badge variant="outline" className="text-accent border-accent/30">Hydratation</Badge>
-                  </div>
-                </AnimatedCard>
-              </AnimatedGridItem>
-            </AnimatedGrid>
           </div>
         </section>
 
-        {/* 5️⃣ EXPERTISE & AVANTAGES - Section enrichie */}
-        <section className="py-20 px-4">
-          <div className="container mx-auto max-w-6xl">
-            <SectionHeader
-              title="Notre expertise et vos avantages"
-              subtitle="Une équipe de professionnels passionnés pour un service d'excellence"
-              icon={Award}
+        {/* 5️⃣ FAQ SECTION - Accordéon moderne */}
+        <section className="py-24 px-4">
+          <div className="container mx-auto max-w-4xl">
+            <SectionHeader 
+              title="Questions Fréquentes" 
+              subtitle="Tout ce qu'il faut savoir sur ce service"
+              icon={HelpCircle}
               iconVariant="primary"
-              badge="Nos engagements"
             />
             
-            {/* 4 piliers d'expertise - Grille animée */}
-            <AnimatedGrid className="sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16" staggerDelay={0.1}>
-              <AnimatedGridItem>
-                <AnimatedCard className="text-center p-6" hover glow>
-                  <AnimatedIcon icon={Award} size="lg" variant="primary" className="mx-auto mb-4" pulse />
-                  <h3 className="font-bold text-lg mb-2">Expérience</h3>
-                  <p className="text-sm text-muted-foreground">{service.expertiseAdvantages.experience}</p>
-                </AnimatedCard>
-              </AnimatedGridItem>
-              <AnimatedGridItem>
-                <AnimatedCard className="text-center p-6" hover glow>
-                  <AnimatedIcon icon={Shield} size="lg" variant="accent" className="mx-auto mb-4" pulse />
-                  <h3 className="font-bold text-lg mb-2">Assurance</h3>
-                  <p className="text-sm text-muted-foreground">{service.expertiseAdvantages.insurance}</p>
-                </AnimatedCard>
-              </AnimatedGridItem>
-              <AnimatedGridItem>
-                <AnimatedCard className="text-center p-6" hover glow>
-                  <AnimatedIcon icon={Heart} size="lg" variant="success" className="mx-auto mb-4" pulse />
-                  <h3 className="font-bold text-lg mb-2">Méthode</h3>
-                  <p className="text-sm text-muted-foreground">{service.expertiseAdvantages.method}</p>
-                </AnimatedCard>
-              </AnimatedGridItem>
-              <AnimatedGridItem>
-                <AnimatedCard className="text-center p-6" hover glow>
-                  <AnimatedIcon icon={Users} size="lg" variant="warning" className="mx-auto mb-4" pulse />
-                  <h3 className="font-bold text-lg mb-2">Confiance</h3>
-                  <p className="text-sm text-muted-foreground">{service.expertiseAdvantages.trust}</p>
-                </AnimatedCard>
-              </AnimatedGridItem>
-            </AnimatedGrid>
-
-            {/* Liste des avantages - Grille animée */}
             <motion.div 
-              className="bg-gradient-to-br from-muted/50 to-muted/20 rounded-3xl p-8 md:p-12"
+              className="mt-12 bg-card rounded-3xl border shadow-soft overflow-hidden"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
             >
-              <h3 className="text-2xl font-bold mb-8 text-center flex items-center justify-center gap-3">
-                <Sparkles className="h-6 w-6 text-primary" />
-                Tous les avantages de notre service
-              </h3>
-              <AnimatedGrid className="sm:grid-cols-2 gap-4" staggerDelay={0.05}>
-                {service.advantages.map((advantage, index) => (
-                  <AnimatedGridItem key={index}>
-                    <motion.div 
-                      className="flex items-start gap-4 bg-card rounded-xl p-4 shadow-sm border border-border hover:border-primary/30 transition-colors"
-                      whileHover={{ scale: 1.02, x: 5 }}
-                    >
-                      <motion.div 
-                        className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center"
-                        whileHover={{ rotate: 360 }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        <Check className="h-5 w-5 text-primary" />
-                      </motion.div>
-                      <span className="text-foreground">{advantage}</span>
-                    </motion.div>
-                  </AnimatedGridItem>
-                ))}
-              </AnimatedGrid>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* 6️⃣ ZONES D'INTERVENTION - Section animée */}
-        <section className="py-20 px-4 bg-gradient-to-br from-primary/5 via-background to-accent/5">
-          <div className="container mx-auto max-w-4xl text-center">
-            <motion.div
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ type: "spring", stiffness: 200 }}
-            >
-              <AnimatedIcon icon={MapPin} size="xl" variant="primary" className="mx-auto mb-6" float />
-            </motion.div>
-            
-            <motion.h2 
-              className="text-3xl md:text-4xl font-bold mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              Zones d'intervention
-            </motion.h2>
-            
-            <motion.div 
-              className="space-y-4 text-muted-foreground text-lg max-w-2xl mx-auto mb-10"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              <p>{service.localAvailability.mainCity}</p>
-              <p>{service.localAvailability.surroundingAreas}</p>
-              <p className="font-medium text-foreground">{service.localAvailability.coverage}</p>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-            >
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="rounded-full px-8" 
-                onClick={() => navigate('/zones')}
-              >
-                Voir toutes les zones couvertes
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* 7️⃣ FAQ - Section animée */}
-        <section className="py-20 px-4">
-          <div className="container mx-auto max-w-3xl">
-            <SectionHeader
-              title="Questions fréquentes"
-              subtitle="Toutes les réponses à vos questions sur notre service"
-              icon={MessageCircle}
-              iconVariant="accent"
-              badge="FAQ"
-            />
-            
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={staggerContainer}
-            >
-              <Accordion type="single" collapsible className="space-y-4">
-                {service.faq.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    variants={fadeInUp}
-                  >
-                    <AccordionItem 
-                      value={`item-${index}`}
-                      className="bg-card rounded-2xl border border-border px-6 shadow-sm hover:border-primary/30 transition-colors"
-                    >
-                      <AccordionTrigger className="text-left font-semibold text-lg py-5 hover:no-underline">
-                        {item.question}
-                      </AccordionTrigger>
-                      <AccordionContent className="text-muted-foreground pb-5 text-base leading-relaxed">
-                        {item.answer}
-                      </AccordionContent>
-                    </AccordionItem>
-                  </motion.div>
+              <Accordion type="single" collapsible className="w-full">
+                {service.faq.map((item, i) => (
+                  <AccordionItem key={i} value={`item-${i}`} className="border-b border-border/50 last:border-0">
+                    <AccordionTrigger className="px-8 py-6 text-left hover:no-underline hover:bg-muted/30 transition-all">
+                      <span className="text-lg font-semibold">{item.question}</span>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-8 pb-6 pt-2 text-muted-foreground text-base leading-relaxed">
+                      {item.answer}
+                    </AccordionContent>
+                  </AccordionItem>
                 ))}
               </Accordion>
             </motion.div>
           </div>
         </section>
 
-        {/* 8️⃣ CTA FINAL - Section animée */}
-        <section className="py-20 px-4 bg-gradient-to-r from-primary via-primary to-accent relative overflow-hidden">
-          <motion.div 
-            className="absolute inset-0 opacity-10"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 0.1 }}
-            viewport={{ once: true }}
-          >
+        {/* 6️⃣ CTA FINAL - Impactant */}
+        <section className="py-20 px-4">
+          <div className="container mx-auto">
             <motion.div 
-              className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"
-              animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
-              transition={{ duration: 5, repeat: Infinity }}
-            />
-            <motion.div 
-              className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl translate-x-1/2 translate-y-1/2"
-              animate={{ scale: [1.2, 1, 1.2], opacity: [0.8, 0.5, 0.8] }}
-              transition={{ duration: 5, repeat: Infinity }}
-            />
-          </motion.div>
-          
-          <div className="container mx-auto max-w-3xl text-center relative z-10">
-            <motion.h2 
-              className="text-3xl md:text-4xl font-bold text-primary-foreground mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              className="bg-primary rounded-[3rem] p-8 md:p-16 text-center text-primary-foreground relative overflow-hidden shadow-2xl"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
             >
-              Trouvez un professionnel près de chez vous
-            </motion.h2>
-            <motion.p 
-              className="text-primary-foreground/80 text-lg mb-10 max-w-xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-            >
-              Des professionnels vérifiés vous attendent pour prendre soin de votre animal. 
-              Réservez en quelques clics et profitez d'un service d'exception.
-            </motion.p>
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              <Button 
-                size="lg" 
-                variant="secondary" 
-                className="rounded-full px-10 py-6 text-lg font-semibold shadow-xl hover:shadow-2xl transition-shadow"
-                onClick={() => navigate(`/walkers?service=${service.id}`)}
-              >
-                Rechercher un professionnel
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="rounded-full px-10 py-6 text-lg font-semibold bg-white/10 border-white/30 text-white hover:bg-white/20"
-                onClick={() => navigate('/contact')}
-              >
-                <Phone className="mr-2 h-5 w-5" />
-                Nous contacter
-              </Button>
+              {/* Éléments décoratifs */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+              
+              <div className="relative z-10 max-w-3xl mx-auto">
+                <h2 className="text-3xl md:text-5xl font-bold mb-6">Prêt à réserver pour votre animal ?</h2>
+                <p className="text-xl opacity-90 mb-10 leading-relaxed">
+                  Rejoignez des milliers de Propriétaires sereins et offrez à votre compagnon l'attention qu'il mérite avec nos Accompagnateurs Certifiés.
+                </p>
+                <div className="flex flex-wrap justify-center gap-4">
+                  <Button 
+                    size="lg" 
+                    variant="secondary" 
+                    className="h-14 px-10 rounded-full text-lg font-bold shadow-xl hover:shadow-2xl transition-all"
+                    onClick={handleSearch}
+                  >
+                    Trouver un Accompagnateur
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                  <Button 
+                    size="lg" 
+                    variant="outline" 
+                    className="h-14 px-10 rounded-full text-lg font-bold border-white/30 bg-white/10 hover:bg-white/20 backdrop-blur-sm"
+                    onClick={() => navigate("/support?tab=contact")}
+                  >
+                    Besoin d'aide ?
+                  </Button>
+                </div>
+              </div>
             </motion.div>
           </div>
         </section>

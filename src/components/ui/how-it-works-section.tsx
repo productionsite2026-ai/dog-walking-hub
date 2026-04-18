@@ -12,7 +12,7 @@ export const HowItWorksSection = () => {
       number: "1",
       icon: Search,
       title: "Trouvez",
-      description: "Consultez les profils vérifiés des promeneurs près de chez vous. CNI, casier judiciaire et assurance RC vérifiés.",
+      description: "Déposez une annonce ou consultez les profils vérifiés des Accompagnateurs Certifiés et Propriétaires près de chez vous. Profils contrôlés et avis certifiés.",
       highlight: "100% vérifiés",
       image: searchWalker
     },
@@ -20,24 +20,24 @@ export const HowItWorksSection = () => {
       number: "2",
       icon: Calendar,
       title: "Réservez",
-      description: "Sélectionnez le service, la date et l'heure. Votre paiement est sécurisé en escrow jusqu'à validation.",
+      description: "Déposez une annonce spécifique ou choisissez le service, la date et l’heure. Votre paiement est sécurisé et bloqué jusqu’à votre validation lors du retour de votre animal.",
       highlight: "Paiement bloqué",
       image: bookingReservation
     },
     {
       number: "3",
       icon: Camera,
-      title: "Recevez les preuves",
-      description: "Le promeneur vous envoie obligatoirement photo/vidéo avec message pendant la mission. Transparence totale.",
-      highlight: "Preuves obligatoires",
+      title: "Suivez la mission",
+      description: "L'Accompagnateur envoie des preuves visuelles (photo/vidéo) pour un meilleur positionnement. Il déclenche le code de fin de service une fois la prestation terminée.",
+      highlight: "Transparence valorisée",
       image: promeneurPhotoPreuve
     },
     {
       number: "4",
       icon: ThumbsUp,
-      title: "Validez & Payez",
-      description: "Le paiement est débloqué après réception de la preuve. Laissez un avis certifié pour aider la communauté.",
-      highlight: "Satisfaction garantie",
+      title: "Validez le paiement",
+      description: "Communiquez le code de fin de service à l'Accompagnateur pour libérer le paiement. Option « Le promeneur n'a plus de batterie » disponible pour valider à distance.",
+      highlight: "Vous gardez le contrôle",
       image: paiementValideApp
     }
   ];
@@ -49,9 +49,9 @@ export const HowItWorksSection = () => {
           <span className="inline-block bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
             Simple & Sécurisé
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Comment Réserver un Promeneur de Chien ?</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Comment réserver un Accompagnateur Certifié ?</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            En 4 étapes simples : trouvez, réservez, suivez la promenade en photos, payez après validation.
+            Déposez une annonce ou choisissez un Accompagnateur Certifié, réservez, suivez la mission en photos, puis validez le paiement au retour de votre animal grâce à un code unique.
           </p>
         </div>
 

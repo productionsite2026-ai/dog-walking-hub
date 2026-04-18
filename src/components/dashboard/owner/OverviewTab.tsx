@@ -73,7 +73,7 @@ const OverviewTab = ({ stats, profile, onNavigate }: OverviewTabProps) => {
         const profile = profileMap.get(w.user_id);
         return {
           id: w.user_id,
-          name: profile?.first_name || 'Promeneur',
+          name: profile?.first_name || 'Accompagnateur',
           photoUrl: profile?.avatar_url,
           rating: w.rating || 5.0,
           verified: w.verified,
@@ -125,7 +125,7 @@ const OverviewTab = ({ stats, profile, onNavigate }: OverviewTabProps) => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-2xl font-bold">{stats.totalDogs}</p>
-                <p className="text-xs text-muted-foreground">Chiens</p>
+                <p className="text-xs text-muted-foreground">Animaux</p>
               </div>
               <Dog className="h-8 w-8 text-primary/20" />
             </div>
@@ -158,12 +158,12 @@ const OverviewTab = ({ stats, profile, onNavigate }: OverviewTabProps) => {
       {/* Barre de recherche rapide */}
       <QuickSearchBar />
 
-      {/* Balade en cours (si active) */}
+      {/* Accompagnement en cours (si active) */}
       {activeBooking && (
         <ActiveWalk
-          dogName={activeBooking.dogs?.name || 'Votre chien'}
+          dogName={activeBooking.dogs?.name || 'Votre animal'}
           dogPhoto={activeBooking.dogs?.photo_url}
-          walkerName="Marie"
+          walkerName="Accompagnateur"
           duration={18}
           distance={1.2}
           speed={3.8}
@@ -176,14 +176,14 @@ const OverviewTab = ({ stats, profile, onNavigate }: OverviewTabProps) => {
         onViewAll={() => onNavigate('reservations')} 
       />
 
-      {/* Promeneurs recommandés */}
+      {/* Accompagnateurs recommandés */}
       <RecommendedWalkers walkers={walkers} />
 
       {/* Mes animaux */}
       <MyPets 
         pets={dogs}
-        onAddPet={() => onNavigate('chiens')}
-        onViewAll={() => onNavigate('chiens')}
+        onAddPet={() => onNavigate('animaux')}
+        onViewAll={() => onNavigate('animaux')}
       />
 
       {/* Bannière parrainage */}

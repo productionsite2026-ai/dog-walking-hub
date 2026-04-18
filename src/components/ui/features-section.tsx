@@ -5,7 +5,7 @@ export const FeaturesSection = () => {
     {
       icon: Shield,
       title: "Vérification triple",
-      description: "CNI, casier judiciaire vierge et assurance RC pro obligatoires. Validation manuelle par notre équipe.",
+      description: "Chaque promeneur est rigoureusement sélectionné et vérifié. Validation manuelle par notre équipe.",
       badge: "Sécurité maximale"
     },
     {
@@ -16,32 +16,32 @@ export const FeaturesSection = () => {
     },
     {
       icon: Lock,
-      title: "Paiement escrow",
-      description: "Votre argent reste bloqué jusqu'à preuve de service validée. Commission 13% tout inclus.",
+      title: "Paiement sécurisé",
+      description: "Votre argent reste bloqué jusqu'à preuve de service validée. Commission 15% tout inclus.",
       badge: "Protection 100%"
     },
     {
       icon: FileCheck,
       title: "Documents certifiés",
-      description: "Assurance RC, attestation premiers secours, certificat de capacité. Qualité professionnelle garantie.",
-      badge: "Promeneurs pros"
+      description: "Attestation premiers secours, certificat de capacité. Qualité professionnelle garantie.",
+      badge: "Accompagnateur Certifiés pros"
     },
     {
       icon: Star,
       title: "Avis certifiés",
-      description: "Seuls les propriétaires ayant réservé peuvent noter. Impossible de truquer les avis.",
+      description: "Seuls les Propriétaires ayant réservé peuvent noter. Impossible de truquer les avis.",
       badge: "Avis vérifiés"
     },
     {
       icon: Award,
       title: "Badges de qualité",
-      description: "Super Promeneur, 50+ missions, Premiers Secours, Expert Comportement. Récompenses méritées.",
+      description: "Super Accompagnateur Certifié, 50+ missions, Premiers Secours, Expert Comportement. Récompenses méritées.",
       badge: "Excellence"
     },
     {
       icon: Heart,
-      title: "Assurance incluse",
-      description: "Toutes les missions sont couvertes par notre assurance responsabilité civile professionnelle.",
+      title: "Protection incluse",
+      description: "Toutes les missions bénéficient de notre garantie de protection et de suivi.",
       badge: "Couverture totale"
     },
     {
@@ -70,7 +70,7 @@ export const FeaturesSection = () => {
           </h2>
           <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
             La seule plateforme française avec preuves photo/vidéo obligatoires, 
-            paiement escrow et vérification triple des promeneurs.
+            paiement sécurisé et vérification triple des promeneurs.
           </p>
         </div>
 

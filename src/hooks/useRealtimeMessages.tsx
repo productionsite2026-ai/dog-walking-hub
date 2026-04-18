@@ -1,3 +1,4 @@
+// Realtime messaging hook with presence & typing indicators
 import { useEffect, useState, useCallback, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
@@ -56,6 +57,8 @@ export const useRealtimeMessages = (selectedPartnerId?: string | null) => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
         setCurrentUserId(session.user.id);
+      } else {
+        setLoading(false);
       }
     };
     initSession();
@@ -240,94 +243,65 @@ export const useRealtimeMessages = (selectedPartnerId?: string | null) => {
     }
   }, [currentUserId]);
 
-  // Setup realtime subscriptions
+  // Realtime messages subscription
+  const selectedPartnerIdRef = useRef(selectedPartnerId);
+  selectedPartnerIdRef.current = selectedPartnerId;
+
   useEffect(() => {
     if (!currentUserId) return;
 
-    // Messages channel
     const messagesChannel = supabase
       .channel('messages-realtime-v2')
       .on(
         'postgres_changes',
-        {
-          event: 'INSERT',
-          schema: 'public',
-          table: 'messages',
-          filter: `receiver_id=eq.${currentUserId}`
-        },
+        { event: 'INSERT', schema: 'public', table: 'messages', filter: `receiver_id=eq.${currentUserId}` },
         (payload) => {
           const newMsg = payload.new as Message;
-          
-          // If we're in this conversation, add the message
-          if (selectedPartnerId === newMsg.sender_id) {
-            setMessages(prev => {
-              if (prev.some(m => m.id === newMsg.id)) return prev;
-              return [...prev, newMsg];
-            });
-            
-            // Mark as read immediately
-            supabase
-              .from('messages')
-              .update({ read: true })
-              .eq('id', newMsg.id);
+          if (selectedPartnerIdRef.current === newMsg.sender_id) {
+            setMessages(prev => prev.some(m => m.id === newMsg.id) ? prev : [...prev, newMsg]);
+            supabase.from('messages').update({ read: true }).eq('id', newMsg.id);
           }
-          
-          // Refresh conversations
           fetchConversations();
         }
       )
       .on(
         'postgres_changes',
-        {
-          event: 'INSERT',
-          schema: 'public',
-          table: 'messages',
-          filter: `sender_id=eq.${currentUserId}`
-        },
+        { event: 'INSERT', schema: 'public', table: 'messages', filter: `sender_id=eq.${currentUserId}` },
         (payload) => {
           const newMsg = payload.new as Message;
-          
-          if (selectedPartnerId === newMsg.receiver_id) {
-            setMessages(prev => {
-              if (prev.some(m => m.id === newMsg.id)) return prev;
-              return [...prev, newMsg];
-            });
+          if (selectedPartnerIdRef.current === newMsg.receiver_id) {
+            setMessages(prev => prev.some(m => m.id === newMsg.id) ? prev : [...prev, newMsg]);
           }
-          
           fetchConversations();
         }
       )
       .on(
         'postgres_changes',
-        {
-          event: 'UPDATE',
-          schema: 'public',
-          table: 'messages'
-        },
+        { event: 'UPDATE', schema: 'public', table: 'messages' },
         (payload) => {
           const updatedMsg = payload.new as Message;
-          setMessages(prev => 
-            prev.map(m => m.id === updatedMsg.id ? updatedMsg : m)
-          );
+          setMessages(prev => prev.map(m => m.id === updatedMsg.id ? updatedMsg : m));
         }
       )
       .subscribe();
 
-    // Presence channel for typing and online status
+    fetchConversations();
+
+    return () => { supabase.removeChannel(messagesChannel); };
+  }, [currentUserId, fetchConversations]);
+
+  // Separate presence channel (no presence callbacks after join)
+  useEffect(() => {
+    if (!currentUserId) return;
+
     const presenceChannel = supabase
       .channel('messaging-presence')
       .on('broadcast', { event: 'typing' }, (payload) => {
         const { userId, receiverId, isTyping } = payload.payload;
-        
-        // Only update if this is directed at us
         if (receiverId === currentUserId) {
           setTypingUsers(prev => {
             const newMap = new Map(prev);
-            if (isTyping) {
-              newMap.set(userId, { id: userId, name: '', isTyping: true });
-            } else {
-              newMap.delete(userId);
-            }
+            isTyping ? newMap.set(userId, { id: userId, name: '', isTyping: true }) : newMap.delete(userId);
             return newMap;
           });
         }
@@ -335,59 +309,36 @@ export const useRealtimeMessages = (selectedPartnerId?: string | null) => {
       .on('presence', { event: 'sync' }, () => {
         const state = presenceChannel.presenceState();
         const online = new Map<string, OnlineUser>();
-        
         Object.values(state).forEach((users: any) => {
           users.forEach((user: any) => {
-            online.set(user.user_id, { 
-              id: user.user_id, 
-              lastSeen: new Date(user.online_at) 
-            });
+            online.set(user.user_id, { id: user.user_id, lastSeen: new Date(user.online_at) });
           });
         });
-        
         setOnlineUsers(online);
       })
       .on('presence', { event: 'join' }, ({ newPresences }) => {
         newPresences.forEach((presence: any) => {
-          setOnlineUsers(prev => {
-            const newMap = new Map(prev);
-            newMap.set(presence.user_id, { 
-              id: presence.user_id, 
-              lastSeen: new Date(presence.online_at) 
-            });
-            return newMap;
-          });
+          setOnlineUsers(prev => new Map(prev).set(presence.user_id, { id: presence.user_id, lastSeen: new Date(presence.online_at) }));
         });
       })
       .on('presence', { event: 'leave' }, ({ leftPresences }) => {
         leftPresences.forEach((presence: any) => {
-          setOnlineUsers(prev => {
-            const newMap = new Map(prev);
-            newMap.delete(presence.user_id);
-            return newMap;
-          });
+          setOnlineUsers(prev => { const m = new Map(prev); m.delete(presence.user_id); return m; });
         });
       })
       .subscribe(async (status) => {
         if (status === 'SUBSCRIBED') {
-          await presenceChannel.track({
-            user_id: currentUserId,
-            online_at: new Date().toISOString()
-          });
+          await presenceChannel.track({ user_id: currentUserId, online_at: new Date().toISOString() });
         }
       });
 
     presenceChannelRef.current = presenceChannel;
 
-    // Initial fetch
-    fetchConversations();
-
     return () => {
-      supabase.removeChannel(messagesChannel);
       supabase.removeChannel(presenceChannel);
       presenceChannelRef.current = null;
     };
-  }, [currentUserId, selectedPartnerId, fetchConversations]);
+  }, [currentUserId]);
 
   // Fetch messages when partner changes
   useEffect(() => {

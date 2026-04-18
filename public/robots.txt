@@ -1,5 +1,5 @@
 # DogWalking - Robots.txt
-# Dernière mise à jour: 2024
+# Dernière mise à jour: 2026
 
 User-agent: Googlebot
 Allow: /
@@ -23,7 +23,11 @@ Sitemap: https://dogwalking.fr/sitemap.xml
 
 # Bloquer les pages privées
 Disallow: /dashboard
+Disallow: /dashboard-proprietaire
+Disallow: /mon-espace
 Disallow: /walker/dashboard
+Disallow: /dashboard-promeneur
+Disallow: /espace-promeneur
 Disallow: /walker/earnings
 Disallow: /admin
 Disallow: /profile

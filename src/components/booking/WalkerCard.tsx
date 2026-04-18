@@ -120,7 +120,7 @@ export const WalkerCard = ({
                     <div>
                       <div className="flex items-center gap-2">
                         <h3 className="font-bold text-lg truncate">
-                          {walker.first_name || 'Promeneur'} {walker.first_name?.charAt(0)}.
+                          {walker.first_name || 'Accompagnateur'} {walker.first_name?.charAt(0)}.
                         </h3>
                         {isStarSitter && (
                           <Badge className="bg-accent text-accent-foreground text-xs">
@@ -138,7 +138,7 @@ export const WalkerCard = ({
                     <div className="text-right flex-shrink-0">
                       <p className="text-xs text-muted-foreground">à partir de</p>
                       <p className="text-xl font-bold text-primary">{walker.hourly_rate || 15}€</p>
-                      <p className="text-xs text-muted-foreground">par promenade</p>
+                      <p className="text-xs text-muted-foreground">par mission</p>
                     </div>
                   </div>
                 </div>
@@ -156,7 +156,7 @@ export const WalkerCard = ({
                 {recurringClients > 0 && (
                   <span className="text-sm text-muted-foreground flex items-center gap-1">
                     <Repeat className="h-3 w-3" />
-                    {recurringClients} propriétaires récurrents
+                    {recurringClients} Propriétaires satisfaits
                   </span>
                 )}
               </div>

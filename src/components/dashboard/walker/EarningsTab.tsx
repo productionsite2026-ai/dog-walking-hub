@@ -125,7 +125,7 @@ const WalkerEarningsTab = () => {
     const completed = bookings.filter(b => b.status === 'completed');
     const pending = bookings.filter(b => b.status === 'confirmed');
 
-    const commission = 0.13; // 13% commission
+    const commission = 0.15; // 15% commission DogWalking
 
     const thisMonth = completed
       .filter(b => new Date(b.scheduled_date) >= startOfMonth)

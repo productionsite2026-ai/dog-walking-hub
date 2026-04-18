@@ -52,7 +52,7 @@ const ActiveMissionCard = ({ dogName, ownerName, startTime, location, status }: 
           whileTap={{ scale: 0.97 }}
           className="w-full mt-3 py-3 rounded-xl gradient-cta text-white font-bold text-sm shadow-glow-cta hover:opacity-90 transition-opacity"
         >
-          Terminer la Promenade
+          Terminer la Mission (Code Unique)
         </motion.button>
       )}
     </motion.div>

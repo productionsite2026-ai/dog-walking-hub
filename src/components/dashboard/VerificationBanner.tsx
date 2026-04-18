@@ -62,7 +62,7 @@ export const VerificationBanner = ({ isVerified, documents, walkerName }: Verifi
                   </Badge>
                 </div>
                 <p className="text-sm text-green-700/80 dark:text-green-300/80">
-                  Tous vos documents ont été validés. Vous êtes visible par tous les propriétaires.
+                  Tous vos documents ont été validés. Vous êtes visible par tous les Propriétaires.
                 </p>
               </div>
             </div>

@@ -4,33 +4,33 @@ export const DogWalkingProtect = () => {
   const protections = [
     {
       icon: Shield,
-      title: "Assurance RC Pro",
-      description: "Toutes les promenades couvertes jusqu'à 2M€. Accidents, dommages, incidents - tout est pris en charge.",
-      stat: "2M€"
-    },
-    {
-      icon: FileCheck,
-      title: "Triple vérification",
-      description: "CNI, extrait de casier judiciaire vierge, assurance RC personnelle. Vérification manuelle obligatoire.",
-      stat: "3 docs"
-    },
-    {
-      icon: Lock,
-      title: "Escrow sécurisé",
-      description: "Votre paiement reste bloqué tant que vous n'avez pas reçu la preuve de service. Zéro risque.",
+      title: "Protection Garantie",
+      description: "Toutes les missions sont sécurisées. En cas de problème, notre équipe intervient immédiatement.",
       stat: "100%"
     },
     {
+      icon: FileCheck,
+      title: "Vérification Rigoureuse",
+      description: "Chaque Accompagnateur Certifié est soigneusement sélectionné et vérifié par notre équipe avant d'être accepté.",
+      stat: "Sélection"
+    },
+    {
+      icon: Lock,
+      title: "Paiement en Attente",
+      description: "Votre paiement est bloqué jusqu'à ce que vous communiquiez le code de fin de service à l'Accompagnateur. Zéro risque.",
+      stat: "Sécurisé"
+    },
+    {
       icon: Camera,
-      title: "Preuves obligatoires",
-      description: "Photo ou vidéo avec message personnalisé pendant chaque mission. Transparence totale garantie.",
-      stat: "Chaque mission"
+      title: "Preuves Visuelles Recommandées",
+      description: "Les Accompagnateurs qui envoient photos/vidéos bénéficient d'un meilleur classement. Transparence valorisée.",
+      stat: "Surclassement"
     },
     {
       icon: Award,
-      title: "Promeneurs certifiés",
-      description: "Formation aux premiers secours canins, expérience vérifiée, références contrôlées.",
-      stat: "Formation"
+      title: "Accompagnateurs Certifiés",
+      description: "Formation, expérience vérifiée et références contrôlées.",
+      stat: "Certifiés"
     },
     {
       icon: Users,
@@ -46,11 +46,11 @@ export const DogWalkingProtect = () => {
         <div className="text-center mb-10 md:mb-12">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-4">
             <Shield className="h-4 w-4" />
-            <span className="text-sm font-medium">Protection maximale</span>
+            <span className="text-sm font-medium">Sécurité Maximale</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3">DogWalking Protect™</h2>
           <p className="text-base md:text-lg opacity-90 max-w-2xl mx-auto">
-            Notre garantie exclusive pour votre tranquillité d'esprit et la sécurité de votre compagnon
+            Notre garantie exclusive pour votre tranquillité d'esprit et la sécurité de votre animal
           </p>
         </div>
 

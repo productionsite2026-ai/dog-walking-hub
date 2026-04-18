@@ -137,7 +137,7 @@ export const useCalendarExport = () => {
     const event: CalendarEvent = {
       id: `booking-${booking.id}@dogwalking.fr`,
       title: `🐕 ${serviceLabels[booking.service_type] || "Service"} - ${booking.dog_name || "Mon chien"}`,
-      description: `Réservation DogWalking\n\nService: ${serviceLabels[booking.service_type] || booking.service_type}\nChien: ${booking.dog_name || "Non spécifié"}\nPromeneur: ${booking.walker_name || "Non assigné"}\nDurée: ${booking.duration_minutes} minutes`,
+      description: `Réservation DogWalking\n\nService: ${serviceLabels[booking.service_type] || booking.service_type}\nChien: ${booking.dog_name || "Non spécifié"}\nAccompagnateur Certifié: ${booking.walker_name || "Non assigné"}\nDurée: ${booking.duration_minutes} minutes`,
       location: booking.address ? `${booking.address}, ${booking.city || ""}` : booking.city,
       startDate,
       endDate,
@@ -173,7 +173,7 @@ export const useCalendarExport = () => {
       return {
         id: `booking-${booking.id}@dogwalking.fr`,
         title: `🐕 ${serviceLabels[booking.service_type] || "Service"} - ${booking.dog_name || "Mon chien"}`,
-        description: `Réservation DogWalking\n\nService: ${serviceLabels[booking.service_type] || booking.service_type}\nChien: ${booking.dog_name || "Non spécifié"}\nPromeneur: ${booking.walker_name || "Non assigné"}\nDurée: ${booking.duration_minutes} minutes`,
+        description: `Réservation DogWalking\n\nService: ${serviceLabels[booking.service_type] || booking.service_type}\nChien: ${booking.dog_name || "Non spécifié"}\nAccompagnateur Certifié: ${booking.walker_name || "Non assigné"}\nDurée: ${booking.duration_minutes} minutes`,
         location: booking.address ? `${booking.address}, ${booking.city || ""}` : booking.city,
         startDate,
         endDate,
@@ -222,7 +222,7 @@ export const useCalendarExport = () => {
     const event: CalendarEvent = {
       id: booking.id,
       title: `🐕 ${serviceLabels[booking.service_type] || "Service"} - ${booking.dog_name || "Mon chien"}`,
-      description: `Réservation DogWalking\n\nService: ${serviceLabels[booking.service_type] || booking.service_type}\nChien: ${booking.dog_name || "Non spécifié"}\nPromeneur: ${booking.walker_name || "Non assigné"}`,
+      description: `Réservation DogWalking\n\nService: ${serviceLabels[booking.service_type] || booking.service_type}\nChien: ${booking.dog_name || "Non spécifié"}\nAccompagnateur Certifié: ${booking.walker_name || "Non assigné"}`,
       location: booking.address ? `${booking.address}, ${booking.city || ""}` : booking.city,
       startDate,
       endDate

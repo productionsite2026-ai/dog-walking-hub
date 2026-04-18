@@ -71,10 +71,10 @@ const WalkerProfilePage = () => {
   const [currentUserId, setCurrentUserId] = useState<string | null>(null);
 
   const services = {
-    promenade: { label: 'Promenade', icon: Route },
+    promenade: { label: 'Accompagnement', icon: Route },
     visite: { label: 'Visite à domicile', icon: Dog },
     garde: { label: 'Garde', icon: Calendar },
-    veterinaire: { label: 'Accompagnement vétérinaire', icon: Shield },
+    veterinaire: { label: 'Accomp. Vétérinaire', icon: Shield },
   };
 
   const days = {
@@ -238,28 +238,28 @@ const WalkerProfilePage = () => {
       <div className="min-h-screen bg-background">
         <Header />
         <main className="container mx-auto px-4 py-24">
-          <h1 className="text-4xl font-bold mb-8">Promeneur introuvable</h1>
+          <h1 className="text-4xl font-bold mb-8">Accompagnateur Certifié introuvable</h1>
         </main>
         <Footer />
       </div>
     );
   }
 
-  const responseRate = 95; // This would come from actual data
+  const responseRate = 95; 
   const acceptanceRate = 88;
 
-  // Generate LocalBusiness schema for SEO
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": `${walker.first_name} - Promeneur de chiens`,
-    "description": walker.bio || "Promeneur de chiens professionnel vérifié",
+    "name": `${walker.first_name} - Accompagnateur Certifié`,
+    "description": walker.bio || "Accompagnateur professionnel certifié et vérifié",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": walker.city || "France"
     },
     "priceRange": `${walker.hourly_rate || 15}€`,
     "aggregateRating": walker.rating ? {
+      "@context": "https://schema.org",
       "@type": "AggregateRating",
       "ratingValue": walker.rating,
       "reviewCount": walker.total_reviews || 0
@@ -269,8 +269,8 @@ const WalkerProfilePage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>{walker.first_name} - Promeneur de Chien à {walker.city || 'France'} | DogWalking</title>
-        <meta name="description" content={`${walker.first_name}, promeneur de chiens vérifié à ${walker.city || 'France'}. Note: ${walker.rating?.toFixed(1) || '5.0'}/5. Tarif: ${walker.hourly_rate || 15}€/30min.`} />
+        <title>{walker.first_name} - Accompagnateur Certifié à {walker.city || 'France'} | DogWalking</title>
+        <meta name="description" content={`${walker.first_name}, Accompagnateur Certifié vérifié à ${walker.city || 'France'}. Note: ${walker.rating?.toFixed(1) || '5.0'}/5. Tarif: $à partir de {walker.hourly_rate || 15}€.`} />
         <script type="application/ld+json">{JSON.stringify(localBusinessSchema)}</script>
       </Helmet>
       <Header />
@@ -288,7 +288,7 @@ const WalkerProfilePage = () => {
                   <Avatar className="h-40 w-40 border-4 border-background shadow-xl">
                     <AvatarImage src={walker.avatar_url || ''} />
                     <AvatarFallback className="text-4xl bg-primary/10">
-                      {walker.first_name?.[0] || 'P'}
+                      {walker.first_name?.[0] || 'A'}
                     </AvatarFallback>
                   </Avatar>
                   {walker.verified && (
@@ -307,69 +307,59 @@ const WalkerProfilePage = () => {
                         {walker.verified && (
                           <Badge className="bg-primary/10 text-primary">
                             <Shield className="h-3 w-3 mr-1" />
-                            Vérifié
+                            Certifié
                           </Badge>
                         )}
                       </h1>
-                      {walker.city && (
-                        <p className="text-muted-foreground flex items-center gap-1 mt-1">
+                      <div className="flex items-center gap-4 mt-2 text-muted-foreground">
+                        <div className="flex items-center gap-1">
                           <MapPin className="h-4 w-4" />
                           {walker.city}
-                          {walker.service_radius_km && ` • ${walker.service_radius_km}km autour`}
-                        </p>
-                      )}
-                      
-                      {/* Stats row */}
-                      <div className="flex flex-wrap gap-4 mt-4">
-                        <div className="flex items-center gap-2 bg-amber-50 dark:bg-amber-950/30 px-3 py-1.5 rounded-full">
-                          <Star className="h-5 w-5 fill-amber-500 text-amber-500" />
-                          <span className="font-bold text-amber-700 dark:text-amber-400">
-                            {walker.rating?.toFixed(1) || '5.0'}
-                          </span>
-                          <span className="text-sm text-muted-foreground">
-                            ({walker.total_reviews || 0} avis)
-                          </span>
                         </div>
-                        <div className="flex items-center gap-2 text-muted-foreground">
-                          <Route className="h-4 w-4" />
-                          <span>{walker.total_walks || 0} promenades</span>
+                        <div className="flex items-center gap-1">
+                          <Star className="h-4 w-4 text-amber-500 fill-amber-500" />
+                          <span className="font-bold text-foreground">{walker.rating?.toFixed(1) || '5.0'}</span>
+                          <span>({walker.total_reviews || 0} avis)</span>
                         </div>
-                        {walker.experience_years && (
-                          <div className="flex items-center gap-2 text-muted-foreground">
-                            <Clock className="h-4 w-4" />
-                            <span>{walker.experience_years} ans d'exp.</span>
-                          </div>
-                        )}
+                        <div className="flex items-center gap-1">
+                          <CheckCircle className="h-4 w-4 text-primary" />
+                          {walker.total_walks || 0} prestations
+                        </div>
                       </div>
                     </div>
 
-                    {/* Price and CTA */}
-                    <div className="flex flex-col items-end gap-3">
-                      <div className="text-right">
-                        <span className="text-4xl font-bold text-primary">
-                          {walker.hourly_rate || 15}€
-                        </span>
-                        <span className="text-muted-foreground">/30min</span>
-                      </div>
-                      <div className="flex gap-2">
-                        <Button
-                          variant="outline"
-                          size="icon"
-                          onClick={toggleFavorite}
-                          className={isFavorite ? 'text-heart border-heart' : ''}
-                        >
-                          <Heart className={`h-5 w-5 ${isFavorite ? 'fill-heart' : ''}`} />
-                        </Button>
-                        <Button variant="outline" onClick={startConversation}>
-                          <MessageCircle className="h-4 w-4 mr-2" />
-                          Message
-                        </Button>
-                        <Button onClick={() => navigate(`/book/${walker.user_id}`)}>
-                          <Calendar className="h-4 w-4 mr-2" />
-                          Réserver
-                        </Button>
-                      </div>
+                    <div className="flex items-center gap-2">
+                      <Button variant="outline" size="icon" onClick={toggleFavorite} className={isFavorite ? "text-destructive border-destructive" : ""}>
+                        <Heart className={isFavorite ? "fill-current" : ""} />
+                      </Button>
+                      <Button onClick={startConversation}>
+                        <MessageCircle className="h-4 w-4 mr-2" />
+                        Contacter
+                      </Button>
+                      <Button onClick={() => navigate(`/book/${walker.user_id}`)} className="shadow-lg shadow-primary/20">
+                        <Calendar className="h-4 w-4 mr-2" />
+                        Réserver
+                      </Button>
                     </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2 mt-6">
+                    <Badge variant="secondary" className="px-3 py-1">
+                      <Clock className="h-3 w-3 mr-1" />
+                      {walker.experience_years || 0} ans d'expérience
+                    </Badge>
+                    <Badge variant="secondary" className="px-3 py-1">
+                      <Euro className="h-3 w-3 mr-1" />
+                      À partir de {walker.hourly_rate || 15}€
+                    </Badge>
+                    <Badge variant="secondary" className="px-3 py-1">
+                      <Users className="h-3 w-3 mr-1" />
+                      Max {walker.max_dogs || 1} Animaux
+                    </Badge>
+                    <Badge variant="secondary" className="px-3 py-1">
+                      <MapPin className="h-3 w-3 mr-1" />
+                      Rayon {walker.service_radius_km || 5}km
+                    </Badge>
                   </div>
                 </div>
               </div>
@@ -378,46 +368,38 @@ const WalkerProfilePage = () => {
         </AnimatedSection>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Content */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Bio */}
-            <AnimatedSection animation="fade-up" delay={0.1}>
+          {/* Left Column - Bio & Services */}
+          <div className="lg:col-span-2 space-y-8">
+            <AnimatedSection animation="fade-right">
               <Card>
                 <CardHeader>
-                  <CardTitle>À propos</CardTitle>
+                  <CardTitle>À propos de {walker.first_name}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {walker.bio || "Passionné par les animaux, je prends soin de vos compagnons comme s'ils étaient les miens. Chaque promenade est une aventure où votre chien peut s'épanouir en toute sécurité."}
+                  <p className="text-lg leading-relaxed text-muted-foreground whitespace-pre-wrap">
+                    {walker.bio || "Aucune description fournie."}
                   </p>
                 </CardContent>
               </Card>
             </AnimatedSection>
 
-            {/* Services */}
-            <AnimatedSection animation="fade-up" delay={0.2}>
+            <AnimatedSection animation="fade-right" delay={0.1}>
               <Card>
                 <CardHeader>
                   <CardTitle>Services proposés</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid grid-cols-2 gap-4">
-                    {walker.services?.map((service) => {
-                      const serviceInfo = services[service as keyof typeof services];
-                      if (!serviceInfo) return null;
-                      const Icon = serviceInfo.icon;
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {walker.services?.map((serviceKey) => {
+                      const service = services[serviceKey as keyof typeof services];
+                      if (!service) return null;
                       return (
-                        <motion.div
-                          key={service}
-                          className="flex items-center gap-3 p-4 rounded-xl bg-primary/5 border border-primary/10"
-                          whileHover={{ scale: 1.02 }}
-                          transition={{ type: "spring", stiffness: 300 }}
-                        >
-                          <div className="p-2 rounded-lg bg-primary/10">
-                            <Icon className="h-5 w-5 text-primary" />
+                        <div key={serviceKey} className="flex items-center gap-3 p-4 rounded-xl border bg-card/50">
+                          <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                            <service.icon className="h-5 w-5" />
                           </div>
-                          <span className="font-medium">{serviceInfo.label}</span>
-                        </motion.div>
+                          <span className="font-semibold">{service.label}</span>
+                        </div>
                       );
                     })}
                   </div>
@@ -425,77 +407,73 @@ const WalkerProfilePage = () => {
               </Card>
             </AnimatedSection>
 
-            {/* Reviews */}
-            <AnimatedSection animation="fade-up" delay={0.3}>
-              <Card>
-                <CardHeader className="flex flex-row items-center justify-between">
-                  <CardTitle>Avis clients</CardTitle>
-                  <Badge variant="secondary">
-                    {walker.total_reviews || 0} avis
-                  </Badge>
-                </CardHeader>
-                <CardContent>
-                  {reviews.length === 0 ? (
-                    <div className="text-center py-8 text-muted-foreground">
-                      <Star className="h-12 w-12 mx-auto mb-4 opacity-20" />
-                      <p>Aucun avis pour le moment</p>
-                    </div>
-                  ) : (
-                    <div className="space-y-6">
-                      {reviews.map((review, index) => (
-                        <motion.div
-                          key={review.id}
-                          className="border-b last:border-0 pb-6 last:pb-0"
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                        >
-                          <div className="flex items-start justify-between mb-2">
+            <AnimatedSection animation="fade-right" delay={0.2}>
+              <Tabs defaultValue="reviews">
+                <TabsList className="w-full justify-start border-b rounded-none bg-transparent h-auto p-0 mb-6">
+                  <TabsTrigger value="reviews" className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent px-6 py-3">
+                    Avis ({reviews.length})
+                  </TabsTrigger>
+                  <TabsTrigger value="photos" className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent px-6 py-3">
+                    Photos
+                  </TabsTrigger>
+                </TabsList>
+                
+                <TabsContent value="reviews" className="space-y-6">
+                  {reviews.length > 0 ? (
+                    reviews.map((review) => (
+                      <div key={review.id} className="p-6 rounded-2xl border bg-card/50">
+                        <div className="flex items-center justify-between mb-4">
+                          <div className="flex items-center gap-3">
+                            <Avatar className="h-10 w-10">
+                              <AvatarFallback>{review.reviewer_name?.[0]}</AvatarFallback>
+                            </Avatar>
                             <div>
-                              <p className="font-semibold">{review.reviewer_name}</p>
-                              <p className="text-sm text-muted-foreground">
-                                {new Date(review.created_at).toLocaleDateString('fr-FR', {
-                                  year: 'numeric',
-                                  month: 'long',
-                                  day: 'numeric'
-                                })}
+                              <p className="font-bold">{review.reviewer_name}</p>
+                              <p className="text-xs text-muted-foreground">
+                                {new Date(review.created_at).toLocaleDateString()}
                               </p>
                             </div>
-                            <div className="flex items-center gap-1">
-                              {[...Array(5)].map((_, i) => (
-                                <Star
-                                  key={i}
-                                  className={`h-4 w-4 ${
-                                    i < review.rating
-                                      ? 'fill-amber-500 text-amber-500'
-                                      : 'text-muted'
-                                  }`}
-                                />
-                              ))}
-                            </div>
                           </div>
-                          {review.comment && (
-                            <p className="text-muted-foreground">{review.comment}</p>
-                          )}
-                        </motion.div>
-                      ))}
+                          <div className="flex items-center gap-1">
+                            <Star className="h-4 w-4 text-amber-500 fill-amber-500" />
+                            <span className="font-bold">{review.rating}</span>
+                          </div>
+                        </div>
+                        <p className="text-muted-foreground leading-relaxed italic">
+                          "{review.comment}"
+                        </p>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="text-center py-12 text-muted-foreground">
+                      Aucun avis pour le moment.
                     </div>
                   )}
-                </CardContent>
-              </Card>
+                </TabsContent>
+                
+                <TabsContent value="photos">
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div className="aspect-square rounded-xl bg-muted flex items-center justify-center">
+                      <Camera className="h-8 w-8 text-muted-foreground/30" />
+                    </div>
+                    <div className="aspect-square rounded-xl bg-muted flex items-center justify-center">
+                      <Camera className="h-8 w-8 text-muted-foreground/30" />
+                    </div>
+                  </div>
+                </TabsContent>
+              </Tabs>
             </AnimatedSection>
           </div>
 
-          {/* Sidebar */}
-          <div className="space-y-6">
-            {/* Badges */}
+          {/* Right Column - Stats & Availability */}
+          <div className="space-y-8">
             {badges.length > 0 && (
               <AnimatedSection animation="fade-left" delay={0.1}>
-                <Card>
+                <Card className="border-amber-200/50 bg-amber-50/10">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <Award className="h-5 w-5 text-primary" />
-                      Badges
+                      <Award className="h-5 w-5 text-amber-600" />
+                      Badges & Certifications
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -560,7 +538,7 @@ const WalkerProfilePage = () => {
                   <CardContent className="py-3">
                     <p className="text-sm text-muted-foreground flex items-center gap-2">
                       <Dog className="h-4 w-4" />
-                      Maximum {walker.max_dogs} chien{walker.max_dogs > 1 ? 's' : ''} simultanément
+                      Maximum {walker.max_dogs} Animal{walker.max_dogs > 1 ? 's' : ''} simultanément
                     </p>
                   </CardContent>
                 </Card>
@@ -573,7 +551,7 @@ const WalkerProfilePage = () => {
                 <CardContent className="p-6 text-center">
                   <h3 className="text-xl font-bold mb-2">Prêt à réserver ?</h3>
                   <p className="text-muted-foreground mb-4">
-                    Réservez une promenade avec {walker.first_name} dès maintenant
+                    Réservez une prestation avec {walker.first_name} dès maintenant
                   </p>
                   <Button 
                     size="lg" 

@@ -1,36 +1,21 @@
-import { Shield, UserCheck, FileCheck, Star, Camera, Lock } from "lucide-react";
+import { Shield, UserCheck, FileCheck, Star, Camera, Lock, Award } from "lucide-react";
 
 export const SecurityTrustSection = () => {
   const trustItems = [
     {
-      icon: UserCheck,
-      title: "Profils vérifiés",
-      description: "CNI, casier judiciaire et attestation d'assurance vérifiés pour chaque promeneur"
-    },
-    {
-      icon: Shield,
-      title: "Assurance incluse",
-      description: "Responsabilité civile professionnelle couvrant toutes les prestations"
-    },
-    {
-      icon: Camera,
-      title: "Preuves obligatoires",
-      description: "Photo ou vidéo envoyée pendant chaque prestation pour votre tranquillité"
-    },
-    {
-      icon: Lock,
-      title: "Paiement escrow",
-      description: "Votre argent est sécurisé et débloqué uniquement après validation"
+      icon: Award,
+      title: "Accompagnateurs Certifiés",
+      description: "Formation, Expérience Vérifiée, Références Contrôlées et Vérification d'Identité (CNI)"
     },
     {
       icon: Star,
-      title: "Avis certifiés",
-      description: "Seuls les clients ayant réservé peuvent laisser un avis vérifié"
+      title: "Avis Certifiés Authentiques",
+      description: "Seuls les Propriétaires ayant réservé peuvent laisser un avis vérifié"
     },
     {
-      icon: FileCheck,
-      title: "Garantie satisfaction",
-      description: "En cas de problème, notre équipe intervient pour vous accompagner"
+      icon: Lock,
+      title: "Paiement en Attente",
+      description: "Votre paiement est bloqué et libéré uniquement via le code de fin de service"
     }
   ];
 
@@ -49,13 +34,13 @@ export const SecurityTrustSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto items-stretch">
           {trustItems.map((item, index) => (
             <div 
               key={index}
-              className="bg-card rounded-2xl p-5 md:p-6 shadow-soft border border-border hover:shadow-card transition-shadow"
+              className="bg-card rounded-2xl p-5 md:p-6 shadow-soft border border-border hover:shadow-card transition-shadow text-center flex flex-col items-center"
             >
-              <div className="flex items-start gap-4">
+              <div className="flex flex-col items-center text-center gap-3">
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary flex-shrink-0">
                   <item.icon className="h-6 w-6" />
                 </div>

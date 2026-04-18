@@ -31,7 +31,7 @@ export const OwnerSection = ({ onPostRequest }: OwnerSectionProps) => {
             </div>
             <div className="flex-1">
               <h2 className="text-xl md:text-2xl font-bold text-foreground mb-2">
-                Vous êtes propriétaire d'un animal ?
+                Vous êtes Propriétaire d'un animal ?
               </h2>
               <p className="text-muted-foreground mb-6">
                 Déposez une demande de service sans choisir de prestataire à l'avance.

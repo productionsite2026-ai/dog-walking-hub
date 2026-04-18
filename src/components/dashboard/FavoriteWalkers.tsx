@@ -38,7 +38,7 @@ export const FavoriteWalkers = ({
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Heart className="h-5 w-5 text-heart fill-heart-light" />
-          Promeneurs favoris
+          Accompagnateur Certifiés favoris
         </CardTitle>
         <CardDescription>{walkers.length} promeneur(s) favori(s)</CardDescription>
       </CardHeader>

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-dog-walking.jpg";
-import { Shield, Star, Clock, MapPin } from "lucide-react";
+import { Shield, Star, Clock, Lock, Camera } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
@@ -52,7 +52,7 @@ export const HeroSection = () => {
   return (
     <section 
       ref={ref}
-      className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center overflow-hidden pb-24 md:pb-32"
+      className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Parallax Background Image */}
       <motion.div
@@ -69,7 +69,7 @@ export const HeroSection = () => {
         />
       </motion.div>
 
-      {/* Static decorative elements - removed animations for performance */}
+      {/* Static decorative elements */}
       <div className="absolute top-20 left-10 w-20 h-20 rounded-full bg-primary/20 blur-2xl" />
       <div className="absolute bottom-40 right-20 w-32 h-32 rounded-full bg-accent/20 blur-3xl" />
 
@@ -89,25 +89,26 @@ export const HeroSection = () => {
             transition={{ type: "spring", stiffness: 300 }}
           >
             <Shield className="h-4 w-4 text-primary" />
-            <span className="text-sm font-medium">Plateforme #1 en France - 100% sécurisée</span>
+            <span className="text-sm font-medium">Plateforme de Confiance Vérifiée - 35% d'acceptation</span>
           </motion.div>
 
           <motion.h1 
             variants={itemVariants}
             className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 md:mb-6 leading-tight"
           >
-            Promenade de Chien{" "}
+            Trouvez l'Accompagnateur Certifié{" "}
             <span className="text-gradient inline-block">
-              Partout en France
+              Idéal pour votre Animal
             </span>
           </motion.h1>
 
           <motion.p 
             variants={itemVariants}
-            className="text-lg md:text-2xl mb-6 md:mb-8 opacity-90 max-w-2xl mx-auto"
+            className="text-lg md:text-2xl mb-6 md:mb-8 opacity-90 max-w-2xl mx-auto text-center"
           >
-            Trouvez un promeneur de chien vérifié près de chez vous. 
-            Paiement escrow sécurisé, preuves photo obligatoires, assurance incluse.
+            Trouvez un Accompagnateur Certifié pour votre animal partout en France.<br />
+            Paiement sécurisé innovant et preuves visuelles obligatoires.<br />
+            Votre sérénité est notre priorité absolue.
           </motion.p>
 
           <motion.div 
@@ -121,9 +122,9 @@ export const HeroSection = () => {
               <Button 
                 size="lg" 
                 className="text-base md:text-lg px-6 md:px-8 py-3 md:py-4 h-auto w-full sm:w-auto shadow-button" 
-                onClick={() => window.location.href = '/find-walkers'}
+                onClick={() => window.location.href = '/walkers'}
               >
-                Trouver un promeneur
+                Réserver un Accompagnateur
               </Button>
             </motion.div>
             <motion.div
@@ -136,7 +137,7 @@ export const HeroSection = () => {
                 className="text-base md:text-lg px-6 md:px-8 py-3 md:py-4 h-auto bg-white/10 border-white/30 text-white hover:bg-white/20 w-full sm:w-auto backdrop-blur-sm" 
                 onClick={() => window.location.href = '/walker/register'}
               >
-                Devenir promeneur
+                Devenir Accompagnateur Certifié
               </Button>
             </motion.div>
           </motion.div>
@@ -144,10 +145,10 @@ export const HeroSection = () => {
           {/* Trust indicators */}
           <div className="mt-8 md:mt-12 grid grid-cols-2 md:flex md:justify-center items-center gap-4 md:gap-8 text-xs md:text-sm">
             {[
-              { icon: Shield, text: "CNI & casier vérifiés", color: "text-primary" },
-              { icon: Star, text: "4.9/5 (2000+ avis)", color: "text-primary" },
-              { icon: Clock, text: "Réponse < 1h", color: "text-accent" },
-              { icon: MapPin, text: "+50 villes", color: "text-accent" },
+              { icon: Shield, text: "Vérification CNI", color: "text-primary" },
+              { icon: Lock, text: "Paiement en Attente & Code Unique", color: "text-primary" },
+              { icon: Camera, text: "Preuve Photo Obligatoire", color: "text-accent" },
+              { icon: Star, text: "4.9/5 (Avis vérifiés)", color: "text-accent" },
             ].map((item, i) => (
               <motion.div 
                 key={i}
@@ -166,7 +167,7 @@ export const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Scroll indicator - simplified */}
+      {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
         <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
           <div className="w-1.5 h-1.5 bg-white rounded-full" />

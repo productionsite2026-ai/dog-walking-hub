@@ -256,7 +256,7 @@ const WalkerMessagesTab = () => {
                     <MessageCircle className="h-16 w-16 mx-auto mb-4 text-muted-foreground/30" />
                     <h3 className="text-xl font-semibold mb-2">Aucune conversation</h3>
                     <p className="text-muted-foreground">
-                      Les propriétaires vous contacteront lorsqu'ils réserveront vos services
+                      Les Propriétaires vous contacteront lorsqu'ils réserveront vos services
                     </p>
                   </div>
                 ) : (

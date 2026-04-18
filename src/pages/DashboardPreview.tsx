@@ -11,7 +11,7 @@ import { SEOHead } from '@/components/seo/SEOHead';
 
 /**
  * Page de redirection automatique selon le type d'utilisateur
- * - Si connecté en tant que propriétaire → /dashboard-proprietaire
+ * - Si connecté en tant que Propriétaire → /dashboard-proprietaire
  * - Si connecté en tant que promeneur → /dashboard-promeneur
  * - Si non connecté → affiche les options d'inscription
  */
@@ -44,7 +44,7 @@ const DashboardPreview = () => {
           navigate('/dashboard-proprietaire', { replace: true });
           return;
         } else if (profile?.user_type === 'both') {
-          // Si l'utilisateur a les deux rôles, rediriger vers propriétaire par défaut
+          // Si l'utilisateur a les deux rôles, rediriger vers Propriétaire par défaut
           navigate('/dashboard-proprietaire', { replace: true });
           return;
         }
@@ -73,7 +73,7 @@ const DashboardPreview = () => {
     <div className="min-h-screen bg-background">
       <SEOHead 
         title="Choisir mon espace | DogWalking"
-        description="Accédez à votre espace propriétaire ou promeneur sur DogWalking"
+        description="Accédez à votre espace Propriétaire ou promeneur sur DogWalking"
       />
       <Header />
       
@@ -88,7 +88,7 @@ const DashboardPreview = () => {
             Bienvenue sur <span className="text-primary">DogWalking</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            La plateforme qui connecte les propriétaires de chiens avec des promeneurs certifiés et de confiance.
+            La plateforme qui connecte les Propriétaires de chiens avec des promeneurs certifiés et de confiance.
           </p>
         </motion.div>
 
@@ -118,7 +118,7 @@ const DashboardPreview = () => {
                   </li>
                   <li className="flex items-center gap-3 text-muted-foreground">
                     <Shield className="h-5 w-5 text-primary flex-shrink-0" />
-                    <span>Promeneurs vérifiés et assurés</span>
+                    <span>Accompagnateurs Certifiés et assurés</span>
                   </li>
                   <li className="flex items-center gap-3 text-muted-foreground">
                     <MessageCircle className="h-5 w-5 text-primary flex-shrink-0" />
@@ -134,13 +134,13 @@ const DashboardPreview = () => {
                   className="w-full gap-2 mt-6"
                   size="lg"
                 >
-                  Je suis propriétaire <ArrowRight className="h-4 w-4" />
+                  Je suis Propriétaire <ArrowRight className="h-4 w-4" />
                 </Button>
               </CardContent>
             </Card>
           </motion.div>
 
-          {/* Card Promeneur */}
+          {/* Card Accompagnateur Certifié */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -151,7 +151,7 @@ const DashboardPreview = () => {
                 <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-accent/10 flex items-center justify-center">
                   <Users className="h-10 w-10 text-accent" />
                 </div>
-                <CardTitle className="text-2xl text-foreground">Espace Promeneur</CardTitle>
+                <CardTitle className="text-2xl text-foreground">Espace Accompagnateur</CardTitle>
                 <CardDescription className="text-base">
                   Vous souhaitez devenir promeneur certifié et gagner de l'argent
                 </CardDescription>
@@ -168,7 +168,7 @@ const DashboardPreview = () => {
                   </li>
                   <li className="flex items-center gap-3 text-muted-foreground">
                     <Shield className="h-5 w-5 text-accent flex-shrink-0" />
-                    <span>Assurance incluse</span>
+                    <span>Protection incluse</span>
                   </li>
                   <li className="flex items-center gap-3 text-muted-foreground">
                     <Star className="h-5 w-5 text-accent flex-shrink-0" />
@@ -202,7 +202,7 @@ const DashboardPreview = () => {
                 <Shield className="h-7 w-7 text-primary" />
               </div>
               <h3 className="font-semibold text-foreground">100% Vérifié</h3>
-              <p className="text-sm text-muted-foreground">Casier judiciaire et identité vérifiés</p>
+              <p className="text-sm text-muted-foreground">Identité vérifiée</p>
             </div>
             <div className="flex flex-col items-center gap-3">
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">

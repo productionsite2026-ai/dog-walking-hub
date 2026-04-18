@@ -6,7 +6,7 @@ interface QuickSearchBarProps {
   placeholder?: string;
 }
 
-const QuickSearchBar = ({ placeholder = "Trouver un promeneur..." }: QuickSearchBarProps) => {
+const QuickSearchBar = ({ placeholder = "Trouver un Accompagnateur..." }: QuickSearchBarProps) => {
   const navigate = useNavigate();
 
   const handleClick = () => {

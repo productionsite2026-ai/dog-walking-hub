@@ -240,7 +240,7 @@ export const PerformanceStats: React.FC<PerformanceStatsProps> = ({
                 <h4 className="font-semibold mb-1">Conseils pour améliorer vos stats</h4>
                 <ul className="text-sm text-muted-foreground space-y-1">
                   <li>• Répondez aux demandes dans l'heure pour un meilleur classement</li>
-                  <li>• Envoyez des photos pendant chaque promenade pour rassurer les propriétaires</li>
+                  <li>• Envoyez des photos pendant chaque promenade pour rassurer les Propriétaires</li>
                   <li>• Soyez ponctuel et respectez les horaires convenus</li>
                   <li>• Demandez un avis à la fin de chaque service</li>
                 </ul>

@@ -15,7 +15,7 @@ const UpcomingBookings = ({ bookings }: { bookings: Booking[] }) => {
 
   return (
     <div className="space-y-2.5">
-      <h3 className="font-bold text-foreground px-1">📅 Prochaines réservations</h3>
+      <h3 className="font-bold text-foreground px-1">📅 Prochaines missions confirmées</h3>
       {bookings.map((b, i) => (
         <motion.div
           key={b.id}

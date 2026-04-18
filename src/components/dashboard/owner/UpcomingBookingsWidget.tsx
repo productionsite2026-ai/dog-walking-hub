@@ -73,7 +73,7 @@ const UpcomingBookingsWidget = ({ limit = 3, onViewAll }: UpcomingBookingsWidget
         status: b.status,
         duration_minutes: b.duration_minutes || 60,
         city: b.city,
-        dog_name: (b.dogs as any)?.name || 'Chien',
+        dog_name: (b.dogs as any)?.name || 'Animal',
         dog_photo: (b.dogs as any)?.photo_url || null,
         walker_name: walkerMap.get(b.walker_id)?.first_name || 'En attente',
         walker_photo: walkerMap.get(b.walker_id)?.avatar_url || null
@@ -128,7 +128,7 @@ const UpcomingBookingsWidget = ({ limit = 3, onViewAll }: UpcomingBookingsWidget
         <CardHeader className="pb-2">
           <CardTitle className="text-lg flex items-center gap-2">
             <Calendar className="h-5 w-5 text-primary" />
-            Prochaines réservations
+            Prochaines Réservations
           </CardTitle>
         </CardHeader>
         <CardContent className="text-center py-6">
@@ -139,7 +139,7 @@ const UpcomingBookingsWidget = ({ limit = 3, onViewAll }: UpcomingBookingsWidget
             onClick={() => navigate('/walkers')}
             className="mt-2"
           >
-            Réserver une promenade
+            Réserver un Accompagnement
           </Button>
         </CardContent>
       </Card>
@@ -152,7 +152,7 @@ const UpcomingBookingsWidget = ({ limit = 3, onViewAll }: UpcomingBookingsWidget
         <div className="flex items-center justify-between">
           <CardTitle className="text-lg flex items-center gap-2">
             <Calendar className="h-5 w-5 text-primary" />
-            Prochaines réservations
+            Prochaines Réservations
           </CardTitle>
           {onViewAll && (
             <Button variant="ghost" size="sm" onClick={onViewAll} className="gap-1">

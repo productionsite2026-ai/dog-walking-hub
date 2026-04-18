@@ -1,4 +1,5 @@
-import walkerHero from "@/assets/walker-hero.jpg";
+import { SEOHead } from "@/components/seo/SEOHead";
+import walkerHeroImg from "@/assets/walker-hero.jpg";
 import avatarWalker from "@/assets/avatar-walker.jpg";
 import dogGolden from "@/assets/dog-golden.jpg";
 import DogCard from "@/components/dashboard-v2/DogCard";
@@ -9,9 +10,12 @@ import QuickActions from "@/components/dashboard-v2/QuickActions";
 import NearbyWalkerCard from "@/components/dashboard-v2/NearbyWalkerCard";
 import UpcomingBookings from "@/components/dashboard-v2/UpcomingBookings";
 import FavoritesTab from "@/components/dashboard-v2/tabs/FavoritesTab";
+import ReferralTab from "@/components/dashboard/owner/ReferralTab";
+import ReviewsTab from "@/components/dashboard-v2/tabs/ReviewsTab";
 import ProfileTab from "@/components/dashboard-v2/tabs/ProfileTab";
 import BookingsTab from "@/components/dashboard-v2/tabs/BookingsTab";
 import DogsTab from "@/components/dashboard-v2/tabs/DogsTab";
+import MessagesTab from "@/components/dashboard-v2/tabs/MessagesTab";
 import { CheckCircle2, TrendingUp, Plus } from "lucide-react";
 import { motion } from "framer-motion";
 import { useAuth } from "@/contexts/AuthContext";
@@ -81,14 +85,17 @@ const OwnerDashboard = () => {
 
   const completedBookings = bookings.filter((b: any) => b.status === "completed").length;
 
-  // Render tab content
   if (activeTab === "favoris") return (<div className="min-h-screen bg-background max-w-lg mx-auto"><FavoritesTab /><BottomNav role="owner" activeMission={activeMissionData} /></div>);
   if (activeTab === "profil") return (<div className="min-h-screen bg-background max-w-lg mx-auto"><ProfileTab role="owner" /><BottomNav role="owner" activeMission={activeMissionData} /></div>);
   if (activeTab === "reservations") return (<div className="min-h-screen bg-background max-w-lg mx-auto"><BookingsTab role="owner" /><BottomNav role="owner" activeMission={activeMissionData} /></div>);
   if (activeTab === "chiens") return (<div className="min-h-screen bg-background max-w-lg mx-auto"><DogsTab /><BottomNav role="owner" activeMission={activeMissionData} /></div>);
+  if (activeTab === "messages") return (<div className="min-h-screen bg-background max-w-lg mx-auto"><MessagesTab /><BottomNav role="owner" activeMission={activeMissionData} /></div>);
+  if (activeTab === "parrainage") return (<div className="min-h-screen bg-background max-w-lg mx-auto p-4"><ReferralTab /><BottomNav role="owner" activeMission={activeMissionData} /></div>);
+  if (activeTab === "avis") return (<div className="min-h-screen bg-background max-w-lg mx-auto"><ReviewsTab /><BottomNav role="owner" activeMission={activeMissionData} /></div>);
 
   return (
     <div className="min-h-screen bg-background pb-24 max-w-lg mx-auto">
+      <SEOHead title="Mon Espace Propriétaire | DogWalking" description="Gérez vos réservations, vos animaux et vos Accompagnateurs Certifiés depuis votre tableau de bord DogWalking." canonical="https://dogwalking.fr/dashboard" noindex={true} />
       {isDemo && (
         <div className="bg-amber-500/10 border-b border-amber-500/20 px-4 py-2 text-center">
           <span className="text-xs font-bold text-amber-600">🎭 Mode Démo — Connectez-vous pour vos vraies données</span>
@@ -96,10 +103,10 @@ const OwnerDashboard = () => {
       )}
 
       <div className="relative">
-        <DashboardHeader title="🐾 Espace Propriétaire" notificationCount={bookings.filter((b: any) => b.status === "pending").length} />
+        <DashboardHeader title="🐾 Espace Propriétaire" role="owner" notificationCount={bookings.filter((b: any) => b.status === "pending").length} />
         <div className="w-full h-56 bg-gradient-to-br from-[hsl(200,80%,35%)] to-[hsl(220,60%,40%)] flex items-end">
           <div className="w-full h-full relative overflow-hidden">
-            <img src={walkerHero} alt="Mes chiens" className="w-full h-full object-cover opacity-30" width={800} height={512} />
+            <img src={walkerHeroImg} alt="Mes chiens" className="w-full h-full object-cover opacity-30" width={800} height={512} />
           </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 translate-y-1/2 px-4">
@@ -113,7 +120,7 @@ const OwnerDashboard = () => {
             </div>
             <div>
               <h1 className="text-xl font-black text-foreground">{displayName}</h1>
-              <p className="text-sm text-muted-foreground font-semibold">Propriétaire de {dogs.length} chien{dogs.length > 1 ? "s" : ""}</p>
+              <p className="text-sm text-muted-foreground font-semibold">Propriétaire de {dogs.length} animal{dogs.length > 1 ? "s" : ""} (Vérifié)</p>
             </div>
           </motion.div>
         </div>
@@ -130,7 +137,7 @@ const OwnerDashboard = () => {
 
         <div className="space-y-2">
           <div className="flex items-center justify-between px-1">
-            <h3 className="font-bold text-foreground">🐕 Mes Chiens</h3>
+            <h3 className="font-bold text-foreground">🐕 Mes Animaux (Vérifiés)</h3>
             <button onClick={() => setShowAddDog(!showAddDog)} className="text-accent text-xs font-bold flex items-center gap-1">
               <Plus className="w-3.5 h-3.5" /> Ajouter
             </button>
@@ -168,7 +175,7 @@ const OwnerDashboard = () => {
           </div>
           <div className="grid grid-cols-3 gap-2">
             {[
-              { value: isDemo ? "12" : String(completedBookings), label: "Balades" },
+              { value: isDemo ? "12" : String(completedBookings), label: "Missions" },
               { value: `${dogs.length}`, label: "Chiens" },
               { value: String(upcomingBookings.length), label: "À venir" },
             ].map((s) => (
@@ -180,15 +187,16 @@ const OwnerDashboard = () => {
           </div>
         </motion.div>
 
-        <WeatherWidget temp={18} condition="sunny" recommendation="Parfait pour promener vos chiens !" />
+        <WeatherWidget temp={18} condition="sunny" recommendation="Parfait pour sortir vos animaux !" />
+
         <UpcomingBookings bookings={upcomingBookings} />
 
         <div className="space-y-2.5">
-          <h3 className="font-bold text-foreground px-1">🏃 Promeneurs à proximité</h3>
+          <h3 className="font-bold text-foreground px-1">🏃 Accompagnateurs Certifiés à proximité</h3>
           {nearbyWalkers.slice(0, 3).map((w: any) => (
             <NearbyWalkerCard
               key={w.id}
-              name={`${w.profiles?.first_name || "Walker"} ${(w.profiles?.last_name || "")[0] || ""}.`}
+              name={`${w.profiles?.first_name || "Accompagnateur"} ${(w.profiles?.last_name || "")[0] || ""}.`}
               rating={Number(w.rating || 0)}
               reviews={w.total_reviews || 0}
               distance="~2 km"
@@ -199,9 +207,9 @@ const OwnerDashboard = () => {
           ))}
         </div>
 
-        <motion.button whileTap={{ scale: 0.97 }} onClick={() => navigate("/find-walkers")}
+        <motion.button whileTap={{ scale: 0.97 }} onClick={() => navigate("/walkers")}
           className="w-full py-4 rounded-2xl bg-accent text-white font-black text-lg shadow-glow-primary hover:opacity-90 transition-opacity">
-          🐕 Réserver une Promenade
+          🐕 Réserver un Accompagnateur Certifié
         </motion.button>
       </div>
 

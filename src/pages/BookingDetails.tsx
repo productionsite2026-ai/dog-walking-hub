@@ -268,7 +268,7 @@ const BookingDetails = () => {
           <motion.div variants={itemVariants}>
             <Card className="shadow-card">
               <CardHeader>
-                <CardTitle>Promeneur</CardTitle>
+                <CardTitle>Accompagnateur Certifié</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>

@@ -9,6 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ClientReviews } from "@/components/ui/client-reviews";
 import { CaseStudies } from "@/components/ui/case-studies";
 import { getReviewsByService, getCaseStudiesByService } from "@/data/clientReviewsData";
+import { ServiceHero } from "@/components/ui/service-hero";
 import { 
   Home, Clock, Shield, Camera, Moon, Sun, Heart, Star, 
   CheckCircle, ArrowRight, Users, Calendar, Award, Bed
@@ -23,23 +24,23 @@ const caseStudies = getCaseStudiesByService("garde");
 const gardeFAQs = [
   {
     question: "Quelle est la différence entre garde à domicile et hébergement ?",
-    answer: "La garde à domicile signifie que le pet-sitter vient chez vous et dort dans votre maison avec votre chien. L'hébergement implique que votre chien séjourne chez le pet-sitter, dans son environnement familial. Les deux options incluent les mêmes garanties de sécurité et preuves photo."
+    answer: "La garde à domicile signifie que le Accompagnateur vient chez vous et dort dans votre maison avec votre chien. L'hébergement implique que votre chien séjourne chez le Accompagnateur, dans son environnement familial. Les deux options incluent les mêmes garanties de sécurité et preuves photo."
   },
   {
-    question: "Comment se passe la première rencontre avec le pet-sitter ?",
-    answer: "Nous recommandons fortement une rencontre préalable gratuite entre le pet-sitter, vous et votre chien. Cela permet de vérifier la compatibilité, de partager les habitudes de votre animal et de visiter le lieu d'hébergement si applicable. Cette rencontre peut être organisée via la messagerie de la plateforme."
+    question: "Comment se passe la première rencontre avec le Accompagnateur ?",
+    answer: "Nous recommandons fortement une rencontre préalable gratuite entre le Accompagnateur, vous et votre chien. Cela permet de vérifier la compatibilité, de partager les habitudes de votre animal et de visiter le lieu d'hébergement si applicable. Cette rencontre peut être organisée via la messagerie de la plateforme."
   },
   {
     question: "Mon chien peut-il être gardé avec d'autres animaux ?",
-    answer: "Chaque pet-sitter indique sur son profil s'il accueille d'autres animaux simultanément. Si votre chien n'est pas sociable avec ses congénères, privilégiez les gardiens qui proposent des séjours exclusifs. Vous pouvez filtrer les profils selon ce critère."
+    answer: "Chaque Accompagnateur indique sur son profil s'il accueille d'autres animaux simultanément. Si votre chien n'est pas sociable avec ses congénères, privilégiez les gardiens qui proposent des séjours exclusifs. Vous pouvez filtrer les profils selon ce critère."
   },
   {
     question: "Que se passe-t-il en cas d'urgence médicale pendant la garde ?",
-    answer: "Chaque pet-sitter dispose de vos coordonnées et celles de votre vétérinaire. En cas d'urgence, il contacte immédiatement les services vétérinaires et vous prévient. Les frais d'urgence sont à votre charge, mais notre assurance couvre les dommages jusqu'à 2 millions d'euros."
+    answer: "Chaque Accompagnateur dispose de vos coordonnées et celles de votre vétérinaire. En cas d'urgence, il contacte immédiatement les services vétérinaires et vous prévient. Les frais d'urgence sont à votre charge, mais notre équipe intervient immédiatement pour vous accompagner."
   },
   {
     question: "Puis-je avoir des nouvelles de mon chien pendant la garde ?",
-    answer: "Absolument ! Les pet-sitters envoient obligatoirement des photos et vidéos quotidiennes via notre plateforme. Vous pouvez également échanger avec eux via la messagerie sécurisée pour prendre des nouvelles ou donner des instructions."
+    answer: "Absolument ! Les Accompagnateurs envoient obligatoirement des photos et vidéos quotidiennes via notre plateforme. Vous pouvez également échanger avec eux via la messagerie sécurisée pour prendre des nouvelles ou donner des instructions."
   },
   {
     question: "Quels objets dois-je fournir pour la garde ?",
@@ -54,7 +55,7 @@ const ServiceGarde = () => {
     "@context": "https://schema.org",
     "@type": "Service",
     "name": "Garde de Chien à Domicile et Hébergement",
-    "description": "Service de garde de chien par des pet-sitters professionnels vérifiés. Garde à domicile, hébergement de jour et de nuit. Preuves photo quotidiennes et assurance incluse.",
+    "description": "Service de garde de chien par des Accompagnateurs professionnels vérifiés. Garde à domicile, hébergement de jour et de nuit. Preuves photo quotidiennes et protection incluse.",
     "provider": {
       "@type": "Organization",
       "name": "DogWalking",
@@ -64,28 +65,12 @@ const ServiceGarde = () => {
       "@type": "Country",
       "name": "France"
     },
+    
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Options de garde",
       "itemListElement": [
-        {
-          "@type": "Offer",
-          "name": "Garderie de jour",
-          "price": "10",
-          "priceCurrency": "EUR"
-        },
-        {
-          "@type": "Offer",
-          "name": "Hébergement nuit",
-          "price": "10",
-          "priceCurrency": "EUR"
-        },
-        {
-          "@type": "Offer",
-          "name": "Garde à domicile nuit",
-          "price": "12",
-          "priceCurrency": "EUR"
-        }
+        { "@type": "Offer", "name": "Garde de chien", "priceCurrency": "EUR" }
       ]
     }
   };
@@ -93,9 +78,9 @@ const ServiceGarde = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Garde de Chien | Pet-Sitters Vérifiés | Hébergement & Domicile | DogWalking"
-        description="Faites garder votre chien par des pet-sitters vérifiés. Garde à domicile ou hébergement chez le gardien. Preuves photo quotidiennes, assurance incluse. Dès 10€/nuit."
-        keywords="garde chien, pet sitting, hébergement chien, pension chien, dog sitting, gardien chien, pension canine france"
+        title="Garde de Chien | Accompagnateurs Vérifiés | Hébergement & Domicile | DogWalking"
+        description="Faites garder votre chien par des Accompagnateurs vérifiés. Garde à domicile ou hébergement chez le gardien. Preuves photo quotidiennes, protection incluse. Réservez en quelques clics."
+        keywords="garde chien, garde multi-animaux, hébergement chien, pension chien, garde à domicile, gardien chien, pension canine france"
         canonicalUrl="https://dogwalking.fr/services/garde"
         structuredData={serviceJsonLd}
         ogImage={serviceGardeImg}
@@ -103,78 +88,32 @@ const ServiceGarde = () => {
       <Header />
       
       <main>
-        {/* Hero Section */}
-        <section className="relative py-16 md:py-24 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 via-background to-primary/10" />
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-                  <Home className="w-3 h-3 mr-1" />
-                  Alternative aux pensions classiques
-                </Badge>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                  Garde de Chien par des <span className="text-primary">Pet-Sitters Vérifiés</span>
-                </h1>
-                <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                  Confiez votre compagnon à des gardiens passionnés et certifiés. Garde à domicile ou hébergement 
-                  en environnement familial, avec suivi quotidien et assurance complète.
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <Button size="lg" onClick={() => navigate("/walkers?service=garde")}>
-                    Trouver un gardien
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                  <Button size="lg" variant="outline" onClick={() => navigate("/tarifs")}>
-                    Voir les tarifs
-                  </Button>
-                </div>
-                <div className="flex items-center gap-6 mt-8 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <Shield className="h-4 w-4 text-primary" />
-                    <span>Gardiens vérifiés</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Camera className="h-4 w-4 text-primary" />
-                    <span>Photos quotidiennes</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Heart className="h-4 w-4 text-primary" />
-                    <span>Env. familial</span>
-                  </div>
-                </div>
-              </div>
-              <div className="relative">
-                <img 
-                  src={serviceGardeImg} 
-                  alt="Pet-sitter prenant soin d'un chien heureux dans un salon confortable" 
-                  className="rounded-2xl shadow-2xl w-full object-cover aspect-square"
-                />
-                <div className="absolute -bottom-6 -left-6 bg-card p-4 rounded-xl shadow-lg border">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                      <Bed className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <p className="font-bold text-2xl">50 000+</p>
-                      <p className="text-sm text-muted-foreground">Nuits de garde</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <ServiceHero
+          backgroundImage={serviceGardeImg}
+          badgeIcon={Home}
+          badgeText="Alternative aux pensions classiques"
+          title={<>Garde de Chien par des <span className="text-gradient">Accompagnateurs Vérifiés</span></>}
+          description="Confiez votre compagnon à des gardiens passionnés et certifiés. Garde à domicile ou hébergement en environnement familial, avec suivi quotidien et protection complète."
+          ctaText="Trouver un gardien"
+          ctaLink="/walkers?service=garde"
+          imageAlt="Pet-sitter prenant soin d'un chien heureux dans un salon confortable"
+          trustIndicators={[
+            { icon: Shield, text: "Gardiens vérifiés" },
+            { icon: Camera, text: "Photos quotidiennes" },
+            { icon: Heart, text: "Env. familial" },
+          ]}
+          statBadge={{ icon: Bed, value: "50 000+", label: "Nuits de garde" }}
+        />
 
         {/* Types de garde */}
         <section className="py-16 bg-muted/30">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Nos Options de Garde pour Votre Chien
+                Les Formules de Garde Adaptées à Votre Situation
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Choisissez la formule qui correspond le mieux aux besoins de votre compagnon et à votre budget.
+                Choisissez la formule qui correspond le mieux aux besoins de votre compagnon.
               </p>
             </div>
 
@@ -185,8 +124,7 @@ const ServiceGarde = () => {
                     <Sun className="h-8 w-8 text-primary" />
                   </div>
                   <h3 className="text-xl font-bold mb-2">Garderie de Jour</h3>
-                  <p className="text-3xl font-bold text-primary mb-2">dès 10€</p>
-                  <p className="text-sm text-muted-foreground mb-4">par journée</p>
+                  <p className="text-sm text-muted-foreground mb-4">Journée complète</p>
                   <ul className="text-sm text-left space-y-2 mb-6">
                     <li className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-primary" />
@@ -218,8 +156,7 @@ const ServiceGarde = () => {
                     <Moon className="h-8 w-8 text-primary" />
                   </div>
                   <h3 className="text-xl font-bold mb-2">Hébergement Nuit</h3>
-                  <p className="text-3xl font-bold text-primary mb-2">dès 10€</p>
-                  <p className="text-sm text-muted-foreground mb-4">par nuit</p>
+                  <p className="text-sm text-muted-foreground mb-4">Nuit complète</p>
                   <ul className="text-sm text-left space-y-2 mb-6">
                     <li className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-primary" />
@@ -250,8 +187,7 @@ const ServiceGarde = () => {
                     <Home className="h-8 w-8 text-primary" />
                   </div>
                   <h3 className="text-xl font-bold mb-2">Garde à Domicile</h3>
-                  <p className="text-3xl font-bold text-primary mb-2">dès 12€</p>
-                  <p className="text-sm text-muted-foreground mb-4">par nuit</p>
+                  <p className="text-sm text-muted-foreground mb-4">Garde à votre domicile</p>
                   <ul className="text-sm text-left space-y-2 mb-6">
                     <li className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-primary" />
@@ -288,7 +224,7 @@ const ServiceGarde = () => {
               </h2>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
                 Les pensions classiques peuvent être stressantes pour votre chien : environnement impersonnel, 
-                nombreux animaux, box individuel. Nos pet-sitters offrent une alternative humaine et chaleureuse.
+                nombreux animaux, box individuel. Nos Accompagnateurs offrent une alternative humaine et chaleureuse.
               </p>
             </div>
 
@@ -363,7 +299,7 @@ const ServiceGarde = () => {
                   <Shield className="h-12 w-12 text-primary mx-auto mb-4" />
                   <h3 className="font-bold mb-2">Gardiens Vérifiés</h3>
                   <p className="text-sm text-muted-foreground">
-                    Identité, casier judiciaire et assurance contrôlés avant validation
+                    Identité vérifiée et profil contrôlé avant validation
                   </p>
                 </CardContent>
               </Card>
@@ -381,7 +317,7 @@ const ServiceGarde = () => {
               <Card className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <Award className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <h3 className="font-bold mb-2">Assurance 2M€</h3>
+                  <h3 className="font-bold mb-2">Sécurité & Transparence</h3>
                   <p className="text-sm text-muted-foreground">
                     Couverture complète en cas d'incident pendant la garde
                   </p>
@@ -459,10 +395,10 @@ const ServiceGarde = () => {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Pourquoi Faire Confiance a DogWalking pour ce Service ?
+                La Sécurité au Cœur de Chaque Garde
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Nos garanties de confiance et de securite sont sans equivalent en France.
+                Des mesures de protection concrètes pour la garde de votre animal.
               </p>
             </div>
             <TrustBadges />
@@ -501,7 +437,7 @@ const ServiceGarde = () => {
                 className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
                 onClick={() => navigate("/walker/register")}
               >
-                Devenir pet-sitter
+                Devenir Accompagnateur
               </Button>
             </div>
           </div>

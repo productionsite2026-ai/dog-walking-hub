@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Clock, Camera, ArrowRight, Dog, Home, Moon, Sun, Heart, Stethoscope, Car, PawPrint, Shield, Check } from 'lucide-react';
 import { useNavigate } from "react-router-dom";
 
-// Import des images locales - utiliser les mêmes que servicesData
+// Import des images locales
 import promenadeParc from '@/assets/services/promenade-chien-parc.jpg';
 import visiteRepas from '@/assets/services/visite-chien-repas.jpg';
 import hebergementNuit from '@/assets/services/hebergement-nuit-chambre.jpg';
@@ -18,35 +18,35 @@ export const ServicesSection = () => {
   const services = [
     {
       id: "promenade",
-      slug: "promenade-chien",
+      slug: "promenade",
       title: "Promenade",
-      description: "Promenade en extérieur adaptée aux besoins de votre chien. Exercice physique et stimulation mentale garantis.",
+      description: "Promenade en extérieur adaptée aux besoins de votre animal. Exercice physique et stimulation mentale garantis.",
       minPrice: 8,
-      duration: "30 min - 2h",
+      duration: "Durée libre",
       image: promenadeParc,
-      tags: ["Exercice adapté", "Preuves photo"],
+      tags: ["Exercice adapté", "Preuves visuelles"],
       icon: Dog,
       benefits: ["Socialisation", "Dépense d'énergie"]
     },
     {
       id: "visite_domicile",
-      slug: "visite-domicile",
+      slug: "visite",
       title: "Visite à domicile",
       description: "Nourriture, eau fraîche et câlins pour vos animaux dans le confort de leur maison.",
       minPrice: 8,
       duration: "30 min",
       image: visiteRepas,
-      tags: ["Chiens & chats", "Soins quotidiens"],
+      tags: ["Animaux choyés", "Soins quotidiens"],
       icon: Home,
       benefits: ["Routine préservée", "Moins de stress"]
     },
     {
       id: "hebergement_nuit",
-      slug: "hebergement-chien",
-      title: "Hébergement nuit",
-      description: "Votre chien passe la nuit chez le promeneur dans un environnement sécurisé et familial.",
+      slug: "garde",
+      title: "Hébergement",
+      description: "Votre animal séjourne chez l'Accompagnateur Certifié dans un environnement sécurisé et familial.",
       minPrice: 10,
-      duration: "Nuit complète",
+      duration: "Par nuit",
       image: hebergementNuit,
       tags: ["Env. familial", "Suivi régulier"],
       icon: Moon,
@@ -55,9 +55,9 @@ export const ServicesSection = () => {
     },
     {
       id: "garderie",
-      slug: "garderie-chien",
-      title: "Garderie de jour",
-      description: "Garderie de jour chez le promeneur, idéal pour la socialisation et l'exercice en journée.",
+      slug: "garde-domicile",
+      title: "Garderie de Jour/Nuit",
+      description: "Garderie de jour chez l'Accompagnateur Certifié, idéal pour la socialisation et l'exercice en journée.",
       minPrice: 10,
       duration: "Journée",
       image: garderieJour,
@@ -67,11 +67,11 @@ export const ServicesSection = () => {
     },
     {
       id: "garde_domicile",
-      slug: "garde-domicile",
+      slug: "garde-multi-animaux",
       title: "Garde à domicile",
-      description: "Le promeneur reste chez vous la nuit pour garder votre chien dans son environnement habituel.",
+      description: "L'Accompagnateur Certifié reste chez vous pour garder vos animaux dans leur environnement.",
       minPrice: 12,
-      duration: "Nuit chez vous",
+      duration: "Par nuit",
       image: gardeDomicile,
       tags: ["Chez vous", "Routine préservée"],
       icon: Heart,
@@ -79,9 +79,9 @@ export const ServicesSection = () => {
     },
     {
       id: "visite_sanitaire",
-      slug: "visite-domicile",
-      title: "Visite sanitaire",
-      description: "Entretien quotidien avec produits fournis par le propriétaire (brossage, soins, hygiène).",
+      slug: "marche-reguliere",
+      title: "Visite Sanitaire",
+      description: "Entretien et soins assurés à l’aide des produits fournis par le Propriétaire (brossage, hygiène, soins).",
       minPrice: 16,
       duration: "45 min",
       image: visiteSoins,
@@ -91,9 +91,9 @@ export const ServicesSection = () => {
     },
     {
       id: "accompagnement_veterinaire",
-      slug: "accompagnement-veterinaire",
-      title: "Accompagnement vétérinaire",
-      description: "Transport et accompagnement de votre chien chez le vétérinaire pour ses rendez-vous.",
+      slug: "visite",
+      title: "Accomp. Vétérinaire",
+      description: "Transport et accompagnement de votre animal chez le vétérinaire pour ses rendez-vous santé.",
       minPrice: 13,
       duration: "Variable",
       image: vetAccompagnement,
@@ -111,9 +111,9 @@ export const ServicesSection = () => {
             <PawPrint className="h-4 w-4" />
             7 services disponibles
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Nos Services de Promenade et Garde de Chien</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Nos Services d'Accompagnement pour vos animaux</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Promenade, garde à domicile, hébergement : trouvez le service adapté avec preuves photo obligatoires et paiement sécurisé.
+            Promenade, Garde, Hébergement, Accompagnement Vétérinaire : trouvez le service adapté avec preuves visuelles obligatoires et paiement sécurisé en attente.
           </p>
         </div>
 
@@ -142,7 +142,7 @@ export const ServicesSection = () => {
                 )}
                 <div className="absolute top-3 right-3">
                   <Badge className="bg-white/95 text-foreground font-bold text-sm shadow-md px-3 py-1">
-                    dès {service.minPrice}€
+                    À partir de {service.minPrice}€
                   </Badge>
                 </div>
                 <div className="absolute bottom-3 left-3">
@@ -182,7 +182,7 @@ export const ServicesSection = () => {
                 <div className="flex flex-wrap gap-2 mb-4">
                   {service.tags.map((tag, index) => (
                     <Badge key={index} variant="outline" className="text-xs font-normal py-0.5 px-2">
-                      {index === 0 && <Camera className="h-3 w-3 mr-1" />}
+                      {index === 1 && <Camera className="h-3 w-3 mr-1" />}
                       {tag}
                     </Badge>
                   ))}
@@ -206,12 +206,12 @@ export const ServicesSection = () => {
           <div className="inline-flex items-center gap-3 bg-card rounded-2xl px-6 py-4 shadow-soft border border-border mb-8">
             <Shield className="h-6 w-6 text-primary" />
             <span className="text-sm md:text-base">
-              <strong>Garantie DogWalking :</strong> Preuves photo obligatoires + Paiement escrow + Commission 13%
+              <strong>Garantie DogWalking :</strong> Preuves visuelles obligatoires + Paiement sécurisé
             </span>
           </div>
           <div>
-            <Button size="lg" className="rounded-full px-8" onClick={() => navigate('/find-walkers')}>
-              Voir tous les promeneurs
+            <Button size="lg" className="rounded-full px-8" onClick={() => navigate('/walkers')}>
+              Voir tous les Accompagnateurs
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>

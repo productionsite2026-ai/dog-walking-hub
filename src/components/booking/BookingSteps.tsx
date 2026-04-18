@@ -54,7 +54,7 @@ const serviceOptions = [
   { 
     id: 'garde' as ServiceType, 
     label: 'Garde', 
-    description: 'Hébergement chez le promeneur', 
+    description: 'Hébergement chez le Accompagnateur Certifié', 
     icon: '🛏️',
     duration: 'Nuit'
   },
@@ -139,7 +139,7 @@ export const BookingSteps = ({
         {[
           { num: 1, label: 'Service' },
           { num: 2, label: 'Date & Heure' },
-          { num: 3, label: 'Votre chien' },
+          { num: 3, label: 'Votre animal' },
           { num: 4, label: 'Confirmation' }
         ].map((s, i, arr) => (
           <div key={s.num} className="flex items-center flex-1">
@@ -297,7 +297,7 @@ export const BookingSteps = ({
                     <MapPin className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                     <Input
                       id="address"
-                      placeholder="Adresse pour récupérer votre chien"
+                      placeholder="Adresse pour récupérer votre animal"
                       value={formData.address}
                       onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                       className="pl-10"
@@ -338,7 +338,7 @@ export const BookingSteps = ({
                 <CardDescription>
                   {isAuthenticated 
                     ? "Sélectionnez le chien pour cette prestation"
-                    : "Connectez-vous pour ajouter votre chien"
+                    : "Connectez-vous pour ajouter votre animal"
                   }
                 </CardDescription>
               </CardHeader>
@@ -494,7 +494,7 @@ export const BookingSteps = ({
                 <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
                   <Lock className="h-5 w-5 text-primary" />
                   <p className="text-sm text-muted-foreground">
-                    <strong className="text-foreground">Paiement escrow sécurisé</strong> - Les fonds sont libérés uniquement après confirmation du service
+                    <strong className="text-foreground">Paiement sécurisé</strong> - Les fonds sont bloqués jusqu'à confirmation du service
                   </p>
                 </div>
               </CardContent>

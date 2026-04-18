@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Shield, Camera, Lock, Award, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Shield, Camera, Lock, ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "./button";
 import { useNavigate } from "react-router-dom";
 
@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import verificationBadge from "@/assets/trust/verification-badge.jpg";
 import photoProof from "@/assets/homepage/photo-proof.jpg";
 import validationPayment from "@/assets/homepage/validation-payment.jpg";
-import familleHeureuse from "@/assets/testimonials/famille-heureuse-chien.jpg";
+
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -28,36 +28,28 @@ export const HomeIntroSection = () => {
   const features = [
     {
       icon: Shield,
-      title: "Promeneurs 100% Vérifiés",
-      description: "Chaque promeneur fournit une pièce d'identité, un casier judiciaire vierge et une assurance RC professionnelle. Notre équipe vérifie manuellement chaque candidature.",
+      title: "Accompagnateurs Certifiés",
+      description: "Chaque Accompagnateur est soigneusement sélectionné et vérifié par notre équipe. Seuls les profils de confiance sont acceptés sur la plateforme.",
       highlight: "Seuls 35% des candidats acceptés",
       image: verificationBadge,
       color: "from-primary/20 to-primary/10"
     },
     {
       icon: Lock,
-      title: "Paiement Escrow Sécurisé",
-      description: "Votre argent reste bloqué jusqu'à réception des preuves photo/vidéo de la prestation. Sans validation, vous êtes automatiquement remboursé.",
+      title: "Paiement en Attente",
+      description: "Le paiement est sécurisé et bloqué sécurisé jusqu’à votre validation à la fin du service. Le Propriétaire transmet son code unique pour libérer les fonds.",
       highlight: "Innovation unique en France",
       image: validationPayment,
       color: "from-accent/20 to-accent/10"
     },
     {
       icon: Camera,
-      title: "Preuves Photo Obligatoires",
-      description: "À chaque mission, le promeneur envoie des photos et vidéos de votre chien via notre plateforme sécurisée. Suivez les aventures de votre compagnon.",
-      highlight: "Transparence totale",
+      title: "Preuves Visuelles Recommandées",
+      description: "Les Accompagnateurs qui envoient photos et vidéos pendant la mission bénéficient d'un meilleur classement. La transparence est récompensée.",
+      highlight: "Surclassement garanti",
       image: photoProof,
       color: "from-primary/15 to-accent/15"
     },
-    {
-      icon: Award,
-      title: "Assurance Premium Incluse",
-      description: "Chaque promenade est couverte par une assurance jusqu'à 2 millions d'euros. En cas d'incident, notre équipe gère toutes les démarches.",
-      highlight: "Protection 100% sans frais",
-      image: familleHeureuse,
-      color: "from-accent/20 to-primary/10"
-    }
   ];
 
   return (
@@ -72,17 +64,14 @@ export const HomeIntroSection = () => {
           className="text-center mb-16"
         >
           <span className="inline-block bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
-            Pourquoi nous choisir
+            La Confiance Vérifiée
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground via-foreground to-primary bg-clip-text">
-            Pourquoi Choisir DogWalking pour Promener Votre Chien ?
+            Pourquoi choisir DogWalking pour l'accompagnement de vos animaux ?
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            DogWalking connecte les propriétaires de chiens avec des <strong className="text-foreground">promeneurs vérifiés</strong> dans 
-            toute la France. De <a href="/zones/paris" className="text-primary hover:underline font-medium">Paris</a> à 
-            <a href="/zones/lyon" className="text-primary hover:underline font-medium ml-1">Lyon</a>, de 
-            <a href="/zones/marseille" className="text-primary hover:underline font-medium ml-1">Marseille</a> à 
-            <a href="/zones/bordeaux" className="text-primary hover:underline font-medium ml-1">Bordeaux</a> : 
+            DogWalking connecte les <strong className="text-foreground">Propriétaires</strong> d'animaux avec des <strong className="text-foreground">Accompagnateurs Certifiés</strong> dans 
+            toute la France. De Paris à Lyon, de Marseille à Bordeaux : 
             trouvez un professionnel de confiance près de chez vous.
           </p>
         </motion.div>
@@ -93,21 +82,21 @@ export const HomeIntroSection = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-16"
+          className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16 items-stretch"
         >
           {features.map((feature, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              className="group relative bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="group relative bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col"
             >
               {/* Background gradient */}
               <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
               
-              <div className="relative flex flex-col lg:flex-row">
+              <div className="relative flex flex-col flex-1">
                 {/* Image */}
-                <div className="lg:w-2/5 h-48 lg:h-auto relative overflow-hidden">
+                <div className="h-48 relative overflow-hidden">
                   <motion.img
                     src={feature.image}
                     alt={feature.title}
@@ -115,11 +104,11 @@ export const HomeIntroSection = () => {
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.4 }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-card via-card/50 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
                 </div>
 
                 {/* Content */}
-                <div className="lg:w-3/5 p-6 lg:p-8 flex flex-col justify-center">
+                <div className="p-6 flex flex-col justify-between flex-1">
                   <div className="flex items-center gap-3 mb-4">
                     <motion.div 
                       className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center"
@@ -164,8 +153,8 @@ export const HomeIntroSection = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-              <div className="text-4xl lg:text-5xl font-bold mb-2">50 000+</div>
-              <div className="text-primary-foreground/80">Promenades réalisées</div>
+              <div className="text-4xl lg:text-5xl font-bold mb-2">2657+</div>
+              <div className="text-primary-foreground/80">Missions réalisées</div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -182,22 +171,22 @@ export const HomeIntroSection = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
-              <div className="text-4xl lg:text-5xl font-bold mb-2">2 000+</div>
-              <div className="text-primary-foreground/80">Promeneurs vérifiés</div>
+              <div className="text-4xl lg:text-5xl font-bold mb-2">1 500+</div>
+              <div className="text-primary-foreground/80">Accompagnateurs Certifiés</div>
             </motion.div>
           </div>
           
           <div className="relative text-center">
             <p className="text-lg text-primary-foreground/90 mb-6 max-w-2xl mx-auto">
-              Rejoignez les milliers de propriétaires qui nous font confiance et offrez à votre chien l'attention qu'il mérite.
+              Rejoignez les milliers de <strong className="text-white">Propriétaires</strong> qui nous font confiance et offrez à vos animaux l’attention qu’ils méritent.
             </p>
             <Button 
               size="lg" 
               variant="secondary"
-              onClick={() => navigate("/find-walkers")}
+              onClick={() => navigate("/walkers")}
               className="group"
             >
-              Trouver un promeneur
+              Voir les Accompagnateurs
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>

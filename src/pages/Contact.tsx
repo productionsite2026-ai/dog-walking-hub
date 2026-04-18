@@ -70,16 +70,16 @@ const Contact = () => {
 
   const faqItems = [
     {
-      question: "Comment trouver un promeneur près de chez moi ?",
-      answer: "Utilisez notre page 'Trouver un promeneur' en indiquant votre localisation. Nous vous proposerons les promeneurs vérifiés disponibles dans votre zone."
+      question: "Comment trouver un Accompagnateur près de chez moi ?",
+      answer: "Utilisez notre page 'Trouver un Accompagnateur' en indiquant votre localisation. Nous vous proposerons les Accompagnateurs vérifiés disponibles dans votre zone."
     },
     {
-      question: "Comment devenir promeneur DogWalking ?",
-      answer: "Inscrivez-vous via 'Devenir promeneur', complétez votre profil et soumettez vos documents pour vérification. Une fois validé, vous pourrez recevoir des demandes."
+      question: "Comment devenir Accompagnateur DogWalking ?",
+      answer: "Inscrivez-vous via 'Devenir Accompagnateur', complétez votre profil et soumettez vos documents pour vérification. Une fois validé, vous pourrez recevoir des demandes."
     },
     {
       question: "Le paiement est-il sécurisé ?",
-      answer: "Oui, nous utilisons un système de paiement escrow. Votre paiement est sécurisé et libéré au promeneur uniquement après validation de la promenade avec preuves photo."
+      answer: "Oui, nous utilisons un système de paiement sécurisé. Votre paiement est bloqué et libéré à l'Accompagnateur uniquement après validation de la promenade avec preuves photo."
     }
   ];
 
@@ -87,7 +87,7 @@ const Contact = () => {
     <div className="min-h-screen bg-background">
       <SEOHead
         title="Contact | DogWalking - Nous Contacter"
-        description="Contactez l'équipe DogWalking pour toute question sur nos services de promenade de chiens. Réponse sous 24h garantie."
+        description="Contactez l'équipe DogWalking pour toute question sur nos services de promenade de chiens. Réponse sous 48 h garantie."
         canonical="https://dogwalking.fr/contact"
       />
       <Header />
@@ -103,7 +103,7 @@ const Contact = () => {
             >
               <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6">
                 <MessageSquare className="h-4 w-4" />
-                <span className="text-sm font-medium">Réponse sous 24h</span>
+                <span className="text-sm font-medium">Réponse sous 48 h</span>
               </div>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Contactez-nous
@@ -293,12 +293,12 @@ const Contact = () => {
                 <div className="mt-8 space-y-4">
                   <Card className="bg-primary text-primary-foreground">
                     <CardContent className="pt-6">
-                      <h3 className="font-semibold mb-2">Vous êtes propriétaire ?</h3>
+                      <h3 className="font-semibold mb-2">Vous êtes Propriétaire ?</h3>
                       <p className="text-sm opacity-90 mb-4">
-                        Trouvez un promeneur vérifié près de chez vous en quelques clics.
+                        Trouvez un Accompagnateur vérifié près de chez vous en quelques clics.
                       </p>
                       <Button variant="secondary" asChild>
-                        <a href="/find-walkers">Trouver un promeneur</a>
+                        <a href="/find-walkers">Trouver un Accompagnateur</a>
                       </Button>
                     </CardContent>
                   </Card>
@@ -307,10 +307,10 @@ const Contact = () => {
                     <CardContent className="pt-6">
                       <h3 className="font-semibold mb-2">Vous aimez les chiens ?</h3>
                       <p className="text-sm text-muted-foreground mb-4">
-                        Rejoignez notre communauté de promeneurs et générez des revenus.
+                        Rejoignez notre communauté d'Accompagnateurs et générez des revenus.
                       </p>
                       <Button variant="outline" asChild>
-                        <a href="/walker/register">Devenir promeneur</a>
+                        <a href="/walker/register">Devenir Accompagnateur</a>
                       </Button>
                     </CardContent>
                   </Card>

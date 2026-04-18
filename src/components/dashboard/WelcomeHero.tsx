@@ -81,7 +81,7 @@ export const WelcomeHero = ({
             </div>
             <p className="text-muted-foreground">
               {userType === 'owner' 
-                ? 'Bienvenue sur votre espace propriétaire' 
+                ? 'Bienvenue sur votre espace Propriétaire' 
                 : 'Tableau de bord promeneur'}
             </p>
             {city && (

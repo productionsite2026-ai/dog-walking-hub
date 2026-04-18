@@ -68,7 +68,7 @@ const MyBookings = () => {
         const walker = walkerMap.get(booking.walker_id);
         return {
           ...booking,
-          walker_name: walker?.first_name || 'Promeneur',
+          walker_name: walker?.first_name || 'Accompagnateur Certifié',
           walker_city: walker?.city || ''
         };
       });

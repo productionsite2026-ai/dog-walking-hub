@@ -14,7 +14,7 @@ export const ProviderSection = ({ onViewRequests, requestCount = 0 }: ProviderSe
 
   const benefits = [
     { icon: Search, text: "Consultez les demandes en temps réel" },
-    { icon: MessageSquare, text: "Contactez directement les propriétaires" },
+    { icon: MessageSquare, text: "Contactez directement les Propriétaires" },
     { icon: Star, text: "Développez votre clientèle locale" },
   ];
 
@@ -35,7 +35,7 @@ export const ProviderSection = ({ onViewRequests, requestCount = 0 }: ProviderSe
                 Vous proposez des services pour animaux ?
               </h2>
               <p className="text-muted-foreground mb-6">
-                Consultez les demandes publiées par les propriétaires et répondez 
+                Consultez les demandes publiées par les Propriétaires et répondez 
                 aux annonces correspondant à vos disponibilités et à vos services.
               </p>
 
@@ -56,7 +56,7 @@ export const ProviderSection = ({ onViewRequests, requestCount = 0 }: ProviderSe
                   onClick={onViewRequests}
                 >
                   <Search className="h-5 w-5 mr-2" />
-                  Voir les demandes de propriétaires
+                  Voir les demandes de Propriétaires
                   {requestCount > 0 && (
                     <span className="ml-2 px-2 py-0.5 text-xs rounded-full bg-primary text-primary-foreground">
                       {requestCount}

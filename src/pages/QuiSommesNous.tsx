@@ -12,7 +12,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import teamImage from "@/assets/pages/equipe-dogwalking.jpg";
-import missionImage from "@/assets/trust/promeneur-verifie-badge.jpg";
+import missionImage from "@/assets/trust/Accompagnateur-verifie-badge.jpg";
 import { ExpertBio } from "@/components/ui/expert-bio";
 import { experts } from "@/data/expertsData";
 
@@ -22,12 +22,12 @@ const quiSommesNousFAQs = [
     answer: "DogWalking a été fondé en 2023 par une équipe de passionnés d'animaux et d'entrepreneurs tech. Notre mission était simple : révolutionner le pet-sitting en France en apportant la transparence et la sécurité qui manquaient cruellement au marché. Aujourd'hui, nous sommes fiers d'accompagner des milliers de familles."
   },
   {
-    question: "Comment DogWalking sélectionne-t-il ses promeneurs ?",
-    answer: "Chaque candidat promeneur passe par un processus de vérification rigoureux : vérification d'identité (CNI), contrôle du casier judiciaire, validation de l'assurance responsabilité civile, et entretien de motivation. Seuls 35% des candidats sont acceptés. Nous privilégions la qualité à la quantité pour garantir votre tranquillité."
+    question: "Comment DogWalking sélectionne-t-il ses Accompagnateurs ?",
+    answer: "Chaque candidat Accompagnateur passe par un processus de vérification rigoureux : vérification d'identité (CNI), contrôle du vérification approfondie, validation de la protection, et entretien de motivation. Seuls 35% des candidats sont acceptés. Nous privilégions la qualité à la quantité pour garantir votre tranquillité."
   },
   {
     question: "DogWalking est-il disponible dans ma ville ?",
-    answer: "DogWalking couvre l'ensemble du territoire français, avec une présence renforcée en Île-de-France, dans les grandes métropoles (Lyon, Marseille, Bordeaux, Toulouse, Nantes, Lille) et les régions densément peuplées. Nos promeneurs sont géolocalisés pour vous proposer les profils les plus proches de chez vous."
+    answer: "DogWalking couvre l'ensemble du territoire français, avec une présence renforcée en Île-de-France, dans les grandes métropoles (Lyon, Marseille, Bordeaux, Toulouse, Nantes, Lille) et les régions densément peuplées. Nos Accompagnateurs sont disponibles pour vous proposer les profils les plus proches de chez vous."
   },
   {
     question: "Comment contacter l'équipe DogWalking ?",
@@ -35,7 +35,7 @@ const quiSommesNousFAQs = [
   },
   {
     question: "Quels sont les engagements de DogWalking envers les animaux ?",
-    answer: "Le bien-être animal est au cœur de notre ADN. Nous imposons des limites strictes : maximum 3 chiens par promeneur, durées adaptées à chaque animal, interdiction de laisser un chien sans surveillance. Chaque prestation doit être documentée par photos et vidéos. En cas de maltraitance suspectée, le promeneur est immédiatement suspendu."
+    answer: "Le bien-être animal est au cœur de notre ADN. Nous imposons des limites strictes : maximum 3 chiens par Accompagnateur, durées adaptées à chaque animal, interdiction de laisser un chien sans surveillance. Chaque prestation doit être documentée par photos et vidéos. En cas de maltraitance suspectée, l'Accompagnateur est immédiatement suspendu."
   }
 ];
 
@@ -43,8 +43,8 @@ const QuiSommesNous = () => {
   const navigate = useNavigate();
 
   const stats = [
-    { value: "50 000+", label: "Promenades réalisées", icon: CheckCircle },
-    { value: "2 500+", label: "Promeneurs actifs", icon: Users },
+    { value: "50 000+", label: "Prestations réalisées", icon: CheckCircle },
+    { value: "2 500+", label: "Accompagnateurs actifs", icon: Users },
     { value: "4.9/5", label: "Note moyenne", icon: Star },
     { value: "50+", label: "Villes couvertes", icon: MapPin }
   ];
@@ -53,12 +53,12 @@ const QuiSommesNous = () => {
     {
       icon: Shield,
       title: "Sécurité Absolue",
-      description: "La protection de votre animal et de vos données est notre priorité. Vérifications rigoureuses, paiement escrow, assurance premium incluse."
+      description: "La protection de votre animal et de vos données est notre priorité. Vérifications rigoureuses, paiement sécurisé, paiement sécurisé inclus."
     },
     {
       icon: Heart,
       title: "Passion Animale",
-      description: "Nous ne recrutons que des passionnés. Chaque promeneur partage notre amour inconditionnel pour les animaux de compagnie."
+      description: "Nous ne recrutons que des passionnés. Chaque Accompagnateur partage notre amour inconditionnel pour les animaux de compagnie."
     },
     {
       icon: Eye,
@@ -75,8 +75,8 @@ const QuiSommesNous = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Qui Sommes-Nous | L'Équipe DogWalking | Promeneurs Vérifiés France"
-        description="Découvrez l'équipe DogWalking, la plateforme n°1 de promenade de chiens en France. Notre mission : connecter les propriétaires avec des promeneurs passionnés et vérifiés."
+        title="Qui Sommes-Nous | L'Équipe DogWalking | Accompagnateurs Certifiés France"
+        description="Découvrez l'équipe DogWalking, la plateforme n°1 de promenade de chiens en France. Notre mission : connecter les Propriétaires avec des Accompagnateurs passionnés et vérifiés."
         canonical="https://dogwalking.fr/qui-sommes-nous"
         image={teamImage}
       />
@@ -103,11 +103,11 @@ const QuiSommesNous = () => {
                 <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
                   Nous sommes une équipe de passionnés d'animaux et de technologie, unis par une mission commune : 
                   offrir aux chiens de France les meilleures promenades possibles, en toute sécurité. Depuis 2023, 
-                  nous révolutionnons le pet-sitting avec transparence, innovation et bienveillance.
+                  nous révolutionnons l'accompagnement animal avec transparence, innovation et bienveillance.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Button size="lg" onClick={() => navigate("/walkers")}>
-                    Découvrir nos promeneurs
+                    Découvrir nos Accompagnateurs
                   </Button>
                   <Button size="lg" variant="outline" onClick={() => navigate("/walker/register")}>
                     Rejoindre l'équipe
@@ -161,7 +161,7 @@ const QuiSommesNous = () => {
               <div>
                 <img 
                   src={missionImage} 
-                  alt="Badge de vérification DogWalking pour promeneurs certifiés" 
+                  alt="Badge de vérification DogWalking pour Accompagnateurs certifiés" 
                   className="rounded-2xl shadow-lg w-full object-cover aspect-square"
                 />
               </div>
@@ -171,25 +171,25 @@ const QuiSommesNous = () => {
                   Notre Mission
                 </Badge>
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                  Révolutionner le Pet-Sitting en France
+                  Révolutionner l'Accompagnement Animal en France
                 </h2>
                 <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                  Avant DogWalking, trouver un promeneur de confiance relevait du parcours du combattant. 
-                  Annonces douteuses, absence de vérifications, paiements hasardeux... Les propriétaires 
+                  Avant DogWalking, trouver un Accompagnateur de confiance relevait du parcours du combattant. 
+                  Annonces douteuses, absence de vérifications, paiements hasardeux... Les Propriétaires 
                   de chiens méritaient mieux. Nous avons créé la solution.
                 </p>
                 <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
                   Notre plateforme combine la puissance de la technologie avec l'expertise humaine. 
-                  Chaque promeneur est soigneusement sélectionné, chaque prestation est documentée, 
+                  Chaque Accompagnateur est soigneusement sélectionné, chaque prestation est documentée, 
                   chaque paiement est sécurisé. Nous avons éliminé toutes les sources d'inquiétude 
                   pour que vous puissiez confier votre compagnon en toute sérénité.
                 </p>
                 <div className="space-y-3">
                   {[
-                    "Vérification d'identité et casier judiciaire",
-                    "Assurance responsabilité civile obligatoire",
+                    "Vérification d'identité approfondie",
+                    "Vérification d'identité obligatoire",
                     "Preuves photo/vidéo à chaque mission",
-                    "Paiement escrow 100% sécurisé"
+                    "Paiement 100% sécurisé"
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-3">
                       <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
@@ -256,7 +256,7 @@ const QuiSommesNous = () => {
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 De Paris à Marseille, de Lyon à Bordeaux, DogWalking déploie son réseau 
-                de promeneurs vérifiés sur l'ensemble du territoire. Où que vous soyez, 
+                d'Accompagnateurs vérifiés sur l'ensemble du territoire. Où que vous soyez, 
                 un professionnel qualifié est proche de chez vous.
               </p>
             </div>
@@ -265,7 +265,7 @@ const QuiSommesNous = () => {
               <Card className="text-center">
                 <CardContent className="p-6">
                   <p className="text-4xl font-bold text-primary mb-2">Paris & IDF</p>
-                  <p className="text-muted-foreground">Couverture dense avec plus de 800 promeneurs actifs</p>
+                  <p className="text-muted-foreground">Couverture dense avec plus de 800 Accompagnateurs actifs</p>
                 </CardContent>
               </Card>
               <Card className="text-center">
@@ -343,15 +343,15 @@ const QuiSommesNous = () => {
                   Rejoignez la Communauté DogWalking
                 </h2>
                 <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-                  Que vous soyez propriétaire de chien ou passionné souhaitant devenir promeneur, 
+                  Que vous soyez Propriétaire de chien ou passionné souhaitant devenir Accompagnateur, 
                   faites partie de l'aventure DogWalking dès aujourd'hui.
                 </p>
                 <div className="flex flex-wrap gap-4 justify-center">
                   <Button size="lg" variant="secondary" onClick={() => navigate("/walkers")}>
-                    Trouver un promeneur
+                    Trouver un Accompagnateur
                   </Button>
                   <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" onClick={() => navigate("/walker/register")}>
-                    Devenir promeneur
+                    Devenir Accompagnateur
                   </Button>
                 </div>
               </CardContent>

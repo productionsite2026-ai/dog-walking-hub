@@ -48,8 +48,8 @@ export const WelcomeCard = ({
 
   const userTypeLabel = {
     owner: 'Propriétaire',
-    walker: 'Promeneur',
-    both: 'Propriétaire & Promeneur'
+    walker: 'Accompagnateur Certifié',
+    both: 'Propriétaire & Accompagnateur Certifié'
   };
 
   return (

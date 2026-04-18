@@ -23,7 +23,7 @@ const ActiveWalk = ({ dogName, dogPhoto, walkerName, duration, distance = 1.2, s
         <CardContent className="p-0">
           <div className="p-4">
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-lg font-bold">Balade en cours</h3>
+              <h3 className="text-lg font-bold">Mission en cours (Outil GO)</h3>
               <Badge className="bg-accent text-accent-foreground">
                 En cours
               </Badge>
@@ -36,7 +36,7 @@ const ActiveWalk = ({ dogName, dogPhoto, walkerName, duration, distance = 1.2, s
                 <MapPin className="h-8 w-8 text-primary" />
               </div>
               
-              {/* Photo du chien */}
+              {/* Photo de l'animal */}
               {dogPhoto ? (
                 <img 
                   src={dogPhoto} 
@@ -45,7 +45,7 @@ const ActiveWalk = ({ dogName, dogPhoto, walkerName, duration, distance = 1.2, s
                 />
               ) : (
                 <div className="aspect-square rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-4xl">
-                  🐕
+                  🐾
                 </div>
               )}
             </div>

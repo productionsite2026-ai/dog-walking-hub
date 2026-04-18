@@ -262,7 +262,7 @@ const Blog = () => {
                     <h3 className="text-2xl md:text-3xl font-bold mb-2">Restez informé</h3>
                     <p className="text-muted-foreground mb-6">
                       Recevez nos meilleurs conseils, guides exclusifs et actualités directement dans votre boîte mail. 
-                      Rejoignez +10 000 propriétaires de chiens passionnés !
+                      Rejoignez +10 000 Propriétaires de chiens passionnés !
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto md:mx-0">
                       <Input placeholder="Votre email" type="email" className="flex-1 h-12 rounded-xl" />

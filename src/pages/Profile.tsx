@@ -176,7 +176,7 @@ const Profile = () => {
                     <p className="text-muted-foreground">{profile.email}</p>
                     <div className="flex flex-wrap justify-center md:justify-start gap-2 mt-3">
                       <Badge variant={profile.user_type === 'walker' ? 'default' : 'secondary'}>
-                        {profile.user_type === 'walker' ? 'Promeneur' : 'Propriétaire'}
+                        {profile.user_type === 'walker' ? 'Accompagnateur Certifié' : 'Propriétaire'}
                       </Badge>
                       {profile.account_verified && (
                         <Badge variant="outline" className="text-primary">

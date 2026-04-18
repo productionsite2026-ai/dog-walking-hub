@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { SEOHead } from "@/components/seo/SEOHead";
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -142,7 +143,7 @@ const Auth = () => {
       toast({ title: "Erreur d'inscription", description: error.message.includes("already registered") ? "Cet email est déjà utilisé." : error.message, variant: "destructive" });
       setLoading(false);
     } else {
-      toast({ title: "Inscription réussie !", description: `Bienvenue en tant que ${selectedUserType === 'owner' ? 'propriétaire' : 'promeneur'} !` });
+      toast({ title: "Inscription réussie !", description: `Bienvenue en tant que ${selectedUserType === 'owner' ? 'Propriétaire' : 'promeneur'} !` });
       navigate(selectedUserType === 'walker' ? '/walker/dashboard' : '/dashboard');
     }
   };
@@ -164,8 +165,8 @@ const Auth = () => {
   };
 
   const benefits = [
-    { icon: Shield, text: "Promeneurs 100% vérifiés" },
-    { icon: CheckCircle, text: "Paiement sécurisé escrow" },
+    { icon: Shield, text: "Accompagnateurs Certifiés 100% vérifiés" },
+    { icon: CheckCircle, text: "Paiement sécurisé" },
     { icon: Star, text: "Preuves photo obligatoires" },
   ];
 
@@ -178,7 +179,7 @@ const Auth = () => {
       description: "Trouvez un promeneur de confiance pour votre compagnon",
       features: [
         { icon: Calendar, text: "Réservez des promenades" },
-        { icon: Shield, text: "Promeneurs vérifiés & assurés" },
+        { icon: Shield, text: "Accompagnateurs Certifiés & assurés" },
         { icon: MessageCircle, text: "Suivi photo en temps réel" },
         { icon: Star, text: "Avis et notes" },
       ],
@@ -191,13 +192,13 @@ const Auth = () => {
     {
       type: 'walker' as UserType,
       icon: Dog,
-      title: "Promeneur",
+      title: "Accompagnateur Certifié",
       subtitle: "Je promène des chiens",
       description: "Proposez vos services et gagnez de l'argent",
       features: [
         { icon: Wallet, text: "Gagnez jusqu'à 25€/h" },
         { icon: Calendar, text: "Gérez vos disponibilités" },
-        { icon: Shield, text: "Assurance incluse" },
+        { icon: Shield, text: "Protection incluse" },
         { icon: Star, text: "Construisez votre réputation" },
       ],
       gradient: "from-stat-green/20 via-stat-green/10 to-stat-green/5",
@@ -210,6 +211,12 @@ const Auth = () => {
 
   return (
     <>
+      <SEOHead
+        title="Connexion & Inscription | DogWalking"
+        description="Connectez-vous ou créez votre compte DogWalking. Propriétaire ou Accompagnateur Certifié, rejoignez la plateforme n°1 de promenade et garde d'animaux en France."
+        canonical="https://dogwalking.fr/auth"
+        noindex={true}
+      />
       <RoleChoiceDialog open={showRoleChoice} onChoice={handleRoleChoice} />
       <div className="min-h-screen flex">
         {/* Left side - Image & Benefits (desktop) */}
@@ -221,7 +228,7 @@ const Auth = () => {
               <Badge className="mb-4 bg-white/20 text-white border-white/30">Plateforme #1 en France</Badge>
               <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4">Rejoignez la communauté DogWalking</h1>
               <p className="text-lg text-white/80 mb-8 max-w-md">
-                Des milliers de propriétaires font confiance à nos promeneurs vérifiés.
+                Des milliers de Propriétaires font confiance à nos promeneurs vérifiés.
               </p>
               <div className="space-y-4">
                 {benefits.map((b, i) => (
@@ -323,7 +330,7 @@ const Auth = () => {
                       {selectedUserType === 'owner' ? <Heart className="h-4 w-4 text-heart" /> : <Dog className="h-4 w-4 text-stat-green" />}
                     </div>
                     <span className="text-sm font-semibold">
-                      Espace {selectedUserType === 'owner' ? 'Propriétaire' : 'Promeneur'}
+                      Espace {selectedUserType === 'owner' ? 'Propriétaire' : 'Accompagnateur Certifié'}
                     </span>
                     <CheckCircle className={`h-4 w-4 ${selectedUserType === 'owner' ? 'text-heart' : 'text-stat-green'}`} />
                   </div>

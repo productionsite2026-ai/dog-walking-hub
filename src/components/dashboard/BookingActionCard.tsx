@@ -100,7 +100,7 @@ export const BookingActionCard = ({
     } else {
       toast({
         title: "Preuve envoyée",
-        description: "Le propriétaire sera notifié.",
+        description: "Le Propriétaire sera notifié.",
       });
     }
   };

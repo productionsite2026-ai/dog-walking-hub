@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Slider } from "@/components/ui/slider";
 import { Badge } from "@/components/ui/badge";
-import { Euro, Clock, Dog, MapPin, Calculator, Sparkles, Info } from "lucide-react";
+import { Euro, Clock, Dog, MapPin, Calculator, Sparkles, Info, ShieldCheck } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
@@ -31,9 +31,6 @@ const PricingSettings = ({ walkerProfile, onUpdate }: PricingSettingsProps) => {
   const [maxDogs, setMaxDogs] = useState(walkerProfile?.max_dogs || 3);
   const [dynamicPricing, setDynamicPricing] = useState(false);
   const [weekendSupplement, setWeekendSupplement] = useState(20);
-
-  const commission = 0.13; // 13% commission
-  const netRate = hourlyRate * (1 - commission);
 
   const handleSave = async () => {
     setLoading(true);
@@ -92,7 +89,7 @@ const PricingSettings = ({ walkerProfile, onUpdate }: PricingSettingsProps) => {
                     <Info className="h-4 w-4 text-muted-foreground" />
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p>Commission DogWalking: 13%</p>
+                    <p>Transparence totale sur vos revenus</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
@@ -124,10 +121,10 @@ const PricingSettings = ({ walkerProfile, onUpdate }: PricingSettingsProps) => {
             </div>
             <div className="flex items-center justify-between p-4 rounded-xl bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-900">
               <div className="flex items-center gap-2">
-                <Calculator className="h-5 w-5 text-green-600" />
-                <span className="text-sm">Vous recevez</span>
+                <ShieldCheck className="h-5 w-5 text-green-600" />
+                <span className="text-sm">Vous recevez l'intégralité</span>
               </div>
-              <span className="text-2xl font-bold text-green-600">{netRate.toFixed(2)}€/h</span>
+              <span className="text-2xl font-bold text-green-600">{hourlyRate}€/h</span>
             </div>
           </div>
 

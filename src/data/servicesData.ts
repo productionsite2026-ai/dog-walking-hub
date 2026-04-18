@@ -40,6 +40,10 @@ export interface ServiceData {
   image: string;
   images: { src: string; alt: string }[];
   minPrice: number;
+  priceLabel?: string;
+  galleryImages?: string[];
+  subDescription?: string;
+  benefits?: { title: string; description: string }[];
   duration: string;
   description: {
     intro: string;
@@ -56,7 +60,7 @@ export interface ServiceData {
   };
   expertiseAdvantages: {
     experience: string;
-    insurance: string;
+    protection: string;
     method: string;
     trust: string;
   };
@@ -74,411 +78,463 @@ export const servicesData: Record<string, ServiceData> = {
     id: "promenade",
     slug: "promenade-chien",
     title: "Promenade de chien",
-    metaTitle: "Promenade de chien | Service fiable partout en France | DogWalking",
-    metaDescription: "Trouvez un promeneur de chien de confiance près de chez vous. Réservation simple et rapide. Promeneurs vérifiés, preuves photo obligatoires et paiement sécurisé.",
-    h1: "Promenade de chien – Un service fiable près de chez vous",
-    heroDescription: "Offrez à votre chien l'exercice et la stimulation dont il a besoin avec nos promeneurs professionnels vérifiés, disponibles partout en France.",
-    localZoneMention: "Service disponible dans votre ville et ses environs",
+    metaTitle: "Promenade de chien | Accompagnateurs Certifiés | DogWalking",
+    metaDescription: "Trouvez un Accompagnateur Certifié DogWalking pour la promenade de votre chien. Preuves visuelles obligatoires, paiement sécurisé et code unique.",
+    h1: "Promenade de chien – Accompagnateurs Certifiés DogWalking",
+    heroDescription: "Offrez à votre chien l'exercice et la stimulation dont il a besoin avec nos Accompagnateurs Certifiés, sélectionnés rigoureusement pour leur expertise.",
+    localZoneMention: "Service disponible partout en France",
     heroImage: promenadeHero,
     image: promenadeParc,
     images: [
-      { src: promenadeParc, alt: "Promeneur professionnel avec un golden retriever dans un parc urbain ensoleillé" },
-      { src: promenadeForet, alt: "Promenade de deux chiens sur un sentier forestier en automne" },
-      { src: promenadeLiberte, alt: "Labrador heureux courant librement dans un champ verdoyant" }
+      { src: promenadeParc, alt: "Accompagnateur Certifié DogWalking avec un golden retriever dans un parc urbain" },
+      { src: promenadeForet, alt: "Promenade de deux chiens par un Accompagnateur DogWalking sur un sentier forestier" },
+      { src: promenadeLiberte, alt: "Chien heureux profitant d'une promenade DogWalking en pleine nature" }
     ],
     minPrice: 8,
-    duration: "30 min - 2h",
+    priceLabel: "À partir de",
+    duration: "Durée libre",
     description: {
-      intro: "La promenade régulière est un pilier fondamental du bien-être physique et mental de votre chien. Nos promeneurs professionnels comprennent l'importance capitale de cette activité quotidienne pour l'équilibre de votre compagnon. Chaque sortie est conçue pour répondre aux besoins spécifiques de votre animal, qu'il s'agisse d'un chiot débordant d'énergie, d'un adulte ayant besoin d'exercice soutenu, ou d'un senior nécessitant des promenades adaptées à son rythme. Notre réseau de promeneurs expérimentés et passionnés s'engage à traiter votre chien avec le même soin et la même attention que s'il s'agissait du leur, garantissant ainsi une expérience positive à chaque sortie.",
-      forWhom: "Notre service de promenade de chien s'adresse à tous les propriétaires soucieux du bien-être de leur animal. Les professionnels aux horaires chargés trouvent en nous une solution fiable pour que leur compagnon ne reste jamais trop longtemps seul. Les personnes à mobilité réduite ou les seniors peuvent confier leurs sorties quotidiennes à nos promeneurs de confiance. Les propriétaires de chiens énergiques comme les Bergers Australiens, Border Collies ou Jack Russells apprécient notre capacité à dépenser efficacement leur animal. Les nouveaux propriétaires de chiots bénéficient de notre expertise pour socialiser leur jeune compagnon dans un environnement contrôlé et sécurisé.",
-      problemsSolved: "Le manque d'exercice est l'une des principales causes de troubles comportementaux chez le chien : aboiements excessifs, destructions, anxiété, surpoids. Notre service répond directement à ces problématiques en offrant des sorties régulières et adaptées. Les chiens qui restent seuls pendant les heures de travail peuvent développer une anxiété de séparation que nos promenades aident à atténuer. L'ennui, source de comportements destructeurs, est combattu par la stimulation que procure chaque sortie. Les problèmes de socialisation sont également adressés grâce à nos promenades collectives où votre chien apprend à interagir positivement avec ses congénères.",
-      benefits: "Chaque promenade apporte de nombreux bénéfices à votre chien. L'exercice physique adapté maintient son poids de forme et renforce sa musculature. La stimulation mentale par la découverte de nouveaux environnements, odeurs et rencontres enrichit sa vie quotidienne. La socialisation avec d'autres chiens développe ses compétences sociales et réduit les comportements réactifs. Le renforcement du lien de confiance avec les humains améliore son équilibre émotionnel. Un chien bien promené est un chien plus calme à la maison, plus facile à vivre, et globalement plus heureux."
+      intro: "La promenade régulière est essentielle pour l'équilibre physique et mental de votre chien. Chez DogWalking, nos Accompagnateurs Certifiés ne se contentent pas de sortir votre animal : ils veillent à sa stimulation et à son bien-être tout au long de la mission. Chaque sortie est personnalisée selon les besoins de votre compagnon, qu'il s'agisse d'une dépense d'énergie intense ou d'une marche tranquille pour les seniors. Notre approche repose sur une confiance vérifiée et une transparence totale, garantissant une expérience sereine pour le Propriétaire et joyeuse pour le chien.",
+      forWhom: "Ce service s'adresse aux Propriétaires qui souhaitent offrir le meilleur à leur animal malgré un emploi du temps chargé, une mobilité réduite ou un besoin spécifique de socialisation. Que vous ayez un chiot en plein apprentissage ou un chien de travail nécessitant une activité soutenue, nos Accompagnateurs Certifiés s'adaptent à chaque profil. C'est la solution idéale pour éviter l'isolement prolongé de votre compagnon et lui garantir une coupure bénéfique dans sa journée.",
+      problemsSolved: "DogWalking apporte une réponse concrète aux troubles liés au manque d'activité : destructions, aboiements intempestifs ou anxiété de séparation. En confiant votre chien à un Accompagnateur Certifié, vous éliminez le stress de la solitude. Notre système de Preuve Visuelle Obligatoire lève toute incertitude : vous recevez une photo ou vidéo dès la prise en charge de l'animal, vous assurant que la mission est réalisée avec professionnalisme.",
+      benefits: "Les bénéfices sont immédiats : un chien plus calme, mieux socialisé et en meilleure santé. L'exercice régulier prévient le surpoids et renforce le système cardiovasculaire. Mentalement, la découverte de nouvelles odeurs et de nouveaux environnements apaise l'animal. Grâce au système de paiement sécurisé, vous avez la protection d'un service de qualité : les fonds ne sont libérés que lorsque vous communiquez votre code unique à l'Accompagnateur en fin de mission."
     },
     howItWorks: {
-      title: "Comment fonctionne notre service de promenade de chien",
-      intro: "Notre processus a été conçu pour garantir une expérience fluide, sécurisée et transparente pour vous comme pour votre animal. De la réservation jusqu'au retour de votre chien, chaque étape est pensée pour votre tranquillité d'esprit.",
+      title: "Comment fonctionne DogWalking",
+      intro: "Un processus structuré pour garantir que chaque prestation payée est une prestation réalisée, en toute sécurité.",
       steps: [
-        { title: "Choisissez votre promeneur", description: "Parcourez les profils détaillés de nos promeneurs vérifiés. Consultez leurs avis, leurs spécialisations (chiens réactifs, chiots, grands chiens...), leurs disponibilités et leur proximité géographique. Chaque profil affiche les certifications, l'expérience et les photos des précédentes promenades." },
-        { title: "Réservez en quelques clics", description: "Sélectionnez la durée souhaitée (30 minutes, 1 heure ou 2 heures), l'heure de prise en charge et indiquez les besoins spécifiques de votre chien : niveau d'énergie, allergies, comportements particuliers, commandes connues." },
-        { title: "Rencontre préalable", description: "Nous recommandons une première rencontre entre votre chien et le promeneur pour établir la confiance et vérifier la compatibilité. C'est l'occasion de remettre les clés et de partager les dernières consignes." },
-        { title: "Suivez la promenade en temps réel", description: "Pendant la sortie, recevez des photos et mises à jour. Notre système de suivi GPS vous permet de voir le parcours emprunté. À la fin de chaque promenade, un compte-rendu détaillé vous est envoyé." },
-        { title: "Validez et laissez un avis", description: "Une fois la promenade terminée, validez le service. Le paiement sécurisé n'est débloqué qu'après votre confirmation. Partagez votre expérience pour aider la communauté." }
+        { title: "Recherche & Contact", description: "Trouvez un Accompagnateur Certifié près de chez vous. Échangez via nos messages pré-enregistrés pour définir vos besoins initiaux en toute sécurité." },
+        { title: "Réservation & Paiement en Attente", description: "Validez la demande et bloquez les fonds sur la plateforme. Votre paiement est sécurisé et vous recevez un code unique de confirmation." },
+        { title: "Organisation Logistique", description: "Une fois les fonds sécurisés, la messagerie instantanée complète est débloquée pour organiser les détails de la rencontre et de la promenade." },
+        { title: "Preuves Visuelles", description: "L'Accompagnateur envoie obligatoirement une photo ou vidéo dès la prise en charge de votre chien, puis une autre à la fin de la mission." },
+        { title: "Déblocage du Paiement", description: "En fin de mission, communiquez votre code unique à l'Accompagnateur. Sa saisie sur son dashboard libère les fonds et valide la prestation." }
       ],
-      safety: "La sécurité de votre chien est notre priorité absolue. Tous nos promeneurs sont formés aux gestes d'urgence canine et disposent d'une trousse de premiers secours. Les promenades sont adaptées aux conditions météorologiques et à l'état de fatigue de l'animal. En cas de problème, notre équipe support est disponible 7j/7 pour intervenir rapidement.",
-      dogWelfare: "Le bien-être animal guide chaque décision. Nous limitons le nombre de chiens par promenade collective pour garantir une attention suffisante à chacun. Les chiens sont toujours tenus en laisse dans les espaces non sécurisés. Nous respectons le rythme de chaque animal et prévoyons des pauses régulières pour l'hydratation, surtout en période de chaleur."
+      safety: "La sécurité repose sur notre système de paiement sécurisé : aucun paiement n'est versé sans votre code unique. De plus, chaque Accompagnateur est rigoureusement sélectionné (CNI).",
+      dogWelfare: "Le bien-être est assuré par l'envoi systématique de preuves visuelles. Pas de GPS intrusif, mais un contact humain et des images concrètes de votre chien heureux et en sécurité."
     },
     expertiseAdvantages: {
-      experience: "Nos promeneurs cumulent en moyenne plus de 3 ans d'expérience avec les chiens. Beaucoup sont d'anciens éducateurs canins, vétérinaires, ou professionnels du monde animal. Cette expertise leur permet de gérer toutes les situations : chiens craintifs, réactifs, fugueurs ou simplement débordants d'énergie.",
-      insurance: "Chaque promeneur dispose d'une assurance responsabilité civile professionnelle couvrant tous les incidents potentiels. En cas d'accident, de blessure ou de dommage, vous êtes protégé. Notre système de paiement escrow garantit également que vous ne payez qu'une fois entièrement satisfait du service.",
-      method: "Notre méthode repose sur le renforcement positif et le respect du rythme de chaque animal. Pas de colliers étrangleurs, pas de méthodes coercitives. Chaque chien est traité avec douceur et encouragements. Nous croyons fermement que la confiance se construit par la bienveillance.",
-      trust: "La confiance est le fondement de notre service. Vérification d'identité par CNI, extrait de casier judiciaire, références professionnelles : chaque promeneur passe par un processus de validation rigoureux. Les avis vérifiés des autres propriétaires vous permettent de faire un choix éclairé."
+      experience: "Seuls 35% des candidats sont acceptés sur DogWalking. Chaque Accompagnateur Certifié justifie d'une expérience solide et d'une passion vérifiée pour le bien-être animal.",
+      protection: "Chaque mission est couverte par une protection professionnelle. En cas d'imprévu, DogWalking assure la médiation et la sécurité de votre compagnon.",
+      method: "Nous privilégions la Preuve Visuelle à la géolocalisation. Vous voyez votre chien en action, ce qui garantit la réalité du service bien mieux qu'un simple point sur une carte.",
+      trust: "La confiance est vérifiée manuellement : CNI,  et contrôle des formations sont les piliers de notre processus de sélection."
     },
     advantages: [
-      "Exercice physique adapté au rythme et à l'âge de votre chien",
-      "Dépense d'énergie optimale pour un chien plus calme et équilibré à la maison",
-      "Socialisation encadrée avec d'autres chiens lors des promenades collectives",
-      "Stimulation mentale enrichissante grâce à la découverte de nouveaux parcours et environnements",
-      "Preuves photo et compte-rendu détaillé envoyés après chaque sortie",
-      "Promeneurs rigoureusement vérifiés : CNI, casier judiciaire, assurance professionnelle",
-      "Suivi GPS en temps réel pour suivre le parcours de votre chien",
-      "Paiement sécurisé avec système escrow : vous ne payez qu'après validation"
+      "Accompagnateurs Certifiés rigoureusement sélectionnés (taux d'acceptation de 35%)",
+      "Système de paiement sécurisé : zéro risque pour le Propriétaire",
+      "Déblocage des fonds par code unique détenu par le Propriétaire",
+      "Preuves visuelles (photos/vidéos) obligatoires à chaque étape de la mission",
+      "Communication sécurisée avec messagerie débloquée après réservation",
+      "Tarifs libres fixés par les Accompagnateurs pour une flexibilité maximale",
+      "Protection professionnelle incluse pour chaque prestation",
+      "Gestion simplifiée via votre Dashboard Propriétaire dédié"
     ],
     localAvailability: {
-      mainCity: "Notre réseau de promeneurs couvre l'ensemble du territoire français, des grandes métropoles aux villes moyennes.",
-      surroundingAreas: "Que vous habitiez en centre-ville ou en périphérie, nos promeneurs se déplacent jusqu'à chez vous. Les zones rurales et semi-rurales sont également desservies par notre réseau en constante expansion.",
-      coverage: "Actuellement présents dans plus de 500 communes, nous élargissons continuellement notre couverture géographique pour répondre à la demande croissante des propriétaires de chiens partout en France."
+      mainCity: "Notre réseau d'Accompagnateurs Certifiés couvre l'ensemble du territoire français.",
+      surroundingAreas: "Que vous soyez en centre-ville ou en périphérie, trouvez un Accompagnateur disponible près de chez vous.",
+      coverage: "Plus de 500 communes déjà desservies par DogWalking."
     },
     faq: [
-      { question: "Qui sont les promeneurs DogWalking ?", answer: "Nos promeneurs sont des passionnés d'animaux rigoureusement sélectionnés. Chaque candidat passe par une vérification d'identité complète (CNI), un contrôle de casier judiciaire, et doit fournir une attestation d'assurance responsabilité civile professionnelle. Nous vérifions également leurs références et leur expérience avec les chiens. Seuls 20% des candidats sont acceptés après notre processus de sélection." },
-      { question: "Puis-je choisir la durée de la promenade ?", answer: "Absolument ! Nous proposons trois durées de promenade pour s'adapter aux besoins de votre chien. La promenade de 30 minutes convient aux chiens calmes ou pour une sortie hygiénique. La promenade d'1 heure est notre format le plus populaire, offrant un bon équilibre entre exercice et stimulation. La promenade de 2 heures est idéale pour les chiens très énergiques nécessitant une dépense importante." },
-      { question: "Que se passe-t-il en cas d'annulation ?", answer: "Nous comprenons que les imprévus arrivent. Vous pouvez annuler gratuitement jusqu'à 24 heures avant la promenade prévue. Les annulations entre 24h et 2h avant entraînent des frais de 50% du montant. Les annulations de dernière minute (moins de 2h) ou les absences sont facturées à 100%. En cas d'urgence médicale justifiée, contactez notre support pour un traitement au cas par cas." },
-      { question: "Mon chien est-il assuré pendant la promenade ?", answer: "Oui, votre chien est couvert pendant toute la durée de la prestation. Tous nos promeneurs disposent d'une assurance responsabilité civile professionnelle qui couvre les dommages potentiels, les blessures accidentelles et les incidents impliquant des tiers. De plus, notre système de paiement escrow vous protège financièrement : vous ne payez qu'une fois satisfait du service rendu." },
-      { question: "Comment se passe la remise des clés ?", answer: "Plusieurs options s'offrent à vous pour la remise des clés. La solution la plus courante est une remise en main propre lors de la première rencontre avec le promeneur. Vous pouvez également utiliser une boîte à clés sécurisée à code ou un système de digicode si votre immeuble le permet. Nous recommandons fortement un premier rendez-vous de présentation pour que votre chien et le promeneur fassent connaissance." },
-      { question: "Les promenades collectives sont-elles sécurisées ?", answer: "Nos promenades collectives sont limitées à un maximum de 4 chiens par promeneur pour garantir une attention suffisante à chaque animal. Avant d'intégrer une promenade collective, nous vérifions que votre chien est sociable et compatible avec le groupe existant. Les chiens réactifs ou nécessitant une attention particulière sont orientés vers des promenades individuelles." },
-      { question: "Que faire si mon chien a des besoins médicaux ?", answer: "Nos promeneurs sont formés pour administrer des médicaments simples si vous fournissez des instructions claires et les médicaments. Pour les chiens sous traitement régulier, nous notons toutes les particularités dans le profil de votre animal. En cas de problème de santé pendant la promenade, le promeneur contacte immédiatement notre équipe et peut se rendre chez un vétérinaire si nécessaire." },
-      { question: "Comment puis-je suivre mon chien pendant la promenade ?", answer: "Notre application vous permet de suivre le parcours de votre chien en temps réel grâce au GPS. Vous recevez également des photos pendant la promenade et un compte-rendu complet à la fin. Ce compte-rendu inclut le parcours effectué, les observations du promeneur, et toute information pertinente sur le comportement de votre chien." }
+      { question: "Qui sont les Accompagnateurs DogWalking ?", answer: "Ce sont des prestataires certifiés ayant passé un processus de sélection manuel rigoureux. Nous vérifions leur identité (CNI), leur  et leurs compétences. Seuls 35% des candidats sont retenus pour garantir un haut niveau de confiance." },
+      { question: "Comment fonctionne le code unique de paiement ?", answer: "Lors de la réservation, vous bloquez les fonds et recevez un code secret. À la fin de la promenade, si tout s'est bien passé, vous donnez ce code à l'Accompagnateur. C'est la saisie de ce code par ses soins qui déclenche le versement de son paiement." },
+      { question: "Pourquoi n'y a-t-il pas de suivi GPS ?", answer: "Le GPS est souvent imprécis et intrusif. DogWalking privilégie la Preuve Visuelle : l'Accompagnateur doit vous envoyer une photo ou vidéo au début et à la fin de la mission. C'est la preuve irréfutable que votre chien a bien été pris en charge." },
+      { question: "Quelles sont les conditions d'annulation ?", answer: "Vous pouvez annuler une réservation jusqu'à 3 heures avant le début de la mission. Au-delà de ce délai, les fonds bloqués peuvent être retenus selon les conditions de la plateforme." },
+      { question: "Comment contacter l'Accompagnateur ?", answer: "Avant le blocage du paiement, vous communiquez via des messages pré-enregistrés pour protéger votre vie privée. Une fois la réservation validée et les fonds sécurisés, la messagerie instantanée complète est débloquée." }
     ]
   },
   "visite-domicile": {
     id: "visite_domicile",
     slug: "visite-domicile",
     title: "Visite à domicile",
-    metaTitle: "Visite à domicile pour animaux | Service de confiance en France | DogWalking",
-    metaDescription: "Réservez une visite à domicile pour votre chien ou chat. Nourriture, eau, câlins et soins dans le confort de votre maison. Preuves photo incluses.",
+    metaTitle: "Visite à domicile pour animaux | Accompagnateurs Certifiés | DogWalking",
+    metaDescription: "Réservez une visite à domicile (30 min) pour votre chien. Nourriture, eau, câlins et soins. Preuves visuelles obligatoires et paiement sécurisé en attente.",
     h1: "Visite à domicile – Votre animal choyé dans son environnement",
-    heroDescription: "Pendant votre absence, un professionnel de confiance vient nourrir, hydrater et câliner votre animal dans son environnement familier.",
-    localZoneMention: "Visiteurs disponibles dans votre quartier",
+    heroDescription: "Pendant votre absence, nos Accompagnateurs Certifiés se déplacent chez vous pour prendre soin de votre compagnon dans son environnement habituel.",
+    localZoneMention: "Service disponible partout en France",
     heroImage: visiteHero,
     image: visiteRepas,
     images: [
-      { src: visiteRepas, alt: "Visiteur professionnel nourrissant un chien heureux dans une cuisine" },
-      { src: visiteAccueil, alt: "Chien accueillant joyeusement son visiteur à la porte d'entrée" },
-      { src: visiteSoins, alt: "Soins et attention donnés à un chien sur une terrasse avec plantes" }
+      { src: visiteRepas, alt: "Accompagnateur Certifié DogWalking nourrissant un chat à domicile" },
+      { src: visiteAccueil, alt: "Accueil chaleureux d'un chien lors d'une visite DogWalking" },
+      { src: visiteSoins, alt: "Soins et attention portés à un animal pendant une visite à domicile" }
     ],
     minPrice: 8,
+    priceLabel: "À partir de",
     duration: "30 min",
     description: {
-      intro: "La visite à domicile est la solution idéale pour les animaux qui préfèrent rester dans leur environnement habituel. Contrairement aux pensions où l'animal doit s'adapter à un nouvel espace, la visite à domicile préserve tous ses repères : son panier, ses jouets, ses odeurs familières. Nos visiteurs expérimentés viennent directement chez vous pour assurer les soins quotidiens de votre compagnon, qu'il s'agisse d'un chat indépendant, d'un chien calme, ou de tout autre animal domestique. Cette approche minimise le stress et garantit une continuité dans la routine de votre animal.",
-      forWhom: "Ce service répond parfaitement aux besoins des propriétaires de chats, ces félins territoriaux qui vivent mal les changements d'environnement. Il convient également aux chiens calmes qui n'ont pas besoin de sorties prolongées mais simplement d'une présence et de soins réguliers. Les personnes travaillant de longues heures apprécient de pouvoir faire vérifier le bien-être de leur animal en milieu de journée. Les voyageurs fréquents trouvent une solution fiable pour leurs absences courtes. Les propriétaires d'animaux multiples bénéficient d'un service global pour tous leurs compagnons.",
-      problemsSolved: "La solitude prolongée peut engendrer stress et anxiété chez votre animal. Les chats peuvent développer des troubles du comportement, les chiens peuvent détruire ou aboyer excessivement. La visite à domicile rompt cette solitude et apporte un moment de réconfort. Le problème des gamelles vides ou de l'eau non renouvelée disparaît : votre animal est nourri et hydraté comme prévu. Les litières sont nettoyées, évitant que votre chat ne refuse de les utiliser. Votre domicile est également surveillé, vous alertant de tout problème potentiel.",
-      benefits: "Votre animal conserve l'intégralité de ses repères habituels, ce qui maintient son équilibre émotionnel. Sa routine quotidienne est préservée : mêmes horaires de repas, mêmes habitudes. Le stress lié au transport et à l'adaptation à un nouvel environnement est totalement évité. Vous recevez des preuves photo et un compte-rendu après chaque visite, vous rassurant sur le bien-être de votre compagnon. Votre domicile bénéficie également d'une présence humaine régulière, ajoutant une dimension sécuritaire."
+      intro: "La visite à domicile est la solution idéale pour les animaux qui préfèrent rester dans leur environnement familier. Qu'il s'agisse d'un chat indépendant, d'un chien âgé ou d'un animal nécessitant des soins spécifiques, nos Accompagnateurs Certifiés assurent une présence bienveillante. Chaque visite de 30 minutes comprend le renouvellement de l'eau, la distribution de nourriture, le nettoyage de la litière si nécessaire, et surtout, un moment privilégié de jeux et de câlins. C'est la garantie d'une routine préservée et d'un animal serein en votre absence.",
+      forWhom: "Ce service s'adresse aux Propriétaires d'animaux (chiens, chats, NAC) qui s'absentent pour la journée ou pour quelques jours. C'est une alternative moins stressante que la pension, car l'animal garde ses repères, ses odeurs et ses habitudes. C'est aussi une sécurité pour votre domicile, car la visite régulière d'un Accompagnateur simule une présence.",
+      problemsSolved: "DogWalking résout le problème du stress lié au changement d'environnement. En évitant le déplacement de votre animal, vous éliminez les risques de maladies contractées en collectivité et l'anxiété liée au transport. Notre système de Preuve Visuelle Obligatoire vous permet de voir votre animal chez vous, heureux et détendu, dès que l'Accompagnateur arrive sur place.",
+      benefits: "Votre animal reste calme et en sécurité dans son foyer. Vous recevez des nouvelles fraîches et des photos à chaque passage. Le paiement sécurisé vous garantit que la visite a bien eu lieu : vous ne libérez les fonds qu'une fois la mission terminée en donnant votre code unique à l'Accompagnateur."
     },
     howItWorks: {
-      title: "Comment fonctionne la visite à domicile",
-      intro: "Notre service de visite à domicile est conçu pour s'intégrer parfaitement à votre emploi du temps et aux besoins spécifiques de votre animal.",
+      title: "Fonctionnement de la visite",
+      intro: "Un protocole strict pour une sécurité maximale à votre domicile.",
       steps: [
-        { title: "Réservez votre visite", description: "Choisissez le créneau horaire souhaité, la fréquence (une fois, quotidienne, plusieurs fois par jour) et décrivez les besoins spécifiques de votre animal : alimentation, traitements, jeux préférés." },
-        { title: "Rencontrez votre visiteur", description: "Une première rencontre permet de présenter votre animal, de faire visiter votre domicile et de transmettre toutes les consignes importantes. C'est aussi l'occasion de remettre les clés." },
-        { title: "Votre animal est choyé", description: "Le visiteur assure les soins prévus : nourriture fraîche, eau renouvelée, nettoyage de litière, jeux, câlins et tout ce que vous avez demandé. Il reste attentif à l'état général de votre animal." },
-        { title: "Recevez un compte-rendu détaillé", description: "Après chaque visite, vous recevez des photos de votre animal et un message détaillant son état, son appétit, et tout événement notable. Vous gardez un lien constant avec votre compagnon." }
+        { title: "Sélection & Réservation", description: "Choisissez votre Accompagnateur Certifié et bloquez les fonds en paiement en attente sur DogWalking." },
+        { title: "Consignes & Clés", description: "Organisez la remise des clés et transmettez vos consignes détaillées via la messagerie sécurisée." },
+        { title: "Preuve d'Arrivée", description: "L'Accompagnateur envoie une photo ou vidéo dès son entrée à votre domicile pour confirmer le début de la visite." },
+        { title: "Soins & Attention", description: "Réalisation des soins prévus : nourriture, eau, jeux et câlins pendant toute la durée de la visite." },
+        { title: "Validation Finale", description: "L'Accompagnateur envoie une preuve de fin de mission et vous lui transmettez le code unique pour libérer son paiement." }
       ],
-      safety: "La sécurité de votre domicile et de votre animal est primordiale. Nos visiteurs sont formés pour verrouiller correctement les portes, ne jamais laisser de fenêtres ouvertes, et éviter toute situation à risque. Ils vérifient l'environnement à chaque visite et vous signalent tout problème détecté.",
-      dogWelfare: "Nous adaptons chaque visite aux besoins spécifiques de votre animal. Les chats timides reçoivent une approche douce et non intrusive. Les chiens sociables profitent de moments de jeu et d'attention. Les animaux sous traitement reçoivent leurs médicaments à l'heure. Chaque détail compte pour le bien-être de votre compagnon."
+      safety: "La sécurité de votre domicile est notre priorité. Nos Accompagnateurs sont sélectionnés manuellement et vérifiés (CNI). Le code unique assure que vous seul validez la prestation.",
+      dogWelfare: "Le bien-être est au cœur de la visite : respect du rythme de l'animal et attention personnalisée garantie par les preuves visuelles."
     },
     expertiseAdvantages: {
-      experience: "Nos visiteurs sont sélectionnés pour leur expérience avec différentes espèces animales. Ils savent lire le langage corporel des chats et des chiens, détecter les signes de mal-être et adapter leur comportement à chaque personnalité animale.",
-      insurance: "Tous nos visiteurs disposent d'une assurance responsabilité civile professionnelle. En cas d'incident à votre domicile ou concernant votre animal, vous êtes couvert. Le paiement escrow vous protège également financièrement.",
-      method: "Notre approche privilégie la douceur et le respect du rythme de l'animal. Pas de manipulation brusque, pas de stress inutile. Nous suivons vos instructions à la lettre tout en apportant notre expertise et notre bienveillance.",
-      trust: "La confiance est essentielle quand on ouvre son domicile à un tiers. C'est pourquoi chaque visiteur passe par une vérification d'identité, un contrôle de casier judiciaire et doit fournir des références vérifiables. Les avis des autres propriétaires complètent cette transparence."
+      experience: "Nos Accompagnateurs Certifiés sont habitués à gérer les besoins spécifiques des animaux à domicile, incluant les protocoles d'hygiène et de sécurité.",
+      protection: "Chaque visite est protégée par notre plateforme. Nous assurons un suivi rigoureux de chaque mission pour votre tranquillité d'esprit.",
+      method: "La méthode DogWalking privilégie l'interaction humaine. Les photos reçues témoignent de la qualité du moment passé avec votre animal.",
+      trust: "Une confiance vérifiée manuellement pour vous permettre d'ouvrir votre porte en toute sérénité à un professionnel certifié."
     },
     advantages: [
-      "Votre animal reste dans son environnement familier et rassurant",
-      "Routine quotidienne parfaitement préservée pour son équilibre",
-      "Stress de transport et d'adaptation totalement évité",
-      "Service adapté à tous les animaux : chiens, chats, lapins, oiseaux, poissons",
-      "Soins personnalisés selon vos instructions précises",
-      "Surveillance de votre domicile incluse à chaque passage",
-      "Photos et compte-rendu envoyés après chaque visite",
-      "Visiteurs vérifiés et assurés pour votre tranquillité"
+      "Maintien de l'animal dans son environnement familier (zéro stress)",
+      "Accompagnateurs Certifiés rigoureusement sélectionnés (35% d'acceptation)",
+      "Paiement sécurisé et déblocage par code unique",
+      "Preuves visuelles obligatoires à chaque passage",
+      "Nettoyage litière et soins de base inclus",
+      "Simulation de présence à votre domicile",
+      "Compte-rendu détaillé après chaque visite",
+      "Protection professionnelle DogWalking incluse"
     ],
     localAvailability: {
-      mainCity: "Notre réseau de visiteurs couvre les principales agglomérations françaises et leurs périphéries.",
-      surroundingAreas: "Des visiteurs sont disponibles en centre-ville comme en banlieue. Notre maillage territorial s'étend continuellement pour répondre aux demandes dans les zones moins desservies.",
-      coverage: "Nous sommes présents dans la plupart des communes de France. Entrez votre adresse dans notre moteur de recherche pour découvrir les visiteurs disponibles près de chez vous."
+      mainCity: "Service de visite disponible dans toutes les villes de France.",
+      surroundingAreas: "Trouvez un Accompagnateur de proximité pour des passages réguliers.",
+      coverage: "Un réseau national pour couvrir vos besoins, même en période de vacances."
     },
     faq: [
-      { question: "Quels animaux peuvent bénéficier d'une visite à domicile ?", answer: "Notre service est conçu pour tous les animaux domestiques : chiens, chats, lapins, cochons d'Inde, hamsters, furets, oiseaux, poissons, reptiles... Nos visiteurs s'adaptent aux besoins spécifiques de chaque espèce. Lors de la réservation, précisez le type d'animal et ses particularités pour être mis en relation avec un visiteur compétent." },
-      { question: "Combien de temps dure une visite standard ?", answer: "Une visite standard dure 30 minutes, ce qui laisse le temps de nourrir votre animal, renouveler son eau, nettoyer sa litière si nécessaire, et lui offrir un moment de jeu et de câlins. Des visites plus longues (45 min ou 1h) sont disponibles pour les animaux nécessitant plus d'attention ou pour combiner avec une courte promenade pour les chiens." },
-      { question: "Le visiteur peut-il administrer des médicaments ?", answer: "Oui, nos visiteurs peuvent administrer des médicaments oraux simples (comprimés, liquides) si vous fournissez des instructions claires et détaillées. Pour les injections ou traitements médicaux complexes, nous recommandons notre service de visite sanitaire ou une consultation avec votre vétérinaire." },
-      { question: "Puis-je réserver plusieurs visites par jour ?", answer: "Absolument ! Selon les besoins de votre animal, vous pouvez planifier une, deux ou trois visites quotidiennes. C'est particulièrement recommandé pour les chiots en cours d'éducation à la propreté, les animaux diabétiques, ou simplement pour maximiser l'attention portée à votre compagnon." },
-      { question: "Comment le visiteur accède-t-il à mon domicile ?", answer: "Vous convenez du mode d'accès avec votre visiteur : remise de clés en main propre, boîte à clés sécurisée, digicode... Nous recommandons une rencontre préalable pour établir la confiance et montrer les particularités de votre logement. Après chaque visite, le visiteur vérifie le verrouillage de votre domicile." },
-      { question: "Que se passe-t-il si mon animal semble malade ?", answer: "Nos visiteurs sont formés pour détecter les signes de mal-être : léthargie, perte d'appétit, symptômes inhabituels. En cas de doute, ils vous contactent immédiatement et peuvent, avec votre accord, emmener votre animal chez un vétérinaire. L'état de santé observé est systématiquement noté dans le compte-rendu de visite." },
-      { question: "La visite inclut-elle le nettoyage de la litière ?", answer: "Oui, le nettoyage de la litière fait partie des soins standard lors d'une visite pour chat. Le visiteur retire les souillures et ajoute de la litière propre si nécessaire. Un changement complet de litière peut être effectué sur demande lors de visites prolongées." },
-      { question: "Puis-je recevoir des photos de mon animal ?", answer: "Bien sûr ! Nos visiteurs envoient systématiquement des photos de votre animal après chaque visite. Vous pouvez voir votre compagnon en train de manger, jouer ou se reposer. Ces photos sont accompagnées d'un compte-rendu écrit décrivant le déroulement de la visite et l'état général de votre animal." }
-    ]
-  },
-  "garde-domicile": {
-    id: "garde_domicile",
-    slug: "garde-domicile",
-    title: "Garde à domicile",
-    metaTitle: "Garde à domicile pour chien | Pet-sitting de nuit chez vous | DogWalking",
-    metaDescription: "Faites garder votre chien chez vous la nuit. Le gardien dort à votre domicile pour une présence rassurante 24h/24. Service vérifié et sécurisé.",
-    h1: "Garde à domicile – Votre chien gardé dans son cocon",
-    heroDescription: "Le gardien passe la nuit chez vous pour que votre chien reste dans son environnement habituel avec une présence rassurante et bienveillante.",
-    localZoneMention: "Gardiens de nuit disponibles dans votre secteur",
-    heroImage: gardeHero,
-    image: gardeDomicile,
-    images: [
-      { src: gardeDomicile, alt: "Pet-sitter professionnelle s'occupant d'un chien dans son panier douillet" },
-      { src: gardeJardin, alt: "Moment de jeu entre une gardienne et un chien dans le jardin ensoleillé" },
-      { src: gardeRepos, alt: "Chien dormant paisiblement sur le canapé avec sa gardienne lisant à côté" }
-    ],
-    minPrice: 12,
-    duration: "Nuit chez vous",
-    description: {
-      intro: "La garde à domicile représente la solution de confort ultime pour les propriétaires qui souhaitent s'absenter tout en préservant le bien-être de leur chien. Contrairement à une pension où l'animal doit s'adapter à un environnement inconnu, la garde à domicile maintient votre chien dans son cadre familier : son panier, ses jouets, son jardin, ses odeurs rassurantes. Un gardien de confiance s'installe chez vous pour la nuit et s'occupe de votre compagnon avec la même attention et le même amour que vous lui portez. Cette formule est particulièrement adaptée aux chiens sensibles, anxieux ou âgés.",
-      forWhom: "Ce service s'adresse aux propriétaires devant s'absenter pour des voyages professionnels ou personnels. Les chiens âgés ou souffrant de pathologies chroniques trouvent dans cette formule un maintien de leurs repères essentiels à leur équilibre. Les chiens anxieux ou craintifs évitent le stress d'un changement d'environnement qui pourrait aggraver leurs troubles. Les propriétaires de plusieurs animaux apprécient de pouvoir les faire garder ensemble, dans leur maison. Les personnes attachées à leur domicile bénéficient également d'une présence humaine rassurante pendant leur absence.",
-      problemsSolved: "L'anxiété de séparation est un problème majeur chez de nombreux chiens. Le changement d'environnement, comme lors d'un séjour en pension, peut amplifier cette détresse. La garde à domicile élimine ce facteur de stress en maintenant l'animal dans son cadre habituel. Les chiens sous traitement médical peuvent suivre leur protocole sans perturbation. Les animaux ayant des besoins alimentaires spécifiques conservent leur régime. Le décalage de routine, source de troubles digestifs ou comportementaux, est totalement évité.",
-      benefits: "Votre chien bénéficie d'une attention exclusive dans son environnement préféré. Sa routine quotidienne est parfaitement maintenue : mêmes heures de repas, mêmes promenades, mêmes habitudes de couchage. Le gardien assure une présence continue, rassurant les chiens qui supportent mal la solitude nocturne. Votre domicile profite également de cette présence : arrosage des plantes, relevé du courrier, surveillance générale. Vous partez l'esprit tranquille, sachant que tout est pris en charge."
-    },
-    howItWorks: {
-      title: "Comment fonctionne la garde à domicile",
-      intro: "Notre service de garde à domicile est organisé pour garantir une transition en douceur et un séjour serein pour votre chien.",
-      steps: [
-        { title: "Rencontrez votre gardien", description: "Avant votre départ, organisez une rencontre chez vous avec le gardien. Présentez votre chien, faites visiter votre domicile et transmettez toutes les consignes : routines, alimentation, promenades, particularités du logement." },
-        { title: "Préparez les consignes", description: "Partagez en détail les habitudes de votre chien : horaires de repas, quantités, friandises autorisées, jouets préférés, commandes connues, comportements à surveiller. Plus les instructions sont précises, meilleure sera la garde." },
-        { title: "Partez l'esprit tranquille", description: "Le gardien s'installe chez vous à l'heure convenue. Il suit scrupuleusement votre routine et s'occupe de votre animal comme vous le feriez vous-même. Les promenades, repas et câlins sont assurés quotidiennement." },
-        { title: "Restez informé à distance", description: "Recevez des nouvelles régulières : photos, vidéos, messages. Le gardien vous tient au courant de l'humeur de votre chien, de son appétit, de ses activités. Vous gardez un lien constant malgré la distance." }
-      ],
-      safety: "Nos gardiens sont formés pour gérer les situations d'urgence : numéros de vétérinaire, comportement en cas de problème de santé, gestion des fugues potentielles. Ils respectent scrupuleusement les consignes de sécurité de votre domicile et sont joignables à tout moment.",
-      dogWelfare: "Le bien-être de votre chien est au cœur de notre service. Les gardiens respectent son rythme naturel, ses préférences et ses petites manies. Un chien habitué à dormir sur le canapé continue à le faire. Un chien qui aime les longues promenades les obtient. Chaque garde est personnalisée."
-    },
-    expertiseAdvantages: {
-      experience: "Nos gardiens sont des passionnés d'animaux avec une expérience significative du pet-sitting. Ils connaissent les différentes races, leurs besoins spécifiques et leurs comportements typiques. Cette expertise leur permet de s'adapter rapidement à chaque chien.",
-      insurance: "Chaque gardien dispose d'une assurance responsabilité civile professionnelle couvrant son intervention. Votre domicile et votre animal sont protégés pendant toute la durée de la garde. Le paiement sécurisé vous offre une garantie supplémentaire.",
-      method: "Notre méthode repose sur le respect, la bienveillance et l'adaptation. Le gardien s'intègre à votre foyer en suivant vos règles. Pas de changement brutal pour votre chien, mais une continuité rassurante avec une présence humaine attentive.",
-      trust: "Ouvrir son domicile demande une confiance absolue. C'est pourquoi nos gardiens passent par une vérification d'identité complète, un contrôle de casier judiciaire et doivent fournir des références. Leurs avis vérifiés témoignent de leur fiabilité."
-    },
-    advantages: [
-      "Chien maintenu dans son environnement habituel et rassurant",
-      "Routine de promenades et de repas parfaitement conservée",
-      "Présence rassurante et continue tout au long de la nuit",
-      "Aucun stress de transport ou d'adaptation à un lieu inconnu",
-      "Surveillance attentive de votre domicile pendant votre absence",
-      "Solution idéale pour les chiens anxieux, âgés ou sous traitement",
-      "Plusieurs animaux gardés ensemble dans leur foyer",
-      "Nouvelles régulières avec photos et vidéos de votre compagnon"
-    ],
-    localAvailability: {
-      mainCity: "Nos gardiens de domicile sont présents dans les grandes agglomérations et leurs périphéries.",
-      surroundingAreas: "Que vous habitiez en appartement en ville ou en maison à la campagne, nous avons des gardiens prêts à s'installer chez vous. Certains gardiens sont mobiles et peuvent se déplacer dans un large rayon.",
-      coverage: "Notre réseau de gardiens s'étend continuellement. Indiquez votre localisation pour découvrir les gardiens disponibles dans votre zone géographique."
-    },
-    faq: [
-      { question: "Le gardien dort vraiment chez moi ?", answer: "Oui, le gardien passe la nuit complète à votre domicile. Il s'installe à l'heure convenue (généralement en fin de journée) et reste jusqu'au matin suivant. Pendant la nuit, il est présent pour rassurer votre chien et répondre à ses besoins. Vous définissez ensemble où le gardien dormira : chambre d'amis, canapé..." },
-      { question: "Quels soins sont inclus dans la garde ?", answer: "La garde inclut tous les soins quotidiens : repas aux horaires habituels, eau fraîche, promenades matin et soir, jeux et câlins, surveillance générale de l'état de santé. Des soins spécifiques peuvent être ajoutés : administration de médicaments, brossage, soins des yeux/oreilles. Précisez vos besoins lors de la réservation." },
-      { question: "Puis-je réserver plusieurs nuits consécutives ?", answer: "Absolument ! C'est même le cas le plus courant. Vous pouvez réserver autant de nuits que nécessaire avec le même gardien, garantissant ainsi une continuité dans les soins et une relation de confiance établie avec votre chien. Les tarifs sont souvent dégressifs pour les gardes longues." },
-      { question: "Comment se passe l'accès à mon domicile ?", answer: "Vous convenez avec le gardien du mode de remise des clés avant votre départ : en main propre, boîte à clés sécurisée, ou remise par un tiers de confiance. Le gardien s'engage à sécuriser votre domicile et à vous restituer les clés selon les modalités convenues à votre retour." },
-      { question: "Le gardien peut-il s'occuper de mes autres animaux ?", answer: "Oui, un des grands avantages de la garde à domicile est de pouvoir faire garder tous vos animaux ensemble. Chats, lapins, oiseaux peuvent être inclus dans la prestation. Précisez le nombre et les espèces lors de la réservation pour un devis adapté." },
-      { question: "Que se passe-t-il en cas de problème de santé de mon chien ?", answer: "Nos gardiens sont formés pour détecter les signes de mal-être et réagir rapidement. En cas de problème, ils vous contactent immédiatement et peuvent, avec votre accord, emmener votre chien chez le vétérinaire que vous aurez indiqué. Les coordonnées vétérinaires font partie des informations à transmettre obligatoirement avant la garde." },
-      { question: "Le gardien peut-il effectuer des tâches ménagères ?", answer: "La garde à domicile se concentre sur les soins de votre animal. Toutefois, certains gardiens acceptent de relever le courrier, arroser les plantes ou effectuer de petites tâches complémentaires. Discutez-en lors de la rencontre préalable et précisez-le dans votre réservation." },
-      { question: "Comment sont sélectionnés les gardiens ?", answer: "Chaque gardien passe par un processus de vérification rigoureux : vérification d'identité, contrôle de casier judiciaire, attestation d'assurance, et références vérifiées. Nous les rencontrons et évaluons leur expérience avec les animaux avant de les intégrer à notre réseau." }
-    ]
-  },
-  "accompagnement-veterinaire": {
-    id: "veterinaire",
-    slug: "accompagnement-veterinaire",
-    title: "Accompagnement vétérinaire",
-    metaTitle: "Accompagnement vétérinaire pour chien | Transport vet sécurisé | DogWalking",
-    metaDescription: "Faites accompagner votre chien chez le vétérinaire par un professionnel de confiance. Transport sécurisé et présence rassurante pendant la consultation.",
-    h1: "Accompagnement vétérinaire – Transport et présence rassurante",
-    heroDescription: "Un professionnel de confiance transporte votre chien chez le vétérinaire et l'accompagne pendant la consultation, vous tenant informé en temps réel.",
-    localZoneMention: "Accompagnateurs disponibles dans votre région",
-    heroImage: veterinaryHero,
-    image: vetAccompagnement,
-    images: [
-      { src: vetAccompagnement, alt: "Accompagnateur professionnel avec un chien devant l'entrée d'une clinique vétérinaire" },
-      { src: vetTransport, alt: "Chien transporté en sécurité dans une cage de transport en voiture" },
-      { src: vetAttente, alt: "Personne réconfortant un chien dans la salle d'attente d'une clinique vétérinaire" }
-    ],
-    minPrice: 15,
-    duration: "Variable selon RDV",
-    description: {
-      intro: "L'accompagnement vétérinaire est un service essentiel pour les propriétaires qui ne peuvent pas emmener eux-mêmes leur animal chez le vétérinaire. Que ce soit pour des raisons professionnelles, de mobilité, ou simplement d'indisponibilité ponctuelle, notre service garantit que votre chien reçoive les soins nécessaires sans délai. Nos accompagnateurs expérimentés assurent un transport sécurisé et confortable, et restent présents pendant toute la consultation pour rassurer votre animal et vous transmettre les informations du vétérinaire. C'est la garantie d'un suivi médical optimal même en votre absence.",
-      forWhom: "Ce service s'adresse aux propriétaires professionnellement très sollicités qui peinent à libérer du temps pour les rendez-vous vétérinaires. Les personnes âgées ou à mobilité réduite qui ne peuvent plus conduire trouvent une solution adaptée. Les propriétaires sans véhicule bénéficient d'un transport sécurisé. Les personnes anxieuses face aux consultations vétérinaires peuvent déléguer cette tâche stressante. Les multi-propriétaires d'animaux apprécient de pouvoir faire suivre tous leurs compagnons sans multiplier les déplacements personnels.",
-      problemsSolved: "Reporter les visites vétérinaires faute de temps peut avoir des conséquences graves sur la santé de votre animal. Notre service élimine ce risque en prenant en charge l'intégralité du déplacement. Le stress du transport, particulièrement pour les chiens qui supportent mal la voiture, est géré par nos accompagnateurs expérimentés. L'incompréhension des consignes vétérinaires est évitée grâce à notre transmission fidèle des informations. Les urgences vétérinaires en votre absence sont prises en charge rapidement.",
-      benefits: "Votre chien reçoit ses soins vétérinaires sans retard, préservant sa santé. Le transport est assuré dans des conditions sécurisées et adaptées à sa taille et son tempérament. La présence d'un accompagnateur pendant la consultation rassure votre animal et vous. Vous recevez un compte-rendu détaillé de la visite, incluant les observations du vétérinaire et les traitements prescrits. Les ordonnances et médicaments vous sont remis. Votre chien bénéficie d'un suivi médical optimal malgré vos contraintes."
-    },
-    howItWorks: {
-      title: "Comment fonctionne l'accompagnement vétérinaire",
-      intro: "Notre service d'accompagnement vétérinaire est organisé pour être fluide, fiable et transparent, de la prise en charge jusqu'au retour de votre animal.",
-      steps: [
-        { title: "Réservez votre accompagnement", description: "Indiquez la date et l'heure du rendez-vous vétérinaire, le nom de la clinique, et la nature de la consultation. Partagez le carnet de santé de votre chien et les symptômes éventuels à signaler au vétérinaire." },
-        { title: "L'accompagnateur récupère votre chien", description: "À l'heure convenue, l'accompagnateur vient chercher votre chien à votre domicile. Il s'assure que l'animal est calme et prêt pour le transport. Les chiens anxieux bénéficient d'une approche adaptée pour minimiser leur stress." },
-        { title: "Transport sécurisé", description: "Le trajet vers la clinique est effectué dans un véhicule adapté. Les petits chiens peuvent être en cage de transport, les grands chiens sont attachés confortablement. L'accompagnateur veille à la sécurité et au bien-être de votre animal pendant tout le trajet." },
-        { title: "Présence pendant la consultation", description: "L'accompagnateur reste aux côtés de votre chien pendant toute la consultation. Il transmet au vétérinaire les informations que vous avez partagées, pose les questions convenues et note soigneusement les recommandations et prescriptions." },
-        { title: "Retour et compte-rendu", description: "Après la consultation, votre chien est ramené chez vous. L'accompagnateur vous remet le carnet de santé mis à jour, les ordonnances, les médicaments prescrits et un compte-rendu détaillé de la visite." }
-      ],
-      safety: "Le transport s'effectue dans un véhicule équipé pour les animaux : cages de transport, harnais de sécurité, climatisation. Nos accompagnateurs sont formés aux gestes d'urgence et savent réagir face à un animal stressé ou malade. Ils connaissent les cliniques vétérinaires de votre secteur et leurs protocoles.",
-      dogWelfare: "Le bien-être de votre chien est prioritaire. Nous adaptons notre approche à son tempérament : chiens anxieux, craintifs ou agités bénéficient d'une attention particulière. Pendant l'attente en clinique, l'accompagnateur rassure votre animal par sa présence et ses caresses."
-    },
-    expertiseAdvantages: {
-      experience: "Nos accompagnateurs ont l'habitude des environnements vétérinaires. Ils savent comment se comporter en salle d'attente, comment aider le vétérinaire pendant la consultation, et comment rassurer un animal stressé par les odeurs et sons de la clinique.",
-      insurance: "Chaque accompagnateur dispose d'une assurance responsabilité civile professionnelle. Votre animal est couvert pendant tout le trajet et la consultation. En cas d'incident, vous êtes protégé financièrement.",
-      method: "Notre méthode repose sur la communication et la transparence. Avant la visite, nous recueillons toutes vos questions pour le vétérinaire. Après la visite, nous vous transmettons fidèlement les réponses et recommandations. Aucune information n'est perdue.",
-      trust: "Confier son animal malade ou en besoin de soins demande une confiance totale. C'est pourquoi nos accompagnateurs passent par une vérification complète et sont formés spécifiquement pour ce service. Leurs avis attestent de leur professionnalisme."
-    },
-    advantages: [
-      "Rendez-vous vétérinaires respectés malgré vos contraintes d'emploi du temps",
-      "Transport sécurisé dans un véhicule adapté aux animaux",
-      "Présence rassurante aux côtés de votre chien pendant toute la consultation",
-      "Transmission fidèle et détaillée des informations du vétérinaire",
-      "Récupération des ordonnances et médicaments prescrits",
-      "Service adapté aux urgences vétérinaires imprévues",
-      "Solution idéale pour les personnes âgées ou à mobilité réduite",
-      "Compte-rendu complet envoyé après chaque visite"
-    ],
-    localAvailability: {
-      mainCity: "Nos accompagnateurs connaissent les cliniques vétérinaires des principales agglomérations et savent s'y rendre rapidement.",
-      surroundingAreas: "Les zones périurbaines et rurales sont également couvertes. Nos accompagnateurs sont mobiles et peuvent se déplacer sur un large rayon pour récupérer votre animal et l'emmener à la clinique de votre choix.",
-      coverage: "Nous élargissons continuellement notre réseau d'accompagnateurs pour couvrir l'ensemble du territoire. Indiquez votre localisation et celle de votre vétérinaire pour vérifier la disponibilité."
-    },
-    faq: [
-      { question: "L'accompagnateur peut-il poser des questions au vétérinaire ?", answer: "Absolument ! Avant le rendez-vous, nous vous demandons de nous transmettre toutes vos questions et préoccupations. L'accompagnateur les posera au vétérinaire et notera soigneusement les réponses. Il peut également appeler en direct pendant la consultation si vous le souhaitez, pour que vous parliez directement au vétérinaire." },
-      { question: "Comment se passe le transport pour un chien qui a le mal des transports ?", answer: "Nous adaptons le transport aux besoins de votre chien. Pour les animaux sujets au mal des transports, nous recommandons un jeûne de quelques heures avant le trajet, des pauses fréquentes pour les longs trajets, et une conduite douce. Des housses de protection sont utilisées pour prévenir les accidents." },
-      { question: "Puis-je être contacté pendant la consultation ?", answer: "Oui, si vous le souhaitez, l'accompagnateur peut vous appeler pendant la consultation pour que vous parliez directement au vétérinaire. Vous pouvez également lui envoyer des messages pendant le rendez-vous. Après la consultation, un compte-rendu complet vous est transmis avec toutes les informations importantes." },
-      { question: "L'accompagnateur peut-il récupérer des médicaments ?", answer: "Oui, l'accompagnateur récupère les ordonnances et peut acheter les médicaments prescrits directement à la clinique ou en pharmacie si nécessaire. Les médicaments vous sont remis avec le carnet de santé mis à jour lors du retour de votre animal à votre domicile." },
-      { question: "Ce service fonctionne-t-il pour les urgences vétérinaires ?", answer: "Oui, nous pouvons intervenir en urgence selon la disponibilité des accompagnateurs. Si votre chien présente des symptômes inquiétants et que vous ne pouvez pas vous déplacer, contactez-nous immédiatement. Nous ferons notre maximum pour envoyer un accompagnateur dans les plus brefs délais vers une clinique de garde." },
-      { question: "Mon chien sera-t-il stressé par un inconnu chez le vétérinaire ?", answer: "Nos accompagnateurs sont formés pour rassurer les animaux. Ils utilisent une approche douce, des friandises si autorisées, et restent calmes pour transmettre cette sérénité à votre chien. Pour les chiens très anxieux, une rencontre préalable peut être organisée pour établir la confiance avant le jour J." },
-      { question: "Quels types de consultations sont couverts ?", answer: "Nous accompagnons pour tous types de consultations : visites de routine, vaccinations, consultations spécialisées, examens (radiographies, échographies), soins dentaires, et suivis post-opératoires. Pour les interventions chirurgicales, nous pouvons déposer votre animal le matin et le récupérer après l'opération." },
-      { question: "Comment réserver en urgence ?", answer: "Pour les urgences, contactez-nous directement par téléphone. Nous consultons immédiatement la disponibilité des accompagnateurs dans votre zone et organisons la prise en charge le plus rapidement possible. Notre équipe de support est réactive pour répondre aux situations critiques." }
+      { question: "Combien de temps dure une visite ?", answer: "Une visite standard dure 30 minutes, mais vous pouvez convenir d'une durée plus longue avec votre Accompagnateur selon les besoins de votre animal." },
+      { question: "Comment se passe la remise des clés ?", answer: "La remise des clés est organisée directement entre le Propriétaire et l'Accompagnateur une fois la réservation validée et les fonds sécurisés." },
+      { question: "Puis-je demander plusieurs visites par jour ?", answer: "Oui, vous pouvez réserver plusieurs créneaux de visite par jour pour assurer une présence régulière à votre animal." },
+      { question: "Quelles preuves vais-je recevoir ?", answer: "L'Accompagnateur doit obligatoirement vous envoyer une photo ou vidéo de votre animal à son arrivée et une autre avant son départ." }
     ]
   },
   "hebergement-chien": {
     id: "hebergement",
     slug: "hebergement-chien",
-    title: "Hébergement de chien",
-    metaTitle: "Hébergement de chien | Pension familiale de confiance | DogWalking",
-    metaDescription: "Faites héberger votre chien chez un family sitter vérifié. Votre compagnon profite d'un cadre familial chaleureux avec promenades incluses. Réservez en ligne.",
-    h1: "Hébergement de chien – Une pension familiale pour votre compagnon",
-    heroDescription: "Pendant vos vacances ou déplacements, votre chien est accueilli dans une famille d'accueil aimante et vérifiée, avec promenades quotidiennes et soins personnalisés.",
-    localZoneMention: "Familles d'accueil disponibles près de chez vous",
+    title: "Hébergement chez l'Accompagnateur",
+    metaTitle: "Hébergement pour chien | Accompagnateurs Certifiés | DogWalking",
+    metaDescription: "Votre chien séjourne chez un Accompagnateur Certifié DogWalking. Environnement familial, attention 24h/24, preuves visuelles et paiement sécurisé.",
+    h1: "Hébergement en famille – Le confort comme à la maison",
+    heroDescription: "Offrez à votre chien des vacances en famille chez l'un de nos Accompagnateurs Certifiés, dans un cadre sécurisé et chaleureux.",
+    localZoneMention: "Service disponible partout en France",
     heroImage: hebergementHero,
     image: hebergementNuit,
     images: [
-      { src: hebergementNuit, alt: "Golden retriever dormant paisiblement dans un salon chaleureux avec pet-sitter lisant à côté" },
-      { src: hebergementJardin, alt: "Labrador jouant joyeusement avec des jouets dans un jardin clôturé et sécurisé" },
-      { src: hebergementRepas, alt: "Pet-sitter préparant le repas pour plusieurs chiens dans une cuisine moderne et lumineuse" }
+      { src: hebergementNuit, alt: "Chien dormant paisiblement dans un salon chez un Accompagnateur DogWalking" },
+      { src: hebergementJardin, alt: "Chien s'amusant dans le jardin sécurisé d'un Accompagnateur" },
+      { src: hebergementRepas, alt: "Moment du repas préparé avec soin par l'Accompagnateur" }
     ],
-    minPrice: 25,
+    minPrice: 10,
+    priceLabel: "À partir de",
     duration: "Par nuit",
     description: {
-      intro: "L'hébergement de chien chez un family sitter représente l'alternative idéale aux pensions traditionnelles. Votre compagnon est accueilli dans un véritable foyer, entouré d'une famille aimante qui lui offre attention, confort et stimulation pendant toute la durée de votre absence. Contrairement aux chenils où les chiens sont souvent en box individuel avec des interactions limitées, l'hébergement familial garantit une vie quotidienne riche : promenades régulières, jeux, câlins et compagnie constante. Nos family sitters sont rigoureusement sélectionnés pour leur amour des animaux, leur expérience et leur environnement adapté à l'accueil de chiens.",
-      forWhom: "Ce service s'adresse à tous les propriétaires devant s'absenter pour des vacances, des voyages professionnels ou des événements familiaux. Les chiens sociables qui apprécient la compagnie humaine et animale s'épanouissent particulièrement dans ce cadre familial. Les propriétaires de chiens anxieux ou âgés trouvent dans l'hébergement familial une solution plus douce que les pensions classiques. Les maîtres souhaitant offrir à leur compagnon des vacances aussi agréables que les leurs font confiance à nos familles d'accueil. Les chiens ayant des besoins spécifiques (régime alimentaire, médicaments) bénéficient d'une prise en charge personnalisée impossible en structure collective.",
-      problemsSolved: "La culpabilité de laisser son chien pendant les vacances est un frein majeur pour de nombreux propriétaires. L'hébergement familial résout ce dilemme en offrant à votre animal des vacances tout aussi enrichissantes. Le stress des pensions collectives, avec leurs aboiements constants et leur environnement impersonnel, est totalement évité. Les chiens qui dépriment en chenil retrouvent joie de vivre et stimulation chez nos family sitters. Les propriétaires qui devaient renoncer à voyager peuvent enfin partir l'esprit tranquille, sachant leur compagnon entre de bonnes mains.",
-      benefits: "Votre chien bénéficie d'un cadre de vie familial avec tout le confort d'une maison : canapé, jardin, compagnie humaine constante. Les promenades quotidiennes sont incluses, garantissant exercice et stimulation mentale. L'attention individuelle permet de respecter les habitudes et les besoins spécifiques de votre animal. Vous recevez des photos et nouvelles régulières pour rester connecté à votre compagnon. Le family sitter apprend à connaître votre chien et adapte son approche à sa personnalité unique. Votre animal revient détendu et épanoui, ayant vécu une véritable expérience de vacances."
+      intro: "L'hébergement chez l'Accompagnateur est l'alternative premium au chenil traditionnel. Votre chien est accueilli au sein d'un foyer chaleureux, où il partage la vie quotidienne de son Accompagnateur Certifié. Pas de cages, pas de box : votre compagnon bénéficie du confort d'une maison, de la présence humaine constante et de soins personnalisés. C'est la solution parfaite pour les Propriétaires qui souhaitent partir l'esprit tranquille, sachant que leur animal est traité comme un membre de la famille.",
+      forWhom: "Ce service est conçu pour les chiens sociables qui apprécient la compagnie humaine et, éventuellement, celle d'autres congénères. C'est idéal pour les séjours de courte ou longue durée (vacances, déplacements professionnels, week-ends). Nos Accompagnateurs s'adaptent aux habitudes de votre chien : horaires de repas, types de promenades et rituels de sommeil.",
+      problemsSolved: "DogWalking élimine le traumatisme lié à l'enfermement en pension. Nous résolvons le manque de transparence grâce à la Preuve Visuelle Obligatoire : vous recevez chaque jour des photos et vidéos de votre chien participant à la vie de famille. Le stress de la séparation est ainsi largement atténué pour le Propriétaire comme pour l'animal.",
+      benefits: "Un chien épanoui qui ne subit pas de rupture brutale avec ses habitudes de vie. Une sécurité financière totale grâce au paiement en attente : vous ne validez le paiement qu'à la fin du séjour en remettant votre code unique. Une protection professionnelle couvre l'animal durant toute la durée de l'hébergement."
     },
     howItWorks: {
-      title: "Comment fonctionne l'hébergement familial",
-      intro: "Notre service d'hébergement est conçu pour une transition en douceur et un séjour parfait pour votre chien.",
+      title: "Le séjour pas à pas",
+      intro: "Une organisation rigoureuse pour des vacances canines réussies.",
       steps: [
-        { title: "Trouvez votre family sitter idéal", description: "Parcourez les profils détaillés de nos familles d'accueil : photos de leur maison et jardin, présentation de leur famille et éventuels animaux, avis des autres propriétaires. Filtrez par localisation, disponibilités et caractéristiques (maison avec jardin, sans autres animaux, etc.)." },
-        { title: "Organisez une rencontre préalable", description: "Avant le séjour, rencontrez le family sitter avec votre chien. Cette étape cruciale permet de vérifier la compatibilité, de visiter les lieux et de transmettre toutes les consignes importantes. Votre chien découvre son futur environnement en votre présence rassurante." },
-        { title: "Déposez votre chien sereinement", description: "Le jour J, amenez votre chien avec ses affaires (panier, jouets, nourriture). Le family sitter prend le relais avec bienveillance. Une transition douce est assurée, avec éventuellement une courte promenade ensemble pour faciliter la passation." },
-        { title: "Restez connecté pendant le séjour", description: "Recevez des photos et nouvelles quotidiennes de votre compagnon. Le family sitter partage les moments forts : promenades, jeux, siestes. Vous pouvez échanger par messages à tout moment pour garder le lien." },
-        { title: "Retrouvez un chien épanoui", description: "À votre retour, récupérez votre compagnon. Le family sitter vous fait un compte-rendu complet du séjour : appétit, comportement, moments mémorables. Votre chien a passé de vraies vacances !" }
+        { title: "Rencontre préalable", description: "Nous conseillons une rencontre (gratuite ou via une promenade) pour vérifier l'entente entre le chien et l'Accompagnateur." },
+        { title: "Réservation & Paiement en Attente", description: "Validation des dates et blocage sécurisé des fonds sur la plateforme DogWalking." },
+        { title: "Installation", description: "Arrivée du chien avec ses affaires (panier, nourriture, jouets). Preuve visuelle d'arrivée envoyée immédiatement." },
+        { title: "Suivi Quotidien", description: "Envoi régulier de photos et vidéos pour vous faire partager le quotidien de votre compagnon." },
+        { title: "Fin de Séjour", description: "Récupération de l'animal et transmission du code unique pour libérer le paiement de l'Accompagnateur." }
       ],
-      safety: "La sécurité de votre chien est notre priorité absolue. Toutes les familles d'accueil sont vérifiées : identité, casier judiciaire, assurance habitation. Leur domicile est inspecté pour garantir un environnement sécurisé (jardin clôturé, absence de dangers). En cas de problème de santé, le family sitter contacte immédiatement votre vétérinaire ou une clinique de garde.",
-      dogWelfare: "Le bien-être de votre animal guide chaque aspect du séjour. Le family sitter respecte ses habitudes : heures de repas, promenades préférées, rituel du coucher. Les chiens anxieux bénéficient d'une approche douce et progressive. L'environnement familial, sans stress de chenil, favorise un séjour serein et épanouissant."
+      safety: "L'environnement de l'Accompagnateur est vérifié. La sécurité est renforcée par notre processus de sélection manuel (35% d'acceptation) et la vérification des documents officiels.",
+      dogWelfare: "Le bien-être est garanti par une attention 24h/24 et un cadre familial qui prévient l'anxiété de séparation."
     },
     expertiseAdvantages: {
-      experience: "Nos family sitters sont des passionnés d'animaux avec une solide expérience. Beaucoup possèdent ou ont possédé des chiens, comprenant intimement leurs besoins. Certains sont d'anciens professionnels du monde animal : éducateurs, toiletteurs, auxiliaires vétérinaires. Cette expertise garantit des soins de qualité.",
-      insurance: "Chaque family sitter dispose d'une assurance responsabilité civile couvrant les incidents potentiels. Votre chien est protégé pendant tout son séjour. Le paiement sécurisé via notre plateforme vous garantit également une protection en cas de problème avec la prestation.",
-      method: "Notre approche privilégie l'intégration familiale plutôt que la simple garde. Votre chien devient temporairement un membre de la famille d'accueil, participant à la vie quotidienne : repas en famille, balades, moments de détente sur le canapé. Cette immersion crée une expérience positive et enrichissante.",
-      trust: "La confiance est fondamentale pour confier son compagnon à des inconnus. C'est pourquoi nous vérifions rigoureusement chaque family sitter : identité, casier judiciaire, références vérifiables. Les avis authentiques des autres propriétaires vous aident à choisir en toute sérénité."
+      experience: "Nos Accompagnateurs Certifiés en hébergement ont l'habitude d'intégrer un nouvel animal à leur foyer en toute sécurité.",
+      protection: "Votre animal est protégé par les garanties de la plateforme DogWalking durant tout son séjour.",
+      method: "Une approche basée sur l'affection et le respect des besoins physiologiques de chaque chien.",
+      trust: "La confiance est le pilier de l'hébergement : nous ne retenons que des profils d'exception pour ce service sensible."
     },
     advantages: [
-      "Accueil chaleureux dans un véritable foyer familial",
-      "Promenades quotidiennes incluses pour le bien-être de votre chien",
-      "Attention individuelle et soins personnalisés",
-      "Environnement sécurisé avec jardin clôturé",
-      "Photos et nouvelles quotidiennes pendant le séjour",
-      "Family sitters rigoureusement vérifiés et assurés",
-      "Respect total des habitudes et du régime alimentaire",
-      "Alternative chaleureuse aux pensions collectives stressantes"
+      "Cadre familial chaleureux (pas de box ni de cages)",
+      "Attention et présence humaine constante (24h/24)",
+      "Accompagnateurs Certifiés sélectionnés avec rigueur (35% d'acceptation)",
+      "Paiement sécurisé : libération par code unique en fin de séjour",
+      "Preuves visuelles quotidiennes (photos/vidéos)",
+      "Respect strict du régime alimentaire et des habitudes de l'animal",
+      "Protection professionnelle incluse",
+      "Communication directe avec l'Accompagnateur via messagerie sécurisée"
     ],
     localAvailability: {
-      mainCity: "Notre réseau de familles d'accueil couvre l'ensemble du territoire français, des grandes métropoles aux zones rurales.",
-      surroundingAreas: "Que vous cherchiez un hébergement près de chez vous pour faciliter le dépôt, ou dans une région spécifique pour combiner avec un voyage, nous avons des options partout. Les campagnes offrent des hébergements avec grands espaces, les villes proposent des solutions pratiques.",
-      coverage: "Avec des centaines de familles d'accueil actives, vous trouverez forcément l'hébergement idéal pour votre compagnon. Entrez votre localisation pour découvrir les options disponibles."
+      mainCity: "Accompagnateurs disponibles pour l'hébergement dans toute la France.",
+      surroundingAreas: "Trouvez un foyer d'accueil près de chez vous ou sur votre trajet de vacances.",
+      coverage: "Une large sélection de profils pour trouver la famille d'accueil idéale."
     },
     faq: [
-      { question: "Comment sont sélectionnés les family sitters ?", answer: "Chaque family sitter passe par un processus de vérification rigoureux : contrôle d'identité, extrait de casier judiciaire, visite du domicile pour vérifier la sécurité (jardin clôturé, environnement adapté). Nous vérifions également leurs références et leur expérience avec les chiens. Seuls les candidats répondant à tous nos critères sont acceptés." },
-      { question: "Mon chien peut-il garder ses habitudes alimentaires ?", answer: "Absolument ! Vous fournissez la nourriture habituelle de votre chien et toutes les instructions concernant son régime : quantités, horaires, friandises autorisées, aliments interdits. Le family sitter suit scrupuleusement vos consignes pour maintenir la routine alimentaire de votre compagnon." },
-      { question: "Que se passe-t-il si mon chien a un problème de santé ?", answer: "Nos family sitters sont formés pour détecter les signes de mal-être. En cas de problème, ils vous contactent immédiatement et peuvent, avec votre accord, emmener votre chien chez le vétérinaire que vous aurez indiqué ou dans une clinique de garde. Les coordonnées vétérinaires font partie des informations obligatoires avant le séjour." },
-      { question: "La famille d'accueil a-t-elle d'autres animaux ?", answer: "Chaque profil indique clairement si le foyer compte d'autres animaux et leurs caractéristiques. Vous pouvez filtrer les recherches selon vos préférences : famille sans autres animaux, avec chien(s), avec chat(s). La rencontre préalable permet de vérifier la compatibilité avec les éventuels résidents." },
-      { question: "Puis-je rendre visite à mon chien pendant le séjour ?", answer: "Pour le bien-être de votre chien et éviter de perturber son adaptation, nous recommandons de limiter les visites. Toutefois, en cas de séjour prolongé, des visites peuvent être envisagées en accord avec le family sitter. Les photos et nouvelles quotidiennes vous permettent de rester connecté." },
-      { question: "Combien de promenades mon chien aura-t-il par jour ?", answer: "Au minimum deux promenades quotidiennes sont assurées : une le matin et une en fin de journée. Selon les besoins de votre chien et les possibilités du family sitter, des sorties supplémentaires peuvent être organisées. Si le foyer dispose d'un jardin, votre chien profite également d'accès libres à l'extérieur." },
-      { question: "Comment puis-je réserver un hébergement ?", answer: "Recherchez les familles d'accueil disponibles pour vos dates en indiquant votre localisation et les besoins de votre chien. Consultez les profils, lisez les avis, puis envoyez une demande de réservation. Après acceptation, organisez la rencontre préalable puis confirmez la réservation avec le paiement sécurisé." },
-      { question: "Que dois-je apporter pour le séjour de mon chien ?", answer: "Nous recommandons d'apporter : sa nourriture habituelle en quantité suffisante, son panier ou couverture préférée (odeur rassurante), quelques jouets, sa laisse et son collier, son carnet de santé à jour, et ses éventuels médicaments. Les affaires familières aident votre chien à se sentir à l'aise." }
+      { question: "Dois-je fournir la nourriture ?", answer: "Oui, il est fortement conseillé de fournir la nourriture habituelle de votre chien pour éviter tout trouble digestif lié à un changement de régime." },
+      { question: "Mon chien dormira-t-il à l'intérieur ?", answer: "Absolument. Tous nos Accompagnateurs hébergent les animaux à l'intérieur de leur domicile, dans des conditions de confort optimales." },
+      { question: "Puis-je visiter le domicile avant ?", answer: "Oui, nous encourageons vivement une rencontre préalable pour s'assurer que l'environnement convient parfaitement à votre animal." },
+      { question: "Que se passe-t-il en cas d'urgence ?", answer: "L'Accompagnateur dispose de vos coordonnées d'urgence et de celles de votre vétérinaire. DogWalking assure également une assistance en cas de besoin." }
     ]
   },
   "garderie-chien": {
     id: "garderie",
     slug: "garderie-chien",
-    title: "Garderie de jour pour chien",
-    metaTitle: "Garderie de jour pour chien | Daycare canin professionnel | DogWalking",
-    metaDescription: "Garderie de jour pour chien avec socialisation et activités encadrées. Votre chien passe une journée épanouissante pendant vos heures de travail. Réservez en ligne.",
-    h1: "Garderie de jour – Des journées stimulantes pour votre chien",
-    heroDescription: "Pendant vos heures de travail, votre chien profite d'une journée riche en jeux, socialisation et activités encadrées par des professionnels passionnés.",
-    localZoneMention: "Garderies canines près de votre lieu de travail ou domicile",
+    title: "Garderie de jour",
+    metaTitle: "Garderie de jour pour chien | Accompagnateurs Certifiés | DogWalking",
+    metaDescription: "Votre chien passe la journée chez un Accompagnateur Certifié. Jeux, socialisation et attention. Preuves visuelles obligatoires et paiement sécurisé en attente.",
+    h1: "Garderie de jour – Une journée active et entourée",
+    heroDescription: "Confiez votre chien à un Accompagnateur Certifié pour la journée : il bénéficiera de jeux, de promenades et d'une compagnie constante.",
+    localZoneMention: "Service disponible partout en France",
     heroImage: garderieHero,
     image: garderieSalle,
     images: [
-      { src: garderieSalle, alt: "Chiens de différentes races jouant ensemble dans une salle de jeux colorée et spacieuse" },
-      { src: garderieSocial, alt: "Groupe de chiens socialisant sous la supervision d'une professionnelle dans un parc clôturé" },
-      { src: garderieRepos, alt: "Chiens se reposant confortablement sur des coussins moelleux pendant la sieste de l'après-midi" }
+      { src: garderieSalle, alt: "Chien s'amusant avec des jouets en garderie de jour" },
+      { src: garderieSocial, alt: "Socialisation encadrée entre deux chiens chez un Accompagnateur" },
+      { src: garderieRepos, alt: "Sieste méritée après une matinée d'activités en garderie" }
     ],
-    minPrice: 20,
+    minPrice: 10,
+    priceLabel: "À partir de",
     duration: "Journée",
     description: {
-      intro: "La garderie de jour pour chien, également appelée daycare canin, offre une solution idéale pour les propriétaires travaillant toute la journée. Plutôt que de laisser votre compagnon seul à la maison pendant 8 à 10 heures, confiez-le à nos garderies partenaires où il passera une journée riche en activités, jeux et interactions sociales. Les chiens sont des animaux sociaux qui souffrent de la solitude prolongée. La garderie répond à leur besoin fondamental de compagnie et de stimulation, tout en vous permettant de travailler l'esprit tranquille.",
-      forWhom: "Ce service est parfait pour les professionnels aux longues journées de travail qui ne peuvent pas rentrer en milieu de journée. Les propriétaires de jeunes chiens débordants d'énergie y trouvent une solution pour canaliser cette vitalité. Les chiens sociables qui adorent jouer avec leurs congénères s'épanouissent particulièrement en garderie. Les personnes souhaitant socialiser leur chien de manière encadrée et progressive apprécient l'environnement contrôlé. Les télétravailleurs ayant besoin de se concentrer sans sollicitations canines constantes bénéficient aussi de ce service.",
-      problemsSolved: "La solitude prolongée engendre de nombreux problèmes chez le chien : anxiété de séparation, aboiements excessifs dérangeant les voisins, destructions, dépression. La garderie élimine tous ces soucis en offrant compagnie et stimulation. L'ennui, source de comportements indésirables, est combattu par les activités variées proposées. Le manque d'exercice, fréquent chez les chiens de propriétaires très occupés, est compensé par les heures de jeu et de mouvement. Les problèmes de socialisation sont également adressés grâce aux interactions encadrées avec d'autres chiens.",
-      benefits: "Votre chien bénéficie d'une journée complète d'activités adaptées à son âge, sa taille et son tempérament. La socialisation régulière développe ses compétences sociales et réduit les comportements réactifs. L'exercice physique intense le fatigue sainement : le soir, vous retrouvez un compagnon calme et satisfait. La stimulation mentale des jeux et interactions enrichit sa vie quotidienne. Vous travaillez sans culpabilité ni inquiétude, sachant votre chien heureux. Le lien entre vous se renforce, chaque retrouvaille étant un moment de joie partagée."
+      intro: "La garderie de jour est la solution parfaite pour les Propriétaires qui travaillent de longues heures et ne souhaitent pas laisser leur chien seul à la maison. Votre compagnon est accueilli le matin chez un Accompagnateur Certifié et récupéré le soir. Durant toute la journée, il participe à la vie du foyer, bénéficie de sorties régulières et d'interactions sociales stimulantes. C'est bien plus qu'une simple garde : c'est une journée d'éveil et de bien-être qui garantit un chien calme et équilibré à votre retour.",
+      forWhom: "Ce service s'adresse aux chiens de tous âges qui ont besoin de compagnie ou de dépense d'énergie en journée. C'est particulièrement bénéfique pour les chiots en phase d'apprentissage de la propreté et de la socialisation, ou pour les chiens souffrant d'anxiété de séparation. Nos Accompagnateurs offrent un cadre sécurisé et une attention que seul un milieu familial peut apporter.",
+      problemsSolved: "DogWalking résout le problème de la solitude prolongée et des comportements destructeurs liés à l'ennui. Grâce à la Preuve Visuelle Obligatoire, vous recevez des nouvelles de la journée de votre chien directement sur votre smartphone. Le système de paiement sécurisé assure que la prestation est validée selon vos critères : vous donnez votre code unique à l'Accompagnateur le soir lors de la récupération.",
+      benefits: "Un chien stimulé physiquement et mentalement, mieux socialisé et moins stressé. Une tranquillité d'esprit totale pour le Propriétaire qui sait son animal entre de bonnes mains. Une protection professionnelle accompagne chaque journée de garderie pour une sécurité optimale."
     },
     howItWorks: {
-      title: "Comment fonctionne la garderie de jour",
-      intro: "Nos garderies partenaires offrent une expérience professionnelle et sécurisée pour votre compagnon.",
+      title: "Déroulement de la journée",
+      intro: "Un emploi du temps adapté au rythme de chaque chien.",
       steps: [
-        { title: "Évaluation initiale", description: "Avant la première journée, une évaluation comportementale permet de vérifier que votre chien est compatible avec la garderie collective : sociabilité, réactivité, comportement en groupe. Cette étape garantit la sécurité et le bien-être de tous les pensionnaires." },
-        { title: "Intégration progressive", description: "Les premières séances sont souvent des demi-journées pour permettre à votre chien de s'habituer en douceur à ce nouvel environnement. Les professionnels observent son comportement et adaptent l'accompagnement à ses besoins." },
-        { title: "Journée type en garderie", description: "La journée alterne entre temps de jeu libre (sous surveillance), activités encadrées, promenades et temps de repos. Les chiens sont regroupés par taille et tempérament pour des interactions harmonieuses. L'hydratation et les pauses sont régulières." },
-        { title: "Suivi personnalisé", description: "Vous recevez un compte-rendu de la journée : activités réalisées, comportement, interactions avec les autres chiens. Les professionnels vous informent de tout élément notable et peuvent suggérer des pistes d'amélioration comportementale." }
+        { title: "Dépôt le matin", description: "Vous déposez votre chien chez l'Accompagnateur Certifié. Preuve visuelle d'arrivée envoyée immédiatement." },
+        { title: "Activités & Jeux", description: "La journée est rythmée par des promenades, des séances de jeux et des moments de repos." },
+        { title: "Suivi en direct", description: "Réception de photos et vidéos durant la journée pour suivre les activités de votre compagnon." },
+        { title: "Socialisation", description: "Interactions contrôlées et bienveillantes pour renforcer le bon comportement de l'animal." },
+        { title: "Récupération", description: "Vous récupérez votre chien et transmettez le code unique pour libérer le paiement de la journée." }
       ],
-      safety: "La sécurité est primordiale dans nos garderies partenaires. Les locaux sont sécurisés et adaptés aux chiens : sols antidérapants, espaces clos, absence de dangers. Un ratio encadrants/chiens strict garantit une surveillance constante. Les chiens non castrés peuvent être séparés selon les règles de l'établissement. Les vaccinations sont vérifiées avant admission.",
-      dogWelfare: "Le bien-être animal guide toutes les pratiques. Les chiens sont regroupés par affinités et tempéraments pour éviter les tensions. Des espaces calmes sont disponibles pour les repos et les chiens ayant besoin de solitude temporaire. L'alimentation et les éventuels médicaments de votre chien sont administrés selon vos consignes."
+      safety: "La sécurité est assurée par une surveillance constante et un environnement familial vérifié. Nos Accompagnateurs sont sélectionnés manuellement (35% d'acceptation).",
+      dogWelfare: "Le respect du rythme biologique de l'animal (alternance activité/repos) est la priorité de nos Accompagnateurs Certifiés."
     },
     expertiseAdvantages: {
-      experience: "Nos garderies partenaires sont gérées par des professionnels du monde canin : éducateurs comportementalistes, anciens éleveurs, passionnés formés. Cette expertise permet de gérer les dynamiques de groupe, de prévenir les conflits et d'offrir des activités enrichissantes adaptées.",
-      insurance: "Toutes les garderies partenaires disposent des assurances nécessaires pour couvrir leur activité. Votre chien est protégé pendant toute la durée de sa présence. Les locaux sont conformes aux réglementations en vigueur pour l'accueil d'animaux.",
-      method: "L'approche pédagogique repose sur le renforcement positif et le respect du rythme de chaque chien. Pas de méthodes coercitives, pas de stress inutile. Les professionnels savent lire le langage canin et interviennent avant que les tensions ne dégénèrent. L'objectif est que chaque chien passe une bonne journée.",
-      trust: "Nous sélectionnons soigneusement nos garderies partenaires. Visites des locaux, vérification des qualifications, lecture des avis clients : chaque établissement répond à nos critères de qualité. Les avis des propriétaires vous aident à choisir la garderie idéale."
+      experience: "Nos Accompagnateurs ont l'expertise nécessaire pour gérer la dynamique de groupe et les besoins individuels en journée.",
+      protection: "Chaque journée de garderie est couverte par la protection DogWalking.",
+      method: "Une pédagogie positive basée sur la récompense et le jeu pour une expérience enrichissante.",
+      trust: "Une confiance vérifiée manuellement pour vous garantir un service professionnel et attentionné."
     },
     advantages: [
-      "Journées riches en jeux, activités et socialisation",
-      "Alternative saine à la solitude prolongée",
-      "Exercice physique intense pour un chien calme le soir",
-      "Développement des compétences sociales canines",
-      "Encadrement professionnel par des passionnés qualifiés",
-      "Espaces sécurisés et adaptés aux besoins des chiens",
-      "Compte-rendu quotidien du comportement de votre chien",
-      "Formules flexibles : journée complète ou demi-journée"
+      "Zéro solitude pour votre chien durant vos heures de travail",
+      "Socialisation encadrée et positive avec d'autres animaux",
+      "Accompagnateurs Certifiés rigoureusement sélectionnés (35% d'acceptation)",
+      "Paiement sécurisé et déblocage par code unique",
+      "Preuves visuelles obligatoires durant la journée",
+      "Alternance équilibrée entre dépenses physiques et repos",
+      "Protection professionnelle incluse",
+      "Compte-rendu de la journée lors de la récupération"
     ],
     localAvailability: {
-      mainCity: "Nos garderies partenaires sont situées dans les principales agglomérations françaises, souvent à proximité des zones d'activité professionnelle.",
-      surroundingAreas: "Les zones périurbaines sont également couvertes, permettant un dépôt pratique sur le trajet du travail. Certaines garderies proposent même un service de ramassage à domicile.",
-      coverage: "Notre réseau de garderies partenaires s'étend continuellement. Recherchez par localisation pour trouver les options près de chez vous ou de votre lieu de travail."
+      mainCity: "Garderie de jour disponible dans les zones urbaines et périurbaines de France.",
+      surroundingAreas: "Trouvez un Accompagnateur sur votre trajet domicile-travail.",
+      coverage: "Un réseau croissant pour faciliter votre quotidien de Propriétaire."
     },
     faq: [
-      { question: "Mon chien doit-il être sociable pour aller en garderie ?", answer: "La garderie collective convient aux chiens sociables et à l'aise avec leurs congénères. Une évaluation initiale permet de vérifier la compatibilité de votre chien. Les chiens réactifs, peureux ou agressifs ne sont généralement pas acceptés en groupe, mais des solutions individuelles peuvent être proposées." },
-      { question: "Mon chien sera-t-il surveillé en permanence ?", answer: "Oui, les professionnels de la garderie assurent une surveillance constante des groupes de chiens. Le ratio encadrants/chiens est maintenu à un niveau permettant une intervention rapide si nécessaire. Les caméras de surveillance permettent également un contrôle permanent." },
-      { question: "Que se passe-t-il si mon chien ne s'entend pas avec un autre ?", answer: "Les professionnels sont formés pour détecter les tensions avant qu'elles ne dégénèrent. Les chiens incompatibles sont séparés dans des groupes ou espaces différents. Si votre chien montre des difficultés récurrentes d'intégration, des solutions alternatives (garderie individuelle, créneaux calmes) peuvent être proposées." },
-      { question: "La garderie convient-elle aux chiots ?", answer: "La plupart des garderies acceptent les chiots à partir de 4 mois, une fois le protocole vaccinal de base terminé. Les chiots sont souvent placés dans des groupes adaptés à leur âge et leur énergie. La garderie est excellente pour la socialisation précoce, cruciale à cet âge." },
-      { question: "Puis-je déposer mon chien à n'importe quelle heure ?", answer: "Les garderies ont généralement des créneaux d'accueil le matin (7h-9h) et de départ le soir (17h-19h). Certains établissements offrent plus de flexibilité. Vérifiez les horaires spécifiques de la garderie choisie lors de la réservation." },
-      { question: "Mon chien sera-t-il nourri ?", answer: "La plupart des garderies ne fournissent pas les repas pour respecter le régime alimentaire de chaque chien. Vous pouvez apporter la ration de votre chien qui sera servie aux heures indiquées. L'eau fraîche est bien sûr disponible en permanence." },
-      { question: "Quelles vaccinations sont requises ?", answer: "Les vaccinations obligatoires incluent généralement : rage, maladie de Carré, hépatite, parvovirose et leptospirose. Le vaccin contre la toux du chenil (Bordetella) est souvent exigé pour les chiens en collectivité. Votre carnet de santé à jour sera demandé lors de l'inscription." },
-      { question: "Y a-t-il des activités spécifiques proposées ?", answer: "Selon les garderies, des activités variées peuvent être proposées : parcours d'agilité, jeux d'intelligence, piscine (en saison), promenades extérieures. Certains établissements offrent même des séances d'éducation ou de toilettage en supplément. Renseignez-vous sur les prestations disponibles." }
+      { question: "Quels sont les horaires de la garderie ?", answer: "Les horaires sont flexibles et définis d'un commun accord entre le Propriétaire et l'Accompagnateur." },
+      { question: "Mon chien doit-il être à jour de ses vaccins ?", answer: "Oui, pour la sécurité de tous, les animaux accueillis en garderie doivent être à jour de leurs vaccinations obligatoires." },
+      { question: "Puis-je apporter ses jouets ?", answer: "Bien sûr, apporter un objet familier peut aider votre chien à se sentir encore plus à l'aise." },
+      { question: "Y a-t-il un jardin ?", answer: "Beaucoup de nos Accompagnateurs disposent d'un jardin sécurisé, cette information est précisée sur leur profil individuel." }
+    ]
+  },
+  "garde-domicile": {
+    id: "garde_domicile",
+    slug: "garde-domicile",
+    title: "Garde à votre domicile",
+    metaTitle: "Garde d'animaux à domicile | Accompagnateurs Certifiés | DogWalking",
+    metaDescription: "Un Accompagnateur Certifié DogWalking séjourne chez vous pour garder vos animaux. Sécurité, routine préservée, preuves visuelles et paiement sécurisé.",
+    h1: "Garde à domicile – La sérénité absolue pour vos animaux",
+    heroDescription: "Un Accompagnateur Certifié s'installe chez vous pour offrir une présence constante et rassurante à vos animaux dans leur foyer.",
+    localZoneMention: "Service disponible partout en France",
+    heroImage: gardeHero,
+    image: gardeDomicile,
+    images: [
+      { src: gardeDomicile, alt: "Accompagnateur Certifié DogWalking veillant sur un chien dans son salon" },
+      { src: gardeJardin, alt: "Jeux dans le jardin du Propriétaire sous la surveillance de l'Accompagnateur" },
+      { src: gardeRepos, alt: "Soirée calme et rassurante pour l'animal grâce à la présence de l'Accompagnateur" }
+    ],
+    minPrice: 12,
+    priceLabel: "À partir de",
+    duration: "Par nuit",
+    description: {
+      intro: "La garde à votre domicile (ou 'house-sitting') est le service de luxe par excellence pour vos animaux. Un Accompagnateur Certifié DogWalking vient séjourner chez vous pour prendre soin de vos compagnons et veiller sur votre maison. C'est la solution ultime pour les animaux très attachés à leur territoire, les seniors ou les foyers multi-animaux. Vos compagnons ne subissent aucun changement de routine : ils dorment dans leur panier, mangent à leurs heures habituelles et profitent de leurs promenades de quartier, le tout sous la surveillance d'un professionnel dédié.",
+      forWhom: "Ce service est idéal pour les Propriétaires qui s'absentent plusieurs jours et ne souhaitent pas déplacer leurs animaux. C'est particulièrement recommandé pour les chiens anxieux, les chats territoriaux ou si vous possédez plusieurs animaux (chiens, chats, oiseaux, etc.). C'est aussi une garantie de sécurité pour votre maison qui reste habitée et entretenue en votre absence.",
+      problemsSolved: "DogWalking résout la double problématique de la garde d'animaux et de la sécurité du domicile. La Preuve Visuelle Obligatoire vous assure quotidiennement que vos animaux sont choyés et que tout se passe bien chez vous. Le paiement sécurisé garantit que le service est rendu selon vos exigences : vous ne communiquez le code unique qu'à votre retour, une fois la mission accomplie.",
+      benefits: "Absence totale de stress pour vos animaux qui gardent tous leurs repères. Une maison surveillée et des plantes arrosées. Une protection professionnelle couvre l'Accompagnateur et vos animaux durant toute la mission. La tranquillité d'esprit d'un service haut de gamme validé par vos soins."
+    },
+    howItWorks: {
+      title: "Organisation de la garde",
+      intro: "Un protocole de confiance pour ouvrir votre porte en toute sérénité.",
+      steps: [
+        { title: "Rencontre & Sélection", description: "Rencontrez votre Accompagnateur Certifié chez vous pour valider le 'feeling' et présenter les lieux." },
+        { title: "Réservation & Paiement en Attente", description: "Validation des dates et blocage sécurisé des fonds sur la plateforme DogWalking." },
+        { title: "Prise de Poste", description: "L'Accompagnateur s'installe chez vous. Envoi immédiat d'une photo/vidéo de début de mission." },
+        { title: "Vie Quotidienne", description: "Suivi rigoureux de vos consignes et envoi quotidien de preuves visuelles de vos animaux." },
+        { title: "Retour & Validation", description: "À votre retour, vous récupérez votre foyer et transmettez le code unique pour libérer le paiement." }
+      ],
+      safety: "La sécurité est garantie par notre sélection manuelle ultra-sélective (35% d'acceptation) et la vérification des documents officiels (CNI). Le code unique est votre garantie finale.",
+      dogWelfare: "Le bien-être est maximal car l'animal ne subit aucun stress de transport ou de changement d'environnement."
+    },
+    expertiseAdvantages: {
+      experience: "Nos Accompagnateurs en garde à domicile sont des profils matures et responsables, habitués à gérer des propriétés.",
+      protection: "Une protection professionnelle DogWalking est incluse pour sécuriser la mission à votre domicile.",
+      method: "Une présence discrète et respectueuse de votre intimité, entièrement tournée vers le bien-être de vos animaux.",
+      trust: "Une confiance vérifiée manuellement pour vous permettre de partir l'esprit léger."
+    },
+    advantages: [
+      "Zéro changement pour vos animaux (routine 100% préservée)",
+      "Présence constante et rassurante à votre domicile",
+      "Accompagnateurs Certifiés sélectionnés avec la plus grande rigueur (35%)",
+      "Paiement sécurisé et déblocage par code unique au retour",
+      "Preuves visuelles quotidiennes obligatoires",
+      "Surveillance et entretien léger de votre domicile inclus",
+      "Solution idéale pour les foyers multi-animaux",
+      "Protection professionnelle incluse"
+    ],
+    localAvailability: {
+      mainCity: "Service de garde à domicile disponible dans toute la France.",
+      surroundingAreas: "Nos Accompagnateurs se déplacent pour des missions de moyenne et longue durée.",
+      coverage: "Un service exclusif pour une sérénité totale durant vos absences."
+    },
+    faq: [
+      { question: "L'Accompagnateur peut-il s'absenter de la maison ?", answer: "Oui, pour ses besoins personnels (courses, etc.), mais il doit respecter les durées d'absence maximales convenues avec vous." },
+      { question: "Comment sont gérés les frais de nourriture de l'Accompagnateur ?", answer: "L'Accompagnateur assure sa propre nourriture, sauf accord particulier entre vous et lui." },
+      { question: "Puis-je confier d'autres tâches (courrier, plantes) ?", answer: "Oui, l'entretien léger du domicile fait partie intégrante du service de house-sitting." },
+      { question: "Que se passe-t-il en cas de problème technique dans la maison ?", answer: "Vous devez laisser les coordonnées de vos artisans habituels ou d'une personne de confiance à contacter." }
+    ]
+  },
+  "visite-sanitaire": {
+    id: "visite_sanitaire",
+    slug: "visite-sanitaire",
+    title: "Visite Sanitaire & Hygiène",
+    metaTitle: "Visite Sanitaire pour animaux | Accompagnateurs Certifiés | DogWalking",
+    metaDescription: "Soins d'hygiène et bien-être pour votre animal à domicile. Brossage, nettoyage, soins légers. Preuves visuelles et paiement sécurisé en attente.",
+    h1: "Visite Sanitaire – Le bien-être et l'hygiène à domicile",
+    heroDescription: "Nos Accompagnateurs Certifiés assurent les soins d'hygiène de base de votre animal pour son confort et sa santé au quotidien.",
+    localZoneMention: "Service disponible partout en France",
+    heroImage: visiteSanitaireHero,
+    image: visiteSoins,
+    images: [
+      { src: visiteSoins, alt: "Accompagnateur Certifié DogWalking brossant délicatement un chien" },
+      { src: visiteAccueil, alt: "Nettoyage des yeux et des oreilles avec douceur" },
+      { src: visiteRepas, alt: "Vérification de l'état général de l'animal pendant la visite" }
+    ],
+    minPrice: 16,
+    priceLabel: "À partir de",
+    duration: "45 min",
+    description: {
+      intro: "La visite sanitaire est un service spécialisé axé sur l'hygiène et le bien-être physique de votre animal. Durant 45 minutes, un Accompagnateur Certifié se déplace à votre domicile pour effectuer les soins de base essentiels : brossage minutieux (idéal en période de mue), nettoyage des yeux et des oreilles, vérification des coussinets ou administration de soins légers prescrits. Ce n'est pas un toilettage complet, mais un entretien régulier qui prévient les problèmes de santé et assure le confort de votre compagnon entre deux rendez-vous chez le professionnel.",
+      forWhom: "Ce service est idéal pour les Propriétaires d'animaux à poils longs nécessitant un brossage fréquent, pour les animaux âgés ayant besoin d'une aide à la toilette, ou pour assurer le suivi d'un traitement simple en votre absence. C'est aussi une excellente solution pour les animaux stressés par les salons de toilettage, car les soins sont prodigués dans le calme de leur foyer.",
+      problemsSolved: "DogWalking résout le problème du manque de temps pour l'entretien régulier de l'animal. Nous éliminons le stress du transport pour les soins de base. Grâce à la Preuve Visuelle Obligatoire, vous recevez des photos 'avant/après' ou des vidéos du soin en cours. Le paiement sécurisé vous garantit la réalisation effective du soin : vous donnez le code unique une fois la visite sanitaire terminée.",
+      benefits: "Un animal propre, sans nœuds et en bonne santé. Une détection précoce d'éventuels problèmes cutanés ou parasitaires. Une protection professionnelle accompagne chaque visite. Le confort d'un soin professionnel à domicile validé par vos soins via le code unique."
+    },
+    howItWorks: {
+      title: "Déroulement du soin",
+      intro: "Une approche douce et méthodique pour le confort de l'animal.",
+      steps: [
+        { title: "Préparation", description: "L'Accompagnateur prépare le matériel (fourni par le Propriétaire) et met l'animal en confiance." },
+        { title: "Preuve de début", description: "Envoi d'une photo de l'animal avant le début des soins pour valider la prise en charge." },
+        { title: "Soins d'Hygiène", description: "Réalisation méthodique des soins : brossage, nettoyage, vérifications sanitaires." },
+        { title: "Rapport de Soin", description: "L'Accompagnateur note ses observations sur l'état général de la peau, du poil et des yeux." },
+        { title: "Validation", description: "Envoi de la preuve finale et transmission du code unique pour libérer le paiement." }
+      ],
+      safety: "Les soins sont prodigués sans contrainte excessive. Nos Accompagnateurs sont sélectionnés pour leur patience et leur douceur (35% d'acceptation).",
+      dogWelfare: "Le bien-être est la priorité absolue : le soin doit être un moment de détente pour l'animal."
+    },
+    expertiseAdvantages: {
+      experience: "Nos Accompagnateurs en visite sanitaire ont une solide expérience des manipulations animalières et des soins de base.",
+      protection: "Chaque prestation est protégée par la plateforme DogWalking.",
+      method: "Une technique douce adaptée à la sensibilité de chaque animal.",
+      trust: "Une confiance vérifiée manuellement pour des soins prodigués avec professionnalisme."
+    },
+    advantages: [
+      "Entretien régulier pour la santé et le confort de l'animal",
+      "Zéro stress : les soins sont faits à domicile",
+      "Accompagnateurs Certifiés sélectionnés pour leur douceur (35%)",
+      "Paiement sécurisé et déblocage par code unique",
+      "Preuves visuelles obligatoires des soins effectués",
+      "Détection précoce d'anomalies (tiques, rougeurs, etc.)",
+      "Idéal pour les animaux âgés ou stressés",
+      "Protection professionnelle incluse"
+    ],
+    localAvailability: {
+      mainCity: "Visite sanitaire disponible dans toutes les grandes agglomérations.",
+      surroundingAreas: "Trouvez un Accompagnateur compétent près de chez vous pour un suivi régulier.",
+      coverage: "Un service de proximité pour le bien-être quotidien de votre compagnon."
+    },
+    faq: [
+      { question: "Dois-je fournir le matériel ?", answer: "Oui, pour des raisons d'hygiène, l'Accompagnateur utilise vos brosses, lotions et produits habituels." },
+      { question: "L'Accompagnateur peut-il couper les griffes ?", answer: "Ce soin peut être réalisé si l'animal est coopératif et si l'Accompagnateur possède l'expérience nécessaire, à confirmer lors de la réservation." },
+      { question: "Est-ce un toilettage complet ?", answer: "Non, c'est une visite d'entretien et d'hygiène. Elle ne remplace pas une tonte ou un bain complet chez un toiletteur professionnel." },
+      { question: "Puis-je demander l'administration d'un médicament ?", answer: "Oui, si vous fournissez l'ordonnance et les instructions précises, nos Accompagnateurs peuvent assurer ce suivi." }
+    ]
+  },
+  "accompagnement-veterinaire": {
+    id: "accompagnement_veterinaire",
+    slug: "accompagnement-veterinaire",
+    title: "Accompagnement Vétérinaire",
+    metaTitle: "Accompagnement Vétérinaire | Accompagnateurs Certifiés | DogWalking",
+    metaDescription: "Transport et accompagnement de votre animal chez le vétérinaire. Prise en charge complète, preuves visuelles et paiement sécurisé en attente.",
+    h1: "Accompagnement Vétérinaire – La logistique santé simplifiée",
+    heroDescription: "Nos Accompagnateurs Certifiés prennent en charge le transport et l'accompagnement de votre animal pour ses rendez-vous santé.",
+    localZoneMention: "Service disponible partout en France",
+    heroImage: veterinaryHero,
+    image: vetAccompagnement,
+    images: [
+      { src: vetAccompagnement, alt: "Accompagnateur Certifié DogWalking accompagnant un chien en clinique" },
+      { src: vetTransport, alt: "Transport sécurisé de l'animal vers son rendez-vous" },
+      { src: vetAttente, alt: "Présence rassurante de l'Accompagnateur en salle d'attente" }
+    ],
+    minPrice: 13,
+    priceLabel: "À partir de",
+    duration: "Variable",
+    description: {
+      intro: "L'accompagnement vétérinaire est le service indispensable pour les Propriétaires dont l'emploi du temps ne permet pas de se rendre aux rendez-vous médicaux de leur animal. Un Accompagnateur Certifié vient chercher votre compagnon à votre domicile, assure son transport sécurisé jusqu'à la clinique vétérinaire, assiste à la consultation si nécessaire et ramène l'animal chez vous. C'est la garantie que la santé de votre compagnon n'est jamais négligée, même quand vous êtes débordé. L'Accompagnateur assure également la transmission fidèle des informations et des prescriptions du vétérinaire.",
+      forWhom: "Ce service s'adresse aux Propriétaires actifs, aux personnes sans moyen de transport adapté, ou aux personnes à mobilité réduite. C'est aussi une solution précieuse pour les urgences programmées ou les suivis réguliers (vaccins, contrôles, soins chroniques). Nos Accompagnateurs gèrent toute la logistique pour vous.",
+      problemsSolved: "DogWalking résout le stress du transport et les contraintes horaires. Nous éliminons l'incertitude grâce à la Preuve Visuelle Obligatoire : vous recevez une photo de la prise en charge, une autre à la clinique et une dernière au retour. Le paiement sécurisé sécurise la mission : vous ne libérez les fonds qu'après avoir reçu le compte-rendu de la consultation et récupéré votre animal en donnant votre code unique.",
+      benefits: "Un suivi santé rigoureux pour votre animal. Un transport sécurisé et professionnel. Une protection professionnelle accompagne chaque trajet. La tranquillité d'esprit d'un service complet validé par vos soins via le code unique."
+    },
+    howItWorks: {
+      title: "Le parcours santé",
+      intro: "Une prise en charge sérieuse pour la santé de votre compagnon.",
+      steps: [
+        { title: "Prise en charge", description: "L'Accompagnateur récupère l'animal et son carnet de santé à votre domicile. Envoi d'une preuve photo." },
+        { title: "Transport Sécurisé", description: "Trajet vers la clinique dans un véhicule adapté ou selon les modalités convenues." },
+        { title: "La Consultation", description: "L'Accompagnateur accompagne l'animal durant le rendez-vous et note les consignes du vétérinaire." },
+        { title: "Retour & Prescription", description: "Retour au domicile, remise de l'animal, du carnet de santé et des éventuels médicaments." },
+        { title: "Validation", description: "Transmission du compte-rendu médical et libération du paiement par le code unique." }
+      ],
+      safety: "Le transport est effectué selon les normes de sécurité. Nos Accompagnateurs sont sélectionnés pour leur fiabilité (35% d'acceptation).",
+      dogWelfare: "Le bien-être est assuré par une présence rassurante durant un moment souvent stressant pour l'animal."
+    },
+    expertiseAdvantages: {
+      experience: "Nos Accompagnateurs en service vétérinaire sont habitués au milieu médical et savent rassurer les animaux.",
+      protection: "Le transport et l'accompagnement sont protégés par la plateforme DogWalking.",
+      method: "Une organisation rigoureuse pour respecter les horaires de rendez-vous et les consignes médicales.",
+      trust: "Une confiance vérifiée manuellement pour déléguer la santé de votre animal en toute sérénité."
+    },
+    advantages: [
+      "Prise en charge complète du rendez-vous vétérinaire",
+      "Transport sécurisé aller-retour inclus",
+      "Accompagnateurs Certifiés rigoureusement sélectionnés (35%)",
+      "Paiement sécurisé et déblocage par code unique",
+      "Preuves visuelles à chaque étape (départ, clinique, retour)",
+      "Transmission fidèle du compte-rendu médical",
+      "Gain de temps précieux pour le Propriétaire",
+      "Protection professionnelle incluse"
+    ],
+    localAvailability: {
+      mainCity: "Service disponible dans toutes les agglomérations disposant de cliniques vétérinaires.",
+      surroundingAreas: "Accompagnateurs mobiles pour couvrir vos rendez-vous de proximité.",
+      coverage: "Un service essentiel pour la continuité des soins de vos animaux."
+    },
+    faq: [
+      { question: "L'Accompagnateur peut-il avancer les frais vétérinaires ?", answer: "Non, les frais de consultation et de médicaments doivent être réglés directement par le Propriétaire (par téléphone à la clinique ou via un moyen de paiement laissé sur place)." },
+      { question: "Quels animaux peuvent être accompagnés ?", answer: "Tous les animaux de compagnie pouvant être transportés en sécurité (chiens, chats, NAC)." },
+      { question: "Comment sont transmises les consignes médicales ?", answer: "L'Accompagnateur vous remet un compte-rendu écrit ou vocal et vous rend le carnet de santé à jour." },
+      { question: "Puis-je réserver pour une urgence ?", answer: "Le service est principalement destiné aux rendez-vous programmés, mais vous pouvez tenter de trouver un Accompagnateur disponible pour une urgence immédiate." }
     ]
   }
 };

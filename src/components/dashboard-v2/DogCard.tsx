@@ -29,7 +29,7 @@ const DogCard = ({ name, breed, image, emoji, status }: DogCardProps) => (
         }`}
       >
         <span className={`w-1.5 h-1.5 rounded-full ${status === "Actif" ? "bg-primary" : "bg-accent"}`} />
-        {status}
+        {status === "Actif" ? "En mission" : "Disponible"}
       </span>
     </div>
   </motion.div>

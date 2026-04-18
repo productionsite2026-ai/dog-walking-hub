@@ -20,7 +20,7 @@ const MyPets = ({ pets, onAddPet, onViewAll }: MyPetsProps) => {
     <div className="mb-6">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h2 className="text-xl font-bold">Vos animaux</h2>
+          <h2 className="text-xl font-bold">Mes Animaux (Vérifiés)</h2>
           <p className="text-sm text-muted-foreground">Surveillés & heureux</p>
         </div>
         {pets.length > 0 && onViewAll && (

@@ -145,8 +145,8 @@ const Messages = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Messagerie | DogWalking"
-        description="Communiquez avec vos promeneurs en temps réel. Messagerie sécurisée DogWalking pour organiser les promenades de votre chien."
+        title="Messagerie Sécurisée | DogWalking"
+        description="Communiquez avec vos Accompagnateurs Certifiés en temps réel. Messagerie sécurisée DogWalking pour organiser vos prestations."
         canonical="https://dogwalking.fr/messages"
         noindex
       />
@@ -196,14 +196,14 @@ const Messages = () => {
                     <MessageCircle className="h-12 w-12 mx-auto mb-4 text-muted-foreground opacity-50" />
                     <p className="text-muted-foreground">Aucune conversation</p>
                     <p className="text-sm text-muted-foreground mt-2">
-                      Vos conversations avec les promeneurs apparaîtront ici
+                      Vos conversations avec les Accompagnateurs Certifiés apparaîtront ici
                     </p>
                     <Button 
                       variant="outline" 
                       className="mt-4"
                       onClick={() => navigate('/walkers')}
                     >
-                      Trouver un promeneur
+                      Trouver un Accompagnateur
                     </Button>
                   </motion.div>
                 ) : (
@@ -281,90 +281,50 @@ const Messages = () => {
                                 En ligne
                               </>
                             ) : (
-                              "Hors ligne"
+                              'Hors ligne'
                             )}
                           </p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <Button variant="ghost" size="icon" className="hidden sm:flex">
-                          <Phone className="h-5 w-5" />
+                      <div className="flex items-center gap-1">
+                        <Button variant="ghost" size="icon" className="text-muted-foreground">
+                          <Phone className="h-4 w-4" />
                         </Button>
-                        <Button variant="ghost" size="icon" className="hidden sm:flex">
-                          <Video className="h-5 w-5" />
+                        <Button variant="ghost" size="icon" className="text-muted-foreground">
+                          <Video className="h-4 w-4" />
                         </Button>
-                        <Button variant="ghost" size="icon">
-                          <MoreVertical className="h-5 w-5" />
+                        <Button variant="ghost" size="icon" className="text-muted-foreground">
+                          <MoreVertical className="h-4 w-4" />
                         </Button>
                       </div>
                     </div>
                   </CardHeader>
 
-                  {/* Messages */}
-                  <CardContent className="flex-1 p-4 overflow-hidden">
-                    <ScrollArea className="h-full pr-4">
-                      <div className="space-y-3">
-                        {messages.length === 0 ? (
-                          <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            className="text-center py-12"
-                          >
-                            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                              <MessageCircle className="h-8 w-8 text-primary" />
-                            </div>
-                            <p className="text-muted-foreground">
-                              Commencez la conversation avec {selectedConversation.otherParticipant?.first_name}
-                            </p>
-                          </motion.div>
-                        ) : (
-                          <AnimatePresence>
-                            {messages.map((msg) => (
-                              <MessageBubble
-                                key={msg.id}
-                                content={msg.content}
-                                timestamp={msg.created_at}
-                                isOwn={msg.sender_id === currentUserId}
-                                isRead={msg.read}
-                                showAvatar={msg.sender_id !== currentUserId}
-                                avatarUrl={selectedConversation.otherParticipant?.avatar_url}
-                                senderName={selectedConversation.otherParticipant?.first_name || undefined}
-                              />
-                            ))}
-                          </AnimatePresence>
-                        )}
-                        
-                        {/* Typing indicator */}
-                        <AnimatePresence>
-                          {isPartnerTyping && (
-                            <TypingIndicator 
-                              userName={selectedConversation.otherParticipant?.first_name || undefined} 
-                            />
-                          )}
-                        </AnimatePresence>
-                        
-                        <div ref={messagesEndRef} />
-                      </div>
-                    </ScrollArea>
-                  </CardContent>
+                  {/* Messages List */}
+                  <ScrollArea className="flex-1 p-4 bg-muted/10">
+                    <div className="space-y-4">
+                      {messages.map((msg, index) => (
+                        <MessageBubble 
+                          key={msg.id || index}
+                          content={msg.content}
+                          timestamp={msg.created_at}
+                          isOwn={msg.sender_id === currentUserId}
+                        />
+                      ))}
+                      {isPartnerTyping && <TypingIndicator />}
+                      <div ref={messagesEndRef} />
+                    </div>
+                  </ScrollArea>
 
                   {/* Message Input */}
                   <div className="p-4 border-t bg-background">
-                    <form 
-                      onSubmit={(e) => { e.preventDefault(); handleSendMessage(); }}
-                      className="flex gap-2 items-center"
-                    >
-                      <Button 
-                        type="button" 
-                        variant="ghost" 
-                        size="icon"
-                        className="hidden sm:flex"
-                      >
-                        <Smile className="h-5 w-5 text-muted-foreground" />
+                    <div className="flex items-center gap-2 max-w-4xl mx-auto">
+                      <Button variant="ghost" size="icon" className="text-muted-foreground shrink-0">
+                        <Smile className="h-5 w-5" />
                       </Button>
-                      <Input
+                      <Input 
                         ref={inputRef}
-                        placeholder="Écrire un message..."
+                        placeholder="Votre message..." 
                         value={newMessage}
                         onChange={handleInputChange}
                         onKeyDown={handleKeyDown}
@@ -372,30 +332,29 @@ const Messages = () => {
                         disabled={sendingMessage}
                       />
                       <Button 
-                        type="submit" 
-                        disabled={sendingMessage || !newMessage.trim()}
-                        className="gap-2"
+                        size="icon" 
+                        onClick={handleSendMessage}
+                        disabled={!newMessage.trim() || sendingMessage}
+                        className="shrink-0 shadow-lg shadow-primary/20"
                       >
                         <Send className="h-4 w-4" />
-                        <span className="hidden sm:inline">Envoyer</span>
                       </Button>
-                    </form>
+                    </div>
                   </div>
                 </motion.div>
               ) : (
-                <motion.div
+                <motion.div 
                   key="empty"
                   className="flex flex-col items-center justify-center h-full text-center p-8"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
                 >
-                  <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-6">
-                    <MessageCircle className="h-10 w-10 text-primary" />
+                  <div className="w-20 h-20 rounded-full bg-primary/5 flex items-center justify-center mb-6">
+                    <MessageCircle className="h-10 w-10 text-primary opacity-40" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">Sélectionnez une conversation</h3>
+                  <h3 className="text-xl font-bold mb-2">Vos Messages Sécurisés</h3>
                   <p className="text-muted-foreground max-w-sm">
-                    Choisissez une conversation dans la liste pour commencer à discuter
+                    Sélectionnez une conversation pour discuter avec un Accompagnateur Certifié et organiser votre prestation.
                   </p>
                 </motion.div>
               )}
@@ -404,8 +363,8 @@ const Messages = () => {
         </motion.div>
       </main>
       
-      <Footer />
       <FloatingContact />
+      <Footer />
     </div>
   );
 };

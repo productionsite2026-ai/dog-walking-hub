@@ -57,7 +57,7 @@ export const experts: ExpertProfile[] = [
       "Vérification et sécurité",
       "Protocoles de confiance",
       "Gestion des risques",
-      "Assurance qualité",
+      "Garantie qualité",
     ],
     bio: "Sophie gère l'ensemble du processus de vérification des promeneurs. Avec 10 ans d'expérience en gestion de la confiance et de la sécurité, elle a mis en place les protocoles rigoureux qui font la réputation de DogWalking. Chaque promeneur validé a passé par son processus exigeant.",
     certifications: [
@@ -82,7 +82,7 @@ export const experts: ExpertProfile[] = [
     ],
     bio: "Thomas est notre expert en promenade canine. Avec 15 ans d'expérience en tant que promeneur professionnel, il a développé des techniques innovantes d'enrichissement comportemental. Il forme nos promeneurs aux meilleures pratiques et supervise les missions complexes.",
     certifications: [
-      "Certificat de Promeneur Professionnel",
+      "Certificat d'Accompagnateur Certifié",
       "Formation en Enrichissement Canin",
       "Spécialiste en Gestion de Groupes de Chiens",
     ],

@@ -24,7 +24,7 @@ const RoleChoiceDialog: React.FC<RoleChoiceDialogProps> = ({ open, onChoice }) =
     {
       type: 'walker' as const,
       icon: Dog,
-      title: 'Espace Promeneur',
+      title: 'Espace Accompagnateur',
       description: 'Voir mes missions et mes revenus',
       bgGradient: 'bg-gradient-to-br from-stat-green/15 to-stat-green/5',
       borderColor: 'border-stat-green/30 hover:border-stat-green',

@@ -11,6 +11,7 @@ import { ClientReviews } from "@/components/ui/client-reviews";
 import { CaseStudies } from "@/components/ui/case-studies";
 import { getReviewsByService, getCaseStudiesByService } from "@/data/clientReviewsData";
 import { motion } from "framer-motion";
+import { ServiceHero } from "@/components/ui/service-hero";
 import { 
   Calendar, Clock, Shield, Camera, Star, Heart, Repeat,
   CheckCircle, ArrowRight, Award, TrendingUp, Users, Zap
@@ -31,15 +32,15 @@ const caseStudies = getCaseStudiesByService("marche-reguliere");
 const marcheReguliereFAQs = [
   {
     question: "Quelle est la différence entre marche régulière et promenade ponctuelle ?",
-    answer: "La marche régulière est un engagement sur le long terme avec le même promeneur, généralement plusieurs fois par semaine. Cela permet de créer un lien fort entre le promeneur et votre chien, d'établir une routine stable et d'observer l'évolution comportementale de votre animal. La promenade ponctuelle est idéale pour des besoins occasionnels."
+    answer: "La marche régulière est un engagement sur le long terme avec le même promeneur, généralement plusieurs fois par semaine. Cela permet de créer un lien fort entre l'Accompagnateur et votre chien, d'établir une routine stable et d'observer l'évolution comportementale de votre animal. La promenade ponctuelle est idéale pour des besoins occasionnels."
   },
   {
     question: "Combien de promenades par semaine sont recommandées ?",
-    answer: "Cela dépend de l'énergie et des besoins de votre chien. Pour un chien adulte en appartement, 3 à 5 promenades par semaine avec un promeneur sont idéales en complément de vos propres sorties. Les races très énergiques (Border Collie, Berger Australien) peuvent nécessiter une sortie quotidienne. Nous adaptons la fréquence à chaque chien."
+    answer: "Cela dépend de l'énergie et des besoins de votre chien. Pour un chien adulte en appartement, 3 à 5 promenades par semaine avec un Accompagnateur sont idéales en complément de vos propres sorties. Les races très énergiques (Border Collie, Berger Australien) peuvent nécessiter une sortie quotidienne. Nous adaptons la fréquence à chaque chien."
   },
   {
     question: "Le même promeneur viendra-t-il à chaque fois ?",
-    answer: "Oui, c'est le principe fondamental de la marche régulière. Le même promeneur s'occupe de votre chien à chaque sortie, ce qui crée une relation de confiance et une stabilité émotionnelle pour votre animal. En cas d'absence exceptionnelle du promeneur, nous vous proposons un remplaçant vérifié que vous pouvez approuver."
+    answer: "Oui, c'est le principe fondamental de la marche régulière. Le même promeneur s'occupe de votre chien à chaque sortie, ce qui crée une relation de confiance et une stabilité émotionnelle pour votre animal. En cas d'absence exceptionnelle de l'Accompagnateur, nous vous proposons un remplaçant vérifié que vous pouvez approuver."
   },
   {
     question: "Quels sont les bénéfices comportementaux de la marche régulière ?",
@@ -47,7 +48,7 @@ const marcheReguliereFAQs = [
   },
   {
     question: "Comment se passe la mise en place d'un programme régulier ?",
-    answer: "Après avoir choisi votre promeneur, vous définissez ensemble les jours et horaires de promenade. Une première rencontre permet d'établir la confiance. Le promeneur apprend les habitudes de votre chien, ses commandes, ses besoins spécifiques. Après quelques sorties, une routine s'installe naturellement."
+    answer: "Après avoir choisi votre promeneur, vous définissez ensemble les jours et horaires de promenade. Une première rencontre permet d'établir la confiance. L'Accompagnateur apprend les habitudes de votre chien, ses commandes, ses besoins spécifiques. Après quelques sorties, une routine s'installe naturellement."
   },
   {
     question: "Puis-je modifier le planning en cours de route ?",
@@ -59,7 +60,7 @@ const marcheReguliereFAQs = [
   },
   {
     question: "Mon chien est-il assuré à chaque promenade régulière ?",
-    answer: "Oui, chaque promenade est couverte par notre assurance jusqu'à 2 millions d'euros, que ce soit une promenade ponctuelle ou régulière. Le système de paiement escrow s'applique également : vous ne payez qu'après réception des preuves photo de chaque sortie."
+    answer: "Oui, chaque promenade est protégée, que ce soit une promenade ponctuelle ou régulière. Le système de paiement sécurisé s'applique : vous ne payez qu'après réception des preuves photo et validation du code de fin de mission."
   }
 ];
 
@@ -80,28 +81,12 @@ const ServiceMarcheReguliere = () => {
       "@type": "Country",
       "name": "France"
     },
+    
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Forfaits marche régulière",
       "itemListElement": [
-        {
-          "@type": "Offer",
-          "name": "Forfait 3 promenades/semaine",
-          "price": "30",
-          "priceCurrency": "EUR"
-        },
-        {
-          "@type": "Offer",
-          "name": "Forfait 5 promenades/semaine",
-          "price": "45",
-          "priceCurrency": "EUR"
-        },
-        {
-          "@type": "Offer",
-          "name": "Forfait quotidien",
-          "price": "55",
-          "priceCurrency": "EUR"
-        }
+        { "@type": "Offer", "name": "Marche régulière", "priceCurrency": "EUR" }
       ]
     }
   };
@@ -142,8 +127,8 @@ const ServiceMarcheReguliere = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Marche Régulière Chien | Promeneur Attitré & Routine | DogWalking"
-        description="Marche régulière avec le même promeneur vérifié. Routine stable, bénéfices comportementaux, lien de confiance. Forfaits avantageux dès 30€/semaine."
+        title="Marche Régulière Chien | Accompagnateur Certifié Attitré & Routine | DogWalking"
+        description="Marche régulière avec le même promeneur vérifié. Routine stable, bénéfices comportementaux, lien de confiance. Forfaits avantageux pour un engagement long terme."
         keywords="marche régulière chien, promenade quotidienne, promeneur attitré, routine chien, forfait promenade, dog walking régulier"
         canonicalUrl="https://dogwalking.fr/services/marche-reguliere"
         structuredData={serviceJsonLd}
@@ -152,79 +137,23 @@ const ServiceMarcheReguliere = () => {
       <Header />
       
       <main>
-        {/* Hero Section */}
-        <section className="relative py-16 md:py-24 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-secondary/10" />
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="container mx-auto px-4 relative z-10"
-          >
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-                  <Repeat className="w-3 h-3 mr-1" />
-                  Accompagnement long terme
-                </Badge>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                  Marche Régulière : <span className="text-primary">Routine & Bien-être</span> pour Votre Chien
-                </h1>
-                <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                  Offrez à votre compagnon la stabilité d'un promeneur attitré. La marche régulière crée 
-                  une routine rassurante, renforce le lien de confiance et améliore significativement 
-                  le comportement de votre chien sur le long terme.
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <Button size="lg" onClick={() => navigate("/walkers?service=marche_reguliere")}>
-                    Trouver mon promeneur
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                  <Button size="lg" variant="outline" onClick={() => navigate("/tarifs")}>
-                    Voir les forfaits
-                  </Button>
-                </div>
-                <div className="flex items-center gap-6 mt-8 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <Repeat className="h-4 w-4 text-primary" />
-                    <span>Même promeneur</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Calendar className="h-4 w-4 text-primary" />
-                    <span>Routine établie</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4 text-primary" />
-                    <span>Bénéfices prouvés</span>
-                  </div>
-                </div>
-              </div>
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="relative"
-              >
-                <img 
-                  src={marcheHero} 
-                  alt="Promeneur régulier avec un chien heureux sur un chemin bordé d'arbres en automne" 
-                  className="rounded-2xl shadow-2xl w-full object-cover aspect-video"
-                />
-                <div className="absolute -bottom-6 -left-6 bg-card p-4 rounded-xl shadow-lg border">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                      <TrendingUp className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <p className="font-bold text-2xl">85%</p>
-                      <p className="text-sm text-muted-foreground">Amélioration comportementale</p>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </section>
+        <ServiceHero
+          backgroundImage={marcheHero}
+          badgeIcon={Repeat}
+          badgeText="Accompagnement long terme"
+          title={<>Marche Régulière : <span className="text-gradient">Routine & Bien-être</span> pour Votre Chien</>}
+          description="Offrez à votre compagnon la stabilité d'un Accompagnateur attitré. La marche régulière crée une routine rassurante, renforce le lien de confiance et améliore significativement le comportement de votre chien sur le long terme."
+          ctaText="Trouver mon promeneur"
+          ctaLink="/walkers?service=marche_reguliere"
+          secondaryCtaText="Voir les forfaits"
+          imageAlt="Accompagnateur Certifié régulier avec un chien heureux sur un chemin bordé d'arbres en automne"
+          trustIndicators={[
+            { icon: Repeat, text: "Même promeneur" },
+            { icon: Calendar, text: "Routine établie" },
+            { icon: TrendingUp, text: "Bénéfices prouvés" },
+          ]}
+          statBadge={{ icon: TrendingUp, value: "85%", label: "Amélioration comportementale" }}
+        />
 
         {/* Qu'est-ce que la marche régulière */}
         <section className="py-16 bg-muted/30">
@@ -248,7 +177,7 @@ const ServiceMarcheReguliere = () => {
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               <motion.img
                 src={marcheQuotidienne}
-                alt="Promeneur quotidien avec un chien dans une rue de quartier"
+                alt="Accompagnateur Certifié quotidien avec un chien dans une rue de quartier"
                 className="rounded-2xl shadow-lg w-full object-cover aspect-video"
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -454,7 +383,7 @@ const ServiceMarcheReguliere = () => {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <motion.img
                 src={marcheLien}
-                alt="Lien fort entre un promeneur et un chien qui le regarde avec affection"
+                alt="Lien fort entre un Accompagnateur et un chien qui le regarde avec affection"
                 className="rounded-2xl shadow-lg w-full object-cover aspect-video"
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -467,7 +396,7 @@ const ServiceMarcheReguliere = () => {
                 viewport={{ once: true }}
               >
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                  Un Lien Unique Entre Votre Chien et Son Promeneur
+                  Un Lien Unique Entre Votre Chien et Son Accompagnateur Certifié
                 </h2>
                 <p className="text-lg text-muted-foreground mb-8">
                   Avec le temps, votre chien reconnaît son promeneur, l'attend avec impatience 
@@ -477,7 +406,7 @@ const ServiceMarcheReguliere = () => {
                 <ul className="space-y-4">
                   <li className="flex items-center gap-3">
                     <CheckCircle className="h-5 w-5 text-primary" />
-                    <span>Reconnaissance et joie à l'arrivée du promeneur</span>
+                    <span>Reconnaissance et joie à l'arrivée de l'Accompagnateur</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <CheckCircle className="h-5 w-5 text-primary" />
@@ -507,10 +436,10 @@ const ServiceMarcheReguliere = () => {
               className="text-center mb-12"
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Nos Forfaits Marche Régulière
+                Choisissez Votre Rythme de Promenade
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Des tarifs avantageux pour un engagement sur le long terme
+                Un programme adapté au mode de vie de votre chien
               </p>
             </motion.div>
 
@@ -520,12 +449,11 @@ const ServiceMarcheReguliere = () => {
                   <div className="text-4xl mb-4">🚶</div>
                   <h3 className="font-bold text-xl mb-2">Essentiel</h3>
                   <p className="text-sm text-muted-foreground mb-2">3 promenades/semaine</p>
-                  <p className="text-3xl font-bold text-primary mb-2">dès 30€</p>
-                  <p className="text-xs text-muted-foreground mb-4">soit 10€/promenade</p>
+                  <p className="text-xs text-muted-foreground mb-4">Tarif avantageux</p>
                   <ul className="text-sm text-left space-y-2 mb-6">
                     <li className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-primary" />
-                      Promeneur attitré
+                      Accompagnateur Certifié attitré
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-primary" />
@@ -548,12 +476,11 @@ const ServiceMarcheReguliere = () => {
                   <div className="text-4xl mb-4">🏃</div>
                   <h3 className="font-bold text-xl mb-2">Confort</h3>
                   <p className="text-sm text-muted-foreground mb-2">5 promenades/semaine</p>
-                  <p className="text-3xl font-bold text-primary mb-2">dès 45€</p>
-                  <p className="text-xs text-muted-foreground mb-4">soit 9€/promenade</p>
+                  <p className="text-xs text-muted-foreground mb-4">Meilleur rapport qualité/prix</p>
                   <ul className="text-sm text-left space-y-2 mb-6">
                     <li className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-primary" />
-                      Promeneur attitré
+                      Accompagnateur Certifié attitré
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-primary" />
@@ -576,12 +503,11 @@ const ServiceMarcheReguliere = () => {
                   <div className="text-4xl mb-4">🌟</div>
                   <h3 className="font-bold text-xl mb-2">Quotidien</h3>
                   <p className="text-sm text-muted-foreground mb-2">7 promenades/semaine</p>
-                  <p className="text-3xl font-bold text-primary mb-2">dès 55€</p>
-                  <p className="text-xs text-muted-foreground mb-4">soit 7,85€/promenade</p>
+                  <p className="text-xs text-muted-foreground mb-4">Couverture quotidienne</p>
                   <ul className="text-sm text-left space-y-2 mb-6">
                     <li className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-primary" />
-                      Promeneur attitré
+                      Accompagnateur Certifié attitré
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-primary" />
@@ -629,10 +555,10 @@ const ServiceMarcheReguliere = () => {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Pourquoi Faire Confiance a DogWalking pour ce Service ?
+                Un Engagement de Qualité sur la Durée
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Nos garanties de confiance et de securite sont sans equivalent en France.
+                Des garanties solides pour votre programme de marche régulière.
               </p>
             </div>
             <TrustBadges />

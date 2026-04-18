@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Heart, Users, MapPin, Shield, Clock, Sparkles } from "lucide-react";
+import { Heart, Users, MapPin, Shield, Clock, Sparkles, Lock, Camera } from "lucide-react";
 
 // Import images for visual appeal
 import servicePromenade from "@/assets/service-promenade.jpg";
@@ -28,36 +28,36 @@ export const WhySection = () => {
   const reasons = [
     {
       icon: Users,
-      title: "Mise en relation",
-      description: "Connectez-vous avec des professionnels passionnés et vérifiés près de chez vous",
+      title: "Sélection Élite",
+      description: "Seulement 35% des candidats sont retenus après vérification manuelle de leur CNI",
       gradient: "from-primary to-accent",
       bgGradient: "from-primary/10 to-accent/10"
     },
     {
-      icon: Heart,
-      title: "Confiance",
-      description: "Profils vérifiés, avis certifiés et preuves photo obligatoires à chaque prestation",
+      icon: Lock,
+      title: "Paiement en Attente",
+      description: "Vos fonds sont bloqués jusqu'à la communication du code de fin de service. Zéro risque financier.",
       gradient: "from-primary to-primary/70",
       bgGradient: "from-primary/10 to-primary/5"
     },
     {
-      icon: MapPin,
-      title: "Proximité",
-      description: "Des promeneurs disponibles dans votre quartier, partout en France",
+      icon: Camera,
+      title: "Preuves Visuelles",
+      description: "Les Accompagnateurs envoyant photos/vidéos bénéficient d'un meilleur positionnement. Transparence récompensée.",
       gradient: "from-accent to-primary",
       bgGradient: "from-accent/10 to-primary/10"
     },
     {
       icon: Shield,
-      title: "Sécurité",
-      description: "Paiement escrow sécurisé, libéré uniquement après validation de la prestation",
+      title: "Code Unique",
+      description: "C'est vous qui libérez le paiement en communiquant votre code unique à l'Accompagnateur Certifié.",
       gradient: "from-primary/80 to-accent",
       bgGradient: "from-primary/10 to-accent/5"
     },
     {
       icon: Clock,
       title: "Flexibilité",
-      description: "Réservez selon vos horaires, annulez facilement si besoin",
+      description: "Réservez selon vos horaires, annulez gratuitement jusqu'à 3h avant la mission.",
       gradient: "from-accent to-accent/70",
       bgGradient: "from-accent/10 to-accent/5"
     }
@@ -85,17 +85,16 @@ export const WhySection = () => {
             className="inline-flex items-center gap-2 bg-gradient-to-r from-primary/20 to-primary/10 text-primary px-5 py-2 rounded-full text-sm font-semibold mb-4 border border-primary/20"
           >
             <Sparkles className="w-4 h-4" />
-            Notre mission
+            La Confiance Vérifiée
           </motion.span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-5">
-            Service de Promenade et Garde de Chien{" "}
+            Pourquoi choisir DogWalking pour{" "}
             <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-              Sécurisé
+              votre animal ?
             </span>
-            <br className="hidden sm:block" /> dans Toute la France
           </h2>
           <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
-            Partout en France, nous connectons les propriétaires d'animaux avec des professionnels de confiance pour des services adaptés à chaque besoin.
+            Nous ne sommes pas un simple site de mise en relation. Nous sommes le garant de la sécurité et du bien-être de votre compagnon grâce à un protocole strict.
           </p>
         </motion.div>
 
@@ -142,14 +141,10 @@ export const WhySection = () => {
               }}
               className="group relative bg-card rounded-2xl p-6 shadow-lg border border-border/50 overflow-hidden"
             >
-              {/* Hover gradient background */}
               <div className={`absolute inset-0 bg-gradient-to-br ${reason.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-              
-              {/* Animated glow effect */}
               <div className={`absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br ${reason.gradient} rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
               
               <div className="relative">
-                {/* Icon with gradient background */}
                 <motion.div 
                   className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br ${reason.gradient} mb-5 shadow-lg`}
                   whileHover={{ rotate: 5, scale: 1.1 }}
@@ -166,7 +161,6 @@ export const WhySection = () => {
                 </p>
               </div>
               
-              {/* Bottom accent line */}
               <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${reason.gradient} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
             </motion.div>
           ))}

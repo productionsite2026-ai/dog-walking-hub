@@ -104,7 +104,7 @@ const BookWalk = () => {
   const handleRequireAuth = () => {
     toast({
       title: "Dernière étape !",
-      description: "Créez votre compte pour finaliser votre réservation.",
+      description: "Créez votre compte Propriétaire pour finaliser votre réservation.",
     });
     navigate('/auth?redirect=' + encodeURIComponent(`/book/${walkerId}`));
   };
@@ -117,34 +117,52 @@ const BookWalk = () => {
 
     if (!data.dogId) {
       toast({
-        title: "Sélectionnez un chien",
-        description: "Veuillez sélectionner le chien pour cette prestation",
+        title: "Sélectionnez un Animal",
+        description: "Veuillez sélectionner l'Animal pour cette prestation",
         variant: "destructive",
       });
       return;
     }
 
     try {
-      const { error } = await supabase.from('bookings').insert({
+      const price = calculatePrice(data);
+      const { data: bookingData, error } = await supabase.from('bookings').insert({
         owner_id: userId,
         walker_id: walkerId,
         dog_id: data.dogId,
         scheduled_date: data.date,
         scheduled_time: data.time,
         duration_minutes: data.duration,
-        price: calculatePrice(data),
+        price,
         notes: data.notes || null,
         address: data.address || null,
         service_type: data.service,
-      });
+      }).select('id').single();
 
       if (error) throw error;
 
+      // Get dog name for notification
+      const { data: dogData } = await supabase.from('dogs').select('name').eq('id', data.dogId).single();
+      const dogName = dogData?.name || 'votre Animal';
+
+      // Get owner name
+      const { data: ownerProfile } = await supabase.from('profiles').select('first_name').eq('id', userId).single();
+      const ownerName = ownerProfile?.first_name || 'Un Propriétaire';
+
+      // Notify the walker
+      await supabase.from('notifications').insert({
+        user_id: walkerId!,
+        title: '📩 Nouvelle demande de réservation',
+        message: `${ownerName} souhaite une prestation pour ${dogName} le ${new Date(data.date).toLocaleDateString('fr-FR')} à ${data.time} (${price}€)`,
+        type: 'booking',
+        link: `/walker/dashboard?tab=missions`,
+      });
+
       toast({
         title: "Réservation effectuée !",
-        description: "Votre demande a été envoyée. Le promeneur va confirmer.",
+        description: "Votre demande a été envoyée. l'Accompagnateur Certifié va confirmer.",
       });
-      navigate('/bookings');
+      navigate('/dashboard?tab=reservations');
     } catch (error: any) {
       toast({ title: "Erreur", description: error.message, variant: "destructive" });
     }
@@ -176,8 +194,8 @@ const BookWalk = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted/30">
       <SEOHead
-        title="Réserver une Promenade | DogWalking"
-        description="Réservez une promenade ou un service pour votre chien avec un promeneur vérifié. Paiement sécurisé escrow."
+        title="Réserver une Prestation | DogWalking"
+        description="Réservez une prestation pour votre Animal avec un Accompagnateur Certifié. Paiement sécurisé."
       />
       <Header />
       <main className="container mx-auto px-4 py-24 max-w-5xl">
@@ -245,7 +263,7 @@ const BookWalk = () => {
                       {walker.verified && (
                         <Badge className="mt-3 gap-1">
                           <Shield className="h-3 w-3" />
-                          Promeneur vérifié
+                          Accompagnateur Certifié
                         </Badge>
                       )}
                     </div>
@@ -255,19 +273,19 @@ const BookWalk = () => {
                       <ul className="text-sm text-muted-foreground space-y-2">
                         <li className="flex items-center gap-2">
                           <Shield className="h-4 w-4 text-primary" />
-                          Assurance RC incluse
+                          Protection & Médiation
                         </li>
                         <li className="flex items-center gap-2">
                           <Camera className="h-4 w-4 text-primary" />
-                          Preuves photo obligatoires
+                          Preuves visuelles obligatoires
                         </li>
                         <li className="flex items-center gap-2">
                           <Lock className="h-4 w-4 text-primary" />
-                          Paiement escrow sécurisé
+                          Paiement sécurisé
                         </li>
                         <li className="flex items-center gap-2">
                           <Clock className="h-4 w-4 text-primary" />
-                          Réponse rapide garantie
+                          Code unique de validation
                         </li>
                       </ul>
                     </CardContent>
